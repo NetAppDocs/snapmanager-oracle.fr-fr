@@ -1,0 +1,38 @@
+---
+permalink: unix-administration/task_using_snapmanager_for_oracle_to_create_a_protected_backup.html 
+sidebar: sidebar 
+keywords: creating, backup, example, dba, option, secondary, protect, oracle, repository 
+summary: 'Lors de la création d"une sauvegarde pour cet exemple, l"administrateur de bases de données sélectionne pour créer une sauvegarde complète, définit les options de sauvegarde et sélectionne la protection sur le stockage secondaire. Bien que la sauvegarde soit initialement effectuée sur un stockage local, parce que cette sauvegarde repose sur un profil de protection activée, la sauvegarde est ensuite transférée vers le stockage secondaire selon le planning de la stratégie de protection défini dans protection Manager.' 
+---
+= Utilisation de SnapManager pour Oracle pour créer une sauvegarde protégée
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lors de la création d'une sauvegarde pour cet exemple, l'administrateur de bases de données sélectionne pour créer une sauvegarde complète, définit les options de sauvegarde et sélectionne la protection sur le stockage secondaire. Bien que la sauvegarde soit initialement effectuée sur un stockage local, car cette sauvegarde repose sur un profil protégé, la sauvegarde est ensuite transférée vers du stockage secondaire selon le planning de la règle de protection défini dans protection Manager.
+
+. Accédez au client SnapManager pour Oracle.
+. Dans l'arborescence du référentiel SnapManager, cliquez avec le bouton droit de la souris sur le profil contenant la base de données à sauvegarder, puis sélectionnez *Sauvegarder*.
++
+L'assistant de sauvegarde SnapManager pour Oracle démarre.
+
+. Saisissez production_pay comme étiquette.
+. Entrez la paie de production Jan 19 sauvegarde comme commentaire.
+. Sélectionnez *Auto* comme type de sauvegarde que vous souhaitez créer.
++
+Cela permet à SnapManager de déterminer s'il faut effectuer une sauvegarde en ligne ou hors ligne.
+
+. Sélectionnez *Daily* ou *Weekly* comme fréquence de sauvegarde.
+. Pour confirmer que la sauvegarde est dans un format valide pour Oracle, cochez la case en regard de *Verify backup*.
++
+Cette opération utilise Oracle DBVerify pour vérifier le format et la structure du bloc.
+
+. Pour forcer l'état de la base de données dans le mode approprié (par exemple, de l'ouverture au montage), sélectionnez *Autoriser le démarrage ou l'arrêt de la base de données, si nécessaire*, puis cliquez sur *Suivant*.
+. Dans la page base de données, tablespaces ou fichiers de données à sauvegarder, sélectionnez *sauvegarde complète* et cliquez sur *Suivant*.
+. Pour protéger la sauvegarde sur le stockage secondaire, cochez *protéger la sauvegarde* et cliquez sur *Suivant*.
+. Dans la page Exécuter l'opération, vérifiez les informations que vous avez fournies et cliquez sur *Sauvegarder*.
+. Dans la page de progression, affichez la progression et les résultats de la création de la sauvegarde.
+. Pour afficher les détails de l'opération, cliquez sur *Détails de l'opération*.
+

@@ -1,0 +1,92 @@
+---
+permalink: windows/reference_the_smosmsapclone_show_command.html 
+sidebar: sidebar 
+keywords: run, clone, show, command, display, information, database, profile, smo 
+summary: Vous pouvez exécuter la commande clone show pour afficher les informations sur les clones de base de données du profil spécifié. 
+---
+= Commande smo clone show
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande clone show pour afficher les informations sur les clones de base de données du profil spécifié.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo clone show
+-profile profile_name
+\[-id  guid \| -label clone_name\]
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie la liste des clones associés au profil. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-id guid*
++
+Affiche des informations sur le clone avec le GUID spécifié. Le GUID est généré par SnapManager lors de la création d'un clone. Vous pouvez utiliser la commande smo clone show pour afficher le GUID de chaque clone.
+
+* *-label nom_label*
++
+Affiche des informations sur le clone avec l'étiquette spécifiée.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+
+== Exemple
+
+L'exemple suivant affiche les informations sur le clone :
+
+[listing]
+----
+smo clone show -profile SALES1 -label full_backup_sales_May -verbose
+----
+Le résultat suivant affiche des informations sur un clone d'une sauvegarde sur le stockage primaire :
+
+[listing]
+----
+Clone id: 8abc013111b916e30111b916ffb40001
+Clone status: SUCCESS
+Clone SID: hsdbc
+Clone label: hsdbc
+Clone comment: null
+Clone start time: 2007-04-03 16:15:50
+Clone end time: 2007-04-03 16:18:17
+Clone host: Host1
+Filesystem: E:\ssys1\data_clone\
+File: E:\ssys1\data_clone\hsdb\sysaux01.dbf
+File: E:\ssys1\data_clone\hsdb\undotbs01.dbf
+File: E:\ssys1\data_clone\hsdb\users01.dbf
+File: E:\ssys1\data_clone\hsdb\system01.dbf
+File: E:\ssys1\data_clone\hsdb\undotbs02.dbf
+Backup id: 8abc013111a450480111a45066210001
+Backup label: full_backup_sales_May
+Backup SID: hsdb1
+Backup comment:
+Backup start time: 2007-03-30 15:26:30
+Backup end time: 2007-03-30 15:34:13
+Backup host: server1
+----
+*Informations connexes*
+
+xref:task_viewing_detailed_clone_information.adoc[Affichage des informations détaillées sur les clones]

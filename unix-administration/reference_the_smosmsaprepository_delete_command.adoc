@@ -1,0 +1,101 @@
+---
+permalink: unix-administration/reference_the_smosmsaprepository_delete_command.html 
+sidebar: sidebar 
+keywords: command, delete, repository, store, database, profile, associate, credentials, smo 
+summary: 'Cette commande supprime un référentiel utilisé pour stocker les profils de base de données et les informations d"identification associées. Vous ne pouvez supprimer un référentiel que s"il n"y a aucun profil dans le référentiel.' 
+---
+= Commande smo repository delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette commande supprime un référentiel utilisé pour stocker les profils de base de données et les informations d'identification associées. Vous ne pouvez supprimer un référentiel que s'il n'y a aucun profil dans le référentiel.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo repository delete
+-repository
+-port repo_port
+-dbname repo_service_name
+-host repo_host
+-login -username repo_username
+[-force] [-noprompt]
+[-quiet | -verbose]
+----
+
+
+== Paramètres
+
+* *-référentiel*
++
+Les options suivantes -repository spécifient les détails de la base de données pour le référentiel.
+
+* *-port repo_port*
++
+Spécifie le numéro de port TCP utilisé pour accéder à la base de données qui stocke le référentiel.
+
+* *-dbname repo_service_name*
++
+Indique le nom de la base de données qui stocke le référentiel. Utilisez le nom global ou le SID.
+
+* *-hôte repo_host*
++
+Indique le nom ou l'adresse IP de l'ordinateur hôte sur lequel s'exécute la base de données de référentiel.
+
+* *-connexion*
++
+Démarre les détails de connexion au référentiel.
+
+* *-username repo_username*
++
+Indique le nom d'utilisateur nécessaire pour accéder à la base de données qui stocke le référentiel.
+
+* *-force*
++
+Tente de forcer la suppression du référentiel, même si des opérations sont incomplètes. SnapManager émet une invite s'il y a des opérations incomplètes, vous demandant si vous êtes sûr de vouloir supprimer le référentiel.
+
+* *-noprompt*
++
+Ne vous invite pas avant de supprimer le référentiel. L'option -noprompt permet de s'assurer que l'invite n'apparaît pas, ce qui facilite la suppression des référentiels à l'aide d'un script.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur sur la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche des messages d'erreur, d'avertissement et d'information sur la console.
+
+
+
+
+
+== Exemple de commande
+
+L'exemple suivant supprime le référentiel dans la base de données SALESDB.
+
+[listing]
+----
+smo repository delete -repository -port 1521 -dbname smorep
+-host nila -login -username smofresno -force -verbose
+This command will delete repository "smofresno@smorep/nila".
+Any resources maintained by the repository must be cleaned up manually.
+This may include snapshots, mounted backups, and clones.
+Are you sure you wish to proceed (Y/N)?Y
+[ INFO] SMO-09201: Dropping existing schema as smofresno
+  on jdbc:oracle:thin:@//nila:1521/smorep.
+[ INFO] SMO-13048: Repository Delete Operation Status: SUCCESS
+[ INFO] SMO-13049: Elapsed Time: 0:00:06.372
+[ INFO] SMO-20010: Synchronizing mapping for profiles in
+   repository "smofresno@smorep/nila:1521".
+[ WARN] SMO-20029: No repository schema exists in "smofresno@smorep/nila:1521".
+ Deleting all profile mappings for this repository.
+[ INFO] SMO-20012: Deleted stale mapping for profile "TESTPASS".
+----

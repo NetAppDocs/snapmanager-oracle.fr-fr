@@ -1,0 +1,18 @@
+---
+permalink: unix-administration/concept_support_for_oracle_rac_asm_databases.html 
+sidebar: sidebar 
+keywords: oracle, rac, database, node, initasmdisk, file 
+summary: 'Si vous utilisez des bases de données Oracle RAC, les nœuds RAC doivent être mis à jour avec le fichier initasdisks chaque fois qu"une opération est effectuée dans le nœud RAC maître.' 
+---
+= Prise en charge des bases de données Oracle RAC ASM sans ASMLib
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous utilisez des bases de données Oracle RAC, les nœuds RAC doivent être mis à jour avec le fichier initasdisks chaque fois qu'une opération est effectuée dans le nœud RAC maître.
+
+Si aucune authentification n'est requise pour se connecter aux nœuds RAC à partir du nœud maître, le asmmain.sh exécute une copie sécurisée (SCP) d'initasdisks vers tous les nœuds RAC. Le fichier initasdisks du nœud maître est appelé à chaque restauration, et le script asmmain.sh peut être mis à jour pour appeler le même script dans tous les nœuds RAC.
+
+Le fichier /etc/initasmadisks créé qui doit être exécuté à partir de l'un des scripts de démarrage ou d'un script récemment défini dans rc3.d. Le fichier /etc/initasdisks doit toujours être exécuté avant le démarrage du service oracleha.

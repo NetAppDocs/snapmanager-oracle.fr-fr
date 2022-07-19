@@ -1,0 +1,25 @@
+---
+permalink: windows/task_creating_system_level_dump_files.html 
+sidebar: sidebar 
+keywords: smo, system, dump, command, log, information, snapmanager, environment, level, operation, profile, host 
+summary: 'Vous pouvez utiliser la commande smo system dump pour obtenir des informations de journalisation sur l"hôte et l"environnement SnapManager. Vous pouvez spécifier différents niveaux de journalisation pour collecter des informations sur une opération, un profil ou un hôte et un environnement spécifiques.' 
+---
+= Création de fichiers de vidage au niveau du système
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la commande smo system dump pour obtenir des informations de journalisation sur l'hôte et l'environnement SnapManager. Vous pouvez spécifier différents niveaux de journalisation pour collecter des informations sur une opération, un profil ou un hôte et un environnement spécifiques.
+
+. Entrez la commande suivante : smo System dump
++
+Vidage résultant
+
++
+[listing]
+----
+Path:\<user-home>\Application Data\NetApp\smo\3.3.0\smo_dump_server_host.jar
+----
+

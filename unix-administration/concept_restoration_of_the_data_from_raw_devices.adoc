@@ -1,0 +1,20 @@
+---
+permalink: unix-administration/concept_restoration_of_the_data_from_raw_devices.html 
+sidebar: sidebar 
+keywords: restore, alternate, location, connect, necessary, raw, device, local, host 
+summary: 'Avant de procéder à la restauration à partir d"un autre emplacement, vous devez vous connecter aux périphériques bruts nécessaires qui existent sur l"hôte local.' 
+---
+= Restauration des données à partir des périphériques bruts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de procéder à la restauration à partir d'un autre emplacement, vous devez vous connecter aux périphériques bruts nécessaires qui existent sur l'hôte local.
+
+Vous pouvez appeler la restauration à partir d'une autre opération d'emplacement pour copier les blocs de données des autres périphériques bruts vers les périphériques bruts actifs. Pour effectuer cette opération, vous devez spécifier le périphérique brut de remplacement à partir duquel restaurer le périphérique brut d'origine en créant une spécification de restauration.
+
+*Informations connexes*
+
+xref:task_creating_restore_specifications.adoc[Création de spécifications de restauration]

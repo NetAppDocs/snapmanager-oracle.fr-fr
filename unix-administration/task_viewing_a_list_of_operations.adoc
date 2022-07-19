@@ -1,0 +1,35 @@
+---
+permalink: unix-administration/task_viewing_a_list_of_operations.html 
+sidebar: sidebar 
+keywords: view, summary, list, operation, perform, profile, smo 
+summary: Vous pouvez afficher une liste récapitulative de toutes les opérations effectuées sur un profil. 
+---
+= Affichage d'une liste d'opérations
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez afficher une liste récapitulative de toutes les opérations effectuées sur un profil.
+
+Vous pouvez afficher les informations suivantes lorsque vous dressez la liste des opérations associées à un profil particulier :
+
+* Date de début et de fin de l'opération
+* État de l'opération
+* ID opération
+* Type d'opération
+* Hôte sur lequel il a exécuté
++
+.. Pour lister les informations récapitulatives de toutes les opérations, utilisez la commande suivante :
+`smo operation list profile -profile profile_name-delimiter character [-quiet | -verbose]`
++
+Lorsque l'option -délimiteur est spécifiée, la commande répertorie chaque ligne d'une ligne distincte et les attributs de cette ligne sont séparés par le caractère spécifié.
+
+
+
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapoperation_list_command.adoc[Commande SMO Operation list]

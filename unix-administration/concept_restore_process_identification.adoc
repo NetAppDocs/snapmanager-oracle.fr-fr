@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/concept_restore_process_identification.html 
+sidebar: sidebar 
+keywords: restore, process, support, snapmanager, oracle, file-based, backup 
+summary: 'Tous les processus de restauration ne sont pas pris en charge dans toutes les versions de SnapManager pour Oracle. Après la mise à niveau de SnapManager, il convient de noter le processus de restauration que vous pouvez utiliser pour la restauration d"une sauvegarde.' 
+---
+= Restaurer les types de processus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Tous les processus de restauration ne sont pas pris en charge dans toutes les versions de SnapManager pour Oracle. Après la mise à niveau de SnapManager, il convient de noter le processus de restauration que vous pouvez utiliser pour la restauration d'une sauvegarde.
+
+Les sauvegardes créées avec SnapManager 3.0 ou version ultérieure peuvent être restaurées avec des processus de restauration rapide et de restauration basée sur des fichiers. Cependant, les sauvegardes créées à l'aide d'une version antérieure à SnapManager 3.0 peuvent être restaurées en utilisant uniquement le processus de restauration basé sur les fichiers.
+
+Vous pouvez déterminer la version de SnapManager utilisée pour créer la sauvegarde en exécutant la commande -backup show.
+
+*Informations connexes*
+
+xref:concept_what_database_restore_is.adoc[Quelle est la restauration de la base de données]

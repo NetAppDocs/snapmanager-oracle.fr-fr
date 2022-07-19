@@ -1,0 +1,89 @@
+---
+permalink: unix-administration/reference_the_smosmsapbackup_update_command.html 
+sidebar: sidebar 
+keywords: run, backup, update, command, retention, policy, smo 
+summary: Vous pouvez exécuter la commande backup update pour mettre à jour la stratégie de rétention des sauvegardes. 
+---
+= Commande smo backup update
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande backup update pour mettre à jour la stratégie de rétention des sauvegardes.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo backup update
+-profile profile_name
+[-label label \[-data \| -archivelogs\] \| \[-id guid\]
+\[-retain \{-hourly \| -daily \| -weekly \| -monthly \| -unlimited\}\]
+\[-comment comment_text\]
+[-quiet | -verbose]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie le profil pour lequel mettre à jour les sauvegardes. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-id guid*
++
+Vérifie la sauvegarde à l'aide du GUID spécifié. Le GUID est généré par SnapManager lors de la création d'une sauvegarde. Vous pouvez utiliser la commande SMO backup list pour afficher le GUID pour chaque sauvegarde.
+
+* *-étiquette*
++
+Indique l'étiquette de sauvegarde et l'étendue de la sauvegarde en tant que fichier de données ou journal d'archivage.
+
+* *-données*
++
+Spécifie les fichiers de données.
+
+* *-archiveils*
++
+Spécifie les fichiers journaux d'archive.
+
+* *-commentaire_text*
++
+Saisissez du texte (jusqu'à 200 caractères) sur la mise à jour de sauvegarde. Vous pouvez inclure des espaces.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+* *-conserver {-horaire | -quotidien | -hebdomadaire | -mensuel | -illimité}*
++
+Indique si la sauvegarde doit être conservée toutes les heures, tous les jours, toutes les semaines, tous les mois ou sans limite. Si -retain n'est pas spécifié, la classe de rétention est par défaut -horaire. Pour conserver des sauvegardes permanentes, utilisez l'option -Unlimited. L'option -Unlimited rend la sauvegarde inéligible à la suppression.
+
+
+
+
+
+== Exemple
+
+L'exemple suivant met à jour la sauvegarde pour qu'elle soit définie sur illimitée :
+
+[listing]
+----
+smo backup update -profile SALES1 -label full_backup_sales_May
+-retain -unlimited -comment save_forever_monthly_backup
+----
+*Informations connexes*
+
+xref:task_changing_the_backup_retention_policy.adoc[Modification de la stratégie de conservation des sauvegardes]
+
+xref:task_retaining_backups_forever.adoc[Conservation des sauvegardes indéfiniment]
+
+xref:task_freeing_or_deleting_retention_policy_exempt_backups.adoc[La libération ou la suppression de sauvegardes exonérées de règles de conservation]

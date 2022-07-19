@@ -1,0 +1,18 @@
+---
+permalink: unix-administration/task_viewing_the_detailed_history_of_a_specific_operation_associated_with_a_profile.html 
+sidebar: sidebar 
+keywords: view, detail, history, specific, snapmanager, operation, associate, profile, smo 
+summary: 'Vous pouvez afficher l"historique détaillé d"une opération SnapManager spécifique associée à un profil.' 
+---
+= Affichage de l'historique détaillé d'une opération spécifique associée à un profil
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez afficher l'historique détaillé d'une opération SnapManager spécifique associée à un profil.
+
+. Pour afficher des informations détaillées sur une opération SnapManager spécifique associée à un profil, entrez la commande suivante :
+`smo history operation-show -profileprofile_name {-labellabel | -idid} [-quiet | -verbose]`
+

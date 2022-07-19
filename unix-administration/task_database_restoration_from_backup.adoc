@@ -1,0 +1,14 @@
+---
+permalink: unix-administration/task_database_restoration_from_backup.html 
+sidebar: sidebar 
+keywords: active, content, payroll, database, accidental, lost, destroy, snapmanager, netapp, management, console, protection 
+summary: 'En cas de perte ou de destruction accidentelle du contenu actif de la base de données de paie, SnapManager et les fonctionnalités de protection des données de la console de gestion NetApp prennent en charge la restauration de ces données à partir d"une sauvegarde locale ou d"un stockage secondaire.' 
+---
+= Restauration des bases de données à partir de la sauvegarde
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En cas de perte ou de destruction accidentelle du contenu actif de la base de données de paie, SnapManager et les fonctionnalités de protection des données de la console de gestion NetApp prennent en charge la restauration de ces données à partir d'une sauvegarde locale ou d'un stockage secondaire.

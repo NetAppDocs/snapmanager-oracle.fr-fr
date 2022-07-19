@@ -1,0 +1,40 @@
+---
+permalink: windows/reference_the_smosmsap_schedule_delete_command.html 
+sidebar: sidebar 
+keywords: command, delete, backup, schedule, smo 
+summary: 'Cette commande supprime un programme de sauvegarde lorsqu"il n"est plus nécessaire.' 
+---
+= Commande smo schedule delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette commande supprime un programme de sauvegarde lorsqu'il n'est plus nécessaire.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo schedule delete
+-profile profile_name
+-schedule-name schedule_name
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Indique le nom du profil associé à la base de données à supprimer. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-nom-programme nom_programme*
++
+Spécifie le nom du programme que vous avez fourni lors de la création d'un programme de sauvegarde.
+
+

@@ -1,0 +1,31 @@
+---
+permalink: unix-administration/reference_mounting_a_flexclone_fails_in_nfs_environment.html 
+sidebar: sidebar 
+keywords: snapmanager, flexclone, volume, nfs, environment, clone, backup, flexvol, ha, pair, configuration, export 
+summary: 'Lorsque SnapManager crée un FlexClone d"un volume dans un environnement NFS, une entrée est ajoutée au fichier /etc/exports. Le clone ou la sauvegarde ne parvient pas à monter sur un hôte SnapManager et un message d"erreur s"affiche.' 
+---
+= Le montage d'un volume FlexClone échoue dans un environnement NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque SnapManager crée un FlexClone d'un volume dans un environnement NFS, une entrée est ajoutée au fichier /etc/exports. Le clone ou la sauvegarde ne parvient pas à monter sur un hôte SnapManager et un message d'erreur s'affiche.
+
+Le message d'erreur est: 0001-034 erreur de commande: Mount failed: Mount: Filer1:/vol/SnapManager_20090914112850837_vol14 on /opt/NTAPsmo/mnt/-ora_data02-20090914112850735_1 - WARNING unknown option "zone=vol14" nfs mount: Filer1:/vol/SnapManager_20090914112850837_vol14: Permission refusée.
+
+Parallèlement, le message suivant est généré sur la console du système de stockage : LUN Sep 14 23:58:37 PDT [filer1: export.auto.update.disabled: warning] : /etc/exports n'a pas été mis à jour pour vol14 lorsque la commande vol clone create a été exécutée. Veuillez mettre à jour manuellement /etc/exports ou copier /etc/exports.New vers celui-ci.
+
+Il est possible que ce message ne soit pas capturé dans les messages AutoSupport.
+
+
+NOTE: Le clonage de volumes FlexVol sur NFS peut entraîner des problèmes similaires. Vous pouvez suivre les mêmes étapes pour activer l'option nfs.export.auto-update.
+
+*Que faire*
+
+. Activez l'option nfs.export.auto-update pour que le fichier /etc/exports soit mis à jour automatiquement. options nfs.export.auto-updateon
+
+
+
+NOTE: Dans la configuration de paires haute disponibilité, assurez-vous que l'option d'exportations NFS est activée pour les deux systèmes de stockage.

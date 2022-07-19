@@ -1,0 +1,95 @@
+---
+permalink: windows/reference_the_smosmsaprepository_create_command.html 
+sidebar: sidebar 
+keywords: smo, repository, data, profile, block, size, smo 
+summary: 'Cette commande crée un référentiel dans lequel stocker les profils de base de données et les informations d"identification associées. Cette commande vérifie également que la taille de bloc est appropriée.' 
+---
+= Commande smo repository create
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Syntaxe
+
+Cette commande crée un référentiel dans lequel stocker les profils de base de données et les informations d'identification associées. Cette commande vérifie également que la taille de bloc est appropriée.
+
+[listing]
+----
+
+        smo repository create
+-repository
+-port repo_port
+-dbname repo_service_name
+-host repo_host
+-login -username repo_username
+[-force] [-noprompt]
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-référentiel*
++
+Les options suivantes -repository spécifient les détails de la base de données pour le référentiel
+
+* *-port repo_port*
++
+Spécifie le numéro de port TCP utilisé pour accéder à la base de données qui stocke le référentiel.
+
+* *-dbname repo_service_name*
++
+Indique le nom de la base de données qui stocke le référentiel. Utilisez le nom global ou le SID.
+
+* *-hôte repo_host*
++
+Indique le nom ou l'adresse IP de l'ordinateur hôte sur lequel s'exécute la base de données de référentiel.
+
+* *-connexion*
++
+Démarre les détails de connexion au référentiel.
+
+* *-username repo_username*
++
+Indique le nom d'utilisateur nécessaire pour accéder à la base de données qui stocke le référentiel.
+
+* *-force*
++
+Tentatives de forcer la création du référentiel. L'utilisation de cette option entraîne la création du référentiel par SnapManager, qui vous invite à le sauvegarder avant de le créer.
+
+* *-noprompt*
++
+N'affiche pas l'invite de sauvegarde du référentiel avant de le créer si vous utilisez l'option -force. L'option -noprompt permet de s'assurer que l'invite n'apparaît pas, ce qui facilite la création de référentiels à l'aide d'un script.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur sur la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche des messages d'erreur, d'avertissement et d'information sur la console.
+
+
+
+
+
+== Exemple de commande
+
+L'exemple suivant crée un référentiel dans la base de données SMOREPO sur l'hôte hotspur.
+
+[listing]
+----
+smo repository create -repository -port 1521 -dbname SMOREPO -host hotspur -login -username grabal21 -verbose
+SMO-09202 [INFO ]: Creating new schema as grabal21 on jdbc:oracle:thin:@//hotspur:1521/SMOREPO.
+SMO-09205 [INFO ]: Schema generation complete.
+SMO-09209 [INFO ]: Performing repository version INSERT.
+SMO-09210 [INFO ]: Repository created with version: 30
+SMO-13037 [INFO ]: Successfully completed operation: Repository Create
+SMO-13049 [INFO ]: Elapsed Time: 0:00:08.844
+----
+*Informations connexes*
+
+xref:task_creating_repositories.adoc[Création de référentiels]

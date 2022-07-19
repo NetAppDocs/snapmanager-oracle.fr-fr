@@ -1,0 +1,29 @@
+---
+permalink: unix-administration/task_viewing_clone_split_estimate.html 
+sidebar: sidebar 
+keywords: clone, split, estimate, help, total, free, space, available, aggregate, amount, space, share, smo 
+summary: 'L"estimation du fractionnement du clone permet de connaître l"espace libre total disponible sur l"agrégat, la quantité d"espace partagé entre le clone et la base de données d"origine, et l"espace utilisé exclusivement par le clone. Vous pouvez également afficher la date et l"heure de création du clone sous-jacent ainsi que l"âge du clone. En fonction de cette estimation, vous décidez de séparer un clone ou non.' 
+---
+= Affichage d'une estimation de fractionnement de clone
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'estimation du fractionnement du clone permet de connaître l'espace libre total disponible sur l'agrégat, la quantité d'espace partagé entre le clone et la base de données d'origine, et l'espace utilisé exclusivement par le clone. Vous pouvez également afficher la date et l'heure de création du clone sous-jacent ainsi que l'âge du clone. En fonction de cette estimation, vous décidez de séparer un clone ou non.
+
+Pour afficher l'estimation de séparation de clones, vous devez entrer le nom de profil du clone d'origine ainsi que le libellé ou le GUID de l'opération de clonage. Si le clone se trouve dans un autre hôte, vous pouvez spécifier le nom d'hôte.
+
+. Pour afficher l'estimation de séparation de clones, entrez la commande suivante :
+`smo clone split-estimate -profileprofile [-hosthostname] [-labelclone-label | -idclone-id][-quiet | -verbose]`
+
+
+L'exemple suivant montre la commande pour cloner le stockage divisé :
+
+[listing]
+----
+smo clone split-estimate
+
+-profile p1 -label clone_test_label
+----

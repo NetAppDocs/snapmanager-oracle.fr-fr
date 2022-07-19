@@ -1,0 +1,29 @@
+---
+permalink: unix-administration/task_uninstalling_the_software_from_a_unix_host.html 
+sidebar: sidebar 
+keywords: snapmanager, software, uninstall, host, server, unix, smo 
+summary: 'Si vous n"avez plus besoin du logiciel SnapManager, vous pouvez le désinstaller du serveur hôte.' 
+---
+= Désinstallation du logiciel à partir d'un hôte UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous n'avez plus besoin du logiciel SnapManager, vous pouvez le désinstaller du serveur hôte.
+
+. Connectez-vous en tant que root.
+. Pour arrêter le serveur, entrez la commande suivante :
+`smo_server stop`
+. Pour supprimer le logiciel SnapManager, entrez la commande suivante :
+`UninstallSmo`
+. Après le texte d'introduction, appuyez sur *entrée* pour continuer.
++
+La désinstallation est terminée.
+
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsap_server_stop_command.adoc[Commande smo_Server stop]

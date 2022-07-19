@@ -1,0 +1,102 @@
+---
+permalink: windows/reference_the_smosmsapclone_delete_command.html 
+sidebar: sidebar 
+keywords: run, clone, delete, command, operation, smo 
+summary: Vous pouvez exécuter la commande de suppression de clone pour supprimer un clone. Vous ne pouvez pas supprimer un clone si cette opération est effectuée. 
+---
+= Commande smo clone delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande de suppression de clone pour supprimer un clone. Vous ne pouvez pas supprimer un clone si cette opération est effectuée.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo clone delete
+-profile profile_name
+\[-id guid \| -label clone_name\]
+[-login
+\[-username db_username -password db_password -port db_port\]
+ ]
+\[-syspassword syspassword\]
+-force
+\[-dump\]
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie le nom du profil contenant le clone à supprimer. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-force*
++
+Supprime le clone même si des ressources sont associées au clone.
+
+* *-id guid*
++
+Spécifie le GUID du clone à supprimer. Le GUID est généré par SnapManager lors de la création d'un clone. Vous pouvez utiliser la commande smo clone list pour afficher le GUID de chaque clone.
+
+* *-label nom*
++
+Spécifie le libellé du clone à supprimer.
+
+* *-syspassword*
++
+Spécifie le mot de passe pour l'utilisateur privilégié du système.
+
++
+
+NOTE: Vous devez fournir le mot de passe pour l'utilisateur privilégié sys si les informations d'identification de la base de données fournies ne sont pas les mêmes pour l'utilisateur privilégié sys.
+
+* *-connexion*
++
+Permet de saisir les détails de connexion à la base de données.
+
+* *-username db_username*
++
+Indique le nom d'utilisateur requis pour accéder à la base de données.
+
+* *-mot de passe db_password*
++
+Spécifie le mot de passe requis pour accéder à la base de données.
+
+* *-port db_port*
++
+Spécifie le numéro de port TCP utilisé pour accéder à la base de données que le profil décrit.
+
+* *-dump*
++
+Spécifie pour collecter les fichiers de vidage après l'opération de suppression du clone.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+
+== Exemple
+
+L'exemple suivant illustre la suppression du clone :
+
+[listing]
+----
+smo clone delete -profile SALES1 -label SALES_May
+Operation Id [8abc01ec0e79004b010e79006da60001] succeeded.
+----

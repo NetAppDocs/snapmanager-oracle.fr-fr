@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/task_unmounting_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, unmount, backup, unavailable, host, server, asm, smo 
+summary: 'SnapManager démonte automatiquement la sauvegarde pour la rendre indisponible au serveur hôte. SnapManager vous permet également de désinstaller si vous utilisez un outil externe, tel qu"Oracle Recovery Manager \(RMAN\), d"accéder aux fichiers de la sauvegarde et de modifier l"état de la sauvegarde pour supprimer l"accès.' 
+---
+= Démontage des sauvegardes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager démonte automatiquement la sauvegarde pour la rendre indisponible au serveur hôte. SnapManager vous permet également de démonter si vous utilisez un outil externe, tel qu'Oracle Recovery Manager (RMAN), pour accéder aux fichiers de la sauvegarde, et pour modifier l'état de la sauvegarde afin de supprimer l'accès.
+
+Si vous annulez le montage d'une sauvegarde de base de données à partir d'un hôte distant, vous devez vous assurer que les informations d'identification ASM (Automatic Storage Management) sont identiques sur les deux hôtes.
+
+Vous pouvez éventuellement collecter les fichiers de vidage après une opération de sauvegarde réussie ou ayant échoué.
+
+L'opération de démontage peut échouer avec un message d'erreur si le point de montage est occupé, par exemple --[ERREUR] FLOW-11019: Échec dans Disconnect: SD-10046: Impossible de démonter la sauvegarde car le point de montage est occupé avec les chemins de montage et PID suivants : /opt/NetApp/smo/mnt-neuse_nfdb_20120427052319903-sv0_6598.
+
+Vous devez identifier le PID de la session qui provoque l'échec de l'opération de démontage. Arrêtez la session en exécutant la commande suivante : `kill pid`
+
+L'opération de démontage s'exécute alors correctement.
+
+. Saisissez la commande suivante :
+`smo backup unmount -profile profile_name {labellabel [data | -archivelogs] | -idid} [-quiet | -verbose] -dump-force-verbose`
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_unmount_command.adoc[La commande smo backup uncuncloud]

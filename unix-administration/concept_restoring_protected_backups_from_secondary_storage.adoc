@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/concept_restoring_protected_backups_from_secondary_storage.html 
+sidebar: sidebar 
+keywords: restore, protect, backup, secondary, storage 
+summary: Vous pouvez restaurer des sauvegardes protégées à partir de stockage secondaire. Toutefois, vous ne pouvez pas restaurer les sauvegardes à partir du stockage secondaire si la sauvegarde existe également sur le stockage primaire. 
+---
+= Restauration de sauvegardes protégées du système de stockage secondaire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez restaurer des sauvegardes protégées à partir de stockage secondaire. Toutefois, vous ne pouvez pas restaurer les sauvegardes à partir du stockage secondaire si la sauvegarde existe également sur le stockage primaire.
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_restore_command.adoc[Commande smo backup restore]
+
+xref:task_restoring_backups_from_an_alternate_location.adoc[Restauration des sauvegardes à partir d'un autre emplacement]
+
+xref:task_creating_restore_specifications.adoc[Création de spécifications de restauration]

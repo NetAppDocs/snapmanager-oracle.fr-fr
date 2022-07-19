@@ -1,0 +1,22 @@
+---
+permalink: windows/task_verifying_the_oracle_listener_status.html 
+sidebar: sidebar 
+keywords: verify, oracle, listener, status, lsnrctl, command 
+summary: 'Vous pouvez vérifier l"état de l"écouteur Oracle à l"aide de la commande lsnrctl status.' 
+---
+= Vérification de l'état de l'écouteur Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier l'état de l'écouteur Oracle à l'aide de la commande lsnrctl status.
+
+* Vous devez vous connecter à la base de données.
+
+
+Une installation Oracle standard définit le port d'écoute de la base de données sur 1521.
+
+. À l'invite de commande, entrez la commande:lsnrctl status
+

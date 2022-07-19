@@ -1,0 +1,26 @@
+---
+permalink: unix-administration/task_customizing_the_email_subject_for_an_existing_profile.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, customize, email, subject, pattern, exist, profile, smo 
+summary: 'SnapManager vous permet de personnaliser le modèle d"objet d"un e-mail pour un profil existant en mettant à jour ce profil. Ce modèle d"objet personnalisé est applicable uniquement au profil mis à jour.' 
+---
+= Personnalisation de l'objet de l'e-mail pour un profil existant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager vous permet de personnaliser le modèle d'objet d'un e-mail pour un profil existant en mettant à jour ce profil. Ce modèle d'objet personnalisé est applicable uniquement au profil mis à jour.
+
+. Entrez la commande suivante : smo profile update -profileprofile [-profile-passwordprofile_password][-database-dbnamedb_dbname-host db_host [-siddb_sid] [-login-usernamedb_password[-password[-mathasterport] [-comasterdaytn_commits] [-counternoternoterdaytn-term-reate] [-terdaystn] [-tefn-teastaternix-ternix] [-ternix-ternoternix] [-ternoternoternix] [-ternoternix-ternix] [-debe [-comasternoternix] [-ternoternitn] [-ternix-debe [-term-ternix] [-debe [-comastim-ternix] [-ternix] [-ternix] [-ternix] [-ternix-ternix] [-ternoternix [-ternoter
+
+
+L'exemple suivant montre un modèle d'objet d'e-mail :
+
+[listing]
+----
+
+smo profile update -profile sales1 -profile-password sales1 -repository -dbname repo2 -host 10.72.197.133 -port 1521 -login -username admin2 -database -dbname DB1 -host 10.72.197.142 -sid DB1
+-osaccount oracle -osgroup dba -profile-notification -success -email admin@org.com -subject {profile}_{operation-name}_{db-sid}_{db-host}_{start-date}_{end-date}_{status}
+----

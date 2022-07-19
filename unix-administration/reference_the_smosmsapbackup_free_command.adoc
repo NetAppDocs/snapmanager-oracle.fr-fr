@@ -1,0 +1,85 @@
+---
+permalink: unix-administration/reference_the_smosmsapbackup_free_command.html 
+sidebar: sidebar 
+keywords: run, backup, free, command, snapshot, copies, metadata, smo 
+summary: Vous pouvez exécuter la commande sans sauvegarde pour libérer les copies Snapshot des sauvegardes sans supprimer les métadonnées de sauvegarde du référentiel. 
+---
+= Commande gratuite de sauvegarde smo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande sans sauvegarde pour libérer les copies Snapshot des sauvegardes sans supprimer les métadonnées de sauvegarde du référentiel.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo backup free
+-profile profile_name
+[-label label \[-data \| -archivelogs\] \| \[-id guid \| -all\]
+-force
+\[-dump\]
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie le profil associé à la sauvegarde que vous souhaitez libérer. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-id guid*
++
+Spécifie les ressources de la sauvegarde avec le GUID spécifié. Le GUID est généré par SnapManager lors de la création d'une sauvegarde. Vous pouvez utiliser la commande SMO backup list pour afficher le GUID pour chaque sauvegarde. Inclut l'option -verdétaillé pour afficher les ID de sauvegarde.
+
+* *-étiquette*
++
+Spécifie la sauvegarde avec l'étiquette spécifiée.
+
+* *-données*
++
+Spécifie les fichiers de données.
+
+* *-archiveils*
++
+Spécifie les fichiers journaux d'archive.
+
+* *-tous*
++
+Spécifie toutes les sauvegardes. Pour supprimer des sauvegardes spécifiées, utilisez l'option -ID ou -label.
+
+* *-force*
++
+Force la suppression des copies Snapshot.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+
+== Exemple
+
+L'exemple suivant libère la sauvegarde :
+
+[listing]
+----
+smo backup free -profile SALES1 -label full_backup_sales_May
+Operation Id [8abc01ec0e79004b010e79006da60001] succeeded.
+----
+*Informations connexes*
+
+xref:task_freeing_backups.adoc[Sauvegardes libérées]

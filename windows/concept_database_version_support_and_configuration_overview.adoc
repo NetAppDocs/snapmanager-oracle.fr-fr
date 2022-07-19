@@ -1,0 +1,23 @@
+---
+permalink: windows/concept_database_version_support_and_configuration_overview.html 
+sidebar: sidebar 
+keywords: database, configuration, overview 
+summary: Vous devez connaître les différentes versions et configurations de base de données prises en charge par SnapManager. Vous devez configurer et configurer la disposition de base de données pour garantir la réussite des opérations. 
+---
+= Présentation de la configuration et de la prise en charge de la version de base
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez connaître les différentes versions et configurations de base de données prises en charge par SnapManager. Vous devez configurer et configurer la disposition de base de données pour garantir la réussite des opérations.
+
+SnapManager pour Oracle s'intègre avec les versions 10gR2 (10.2.0.5), 11gR1, 11gR2 (11.2.0.1 et 11.2.0.2), et 12__c__, avec la technologie Oracle native comme Recovery Manager (RMAN), et entre les protocoles Fibre Channel (FC) et Internet Small Computer System interface (iSCSI).
+
+
+NOTE: La base de données Oracle 9i n'est pas prise en charge à partir de SnapManager 3.2 et 10g R2 (version antérieure à 10.2.0.5) et n'est pas prise en charge à partir de SnapManager 3.3.1.
+
+Si vous déployez des bases de données Oracle pour qu'elles soient gérées par SnapManager pour Oracle, reportez-vous au document _SnapManager for Oracle Best Practices_.
+
+http://media.netapp.com/documents/tr-3761.pdf["Meilleures pratiques SnapManager pour Oracle : media.netapp.com/documents/tr-3761.pdf"]

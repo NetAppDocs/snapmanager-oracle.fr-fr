@@ -1,0 +1,23 @@
+---
+permalink: unix-installation-cmode/task_verifying_the_oracle_listener_configuration.html 
+sidebar: sidebar 
+keywords: listener, process, listen, client, connection, request, receive, incoming, client, request, traffic, status, listener, configuration 
+summary: 'L"écouteur est un processus qui écoute les demandes de connexion client. Il reçoit les demandes de connexion client entrantes et gère le trafic de ces requêtes vers la base de données. Avant de vous connecter à une base de données cible ou à une instance de base de données de référentiel, vous pouvez utiliser la commande STATUS pour vérifier la configuration de l"écouteur.' 
+---
+= Vérification de la configuration de l'écouteur Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'écouteur est un processus qui écoute les demandes de connexion client. Il reçoit les demandes de connexion client entrantes et gère le trafic de ces requêtes vers la base de données. Avant de vous connecter à une base de données cible ou à une instance de base de données de référentiel, vous pouvez utiliser la commande STATUS pour vérifier la configuration de l'écouteur.
+
+La commande D'ÉTAT affiche des informations d'état de base sur un écouteur spécifique, y compris un résumé des paramètres de configuration de l'écouteur, des adresses de protocole d'écoute et un résumé des services enregistrés avec cet écouteur.
+
+. Entrez la commande suivante à l'invite de commande :
+`lsnrctl STATUS`
++
+La valeur par défaut attribuée au port d'écoute est 1521.
+
+

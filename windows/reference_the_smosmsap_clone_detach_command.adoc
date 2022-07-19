@@ -1,0 +1,45 @@
+---
+permalink: windows/reference_the_smosmsap_clone_detach_command.html 
+sidebar: sidebar 
+keywords: split, clone, volume, parent, data, ontap, detach, command, smo 
+summary: 'Une fois le volume cloné séparé de son volume parent dans Data ONTAP, vous pouvez exécuter la commande clone dedétachement de SnapManager afin d"indiquer à SnapManager que le volume n"est plus un clone.' 
+---
+= La commande smo clone dedétachement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois le volume cloné séparé de son volume parent dans Data ONTAP, vous pouvez exécuter la commande clone dedétachement de SnapManager afin d'indiquer à SnapManager que le volume n'est plus un clone.
+
+
+
+== Syntaxe
+
+smo clone dedétachement -profil nom_profil -étiquette clone_label
+
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie le nom de profil à partir duquel le clone est créé.
+
+* *-label clone_label*
++
+Spécifie le nom généré par l'opération de clonage.
+
+
+
+
+
+== Exemple
+
+La commande suivante détache le clone :
+
+[listing]
+----
+smo clone detach -profile SALES1 -label sales1_clone
+----

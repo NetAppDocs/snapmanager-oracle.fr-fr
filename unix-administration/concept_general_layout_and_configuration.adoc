@@ -1,0 +1,40 @@
+---
+permalink: unix-administration/concept_general_layout_and_configuration.html 
+sidebar: sidebar 
+keywords: recommend, general, database, layout, storage, configuration, avoid, issue, disk, group, file, lun 
+summary: Connaître les configurations générales et de stockage recommandées pour les bases de données peut vous aider à éviter les problèmes liés aux groupes de disques, aux types de fichiers et aux espaces de stockage. 
+---
+= Configurations générales recommandées pour les bases de données et les configurations de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Connaître les configurations générales et de stockage recommandées pour les bases de données peut vous aider à éviter les problèmes liés aux groupes de disques, aux types de fichiers et aux espaces de stockage.
+
+* N'incluez pas de fichiers provenant de plusieurs types de système de fichiers SAN ou de gestionnaire de volumes dans votre base de données.
++
+Tous les fichiers qui font partie d'une base de données doivent résider sur le même type de système de fichiers.
+
+* La baie SnapManager requiert un grand nombre de blocs de 4 Ko.
+* Incluez l'identificateur du système de base de données dans le fichier oratab.
++
+Incluez une entrée dans le fichier oratab pour chaque base de données à gérer. SnapManager s'appuie sur le fichier oratab pour déterminer quel Oracle home utiliser.
+
+* Si vous souhaitez enregistrer des sauvegardes SnapManager avec Oracle Recovery Manager (RMAN), vous devez créer des profils compatibles avec RMAN.
+
+
+Si vous souhaitez exploiter la nouvelle restauration basée sur les volumes ou la restauration de groupes de disques complets, prenez en compte les consignes suivantes concernant les systèmes de fichiers et les groupes de disques :
+
+* Plusieurs bases de données ne peuvent pas partager le même groupe de disques ASM (Automatic Storage Management).
+* Un groupe de disques contenant des fichiers de données ne peut pas contenir d'autres types de fichiers.
+* Le numéro d'unité logique (LUN) du groupe de disques de fichiers de données doit être le seul objet du volume de stockage.
+
+
+Voici quelques consignes pour la séparation des volumes :
+
+* Les fichiers de données d'une seule base de données doivent se trouver dans le volume.
+* Vous devez utiliser des volumes distincts pour chacune des classifications de fichiers suivantes : fichiers binaires de base de données, fichiers de données, fichiers journaux de reprise en ligne, fichiers journaux de reprise archivés et fichiers de contrôle.
+* Il n'est pas nécessaire de créer un volume distinct pour les fichiers de base de données temporaires, car SnapManager ne sauvegarde pas les fichiers de base de données temporaires.
+

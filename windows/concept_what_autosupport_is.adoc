@@ -1,0 +1,34 @@
+---
+permalink: windows/concept_what_autosupport_is.html 
+sidebar: sidebar 
+keywords: autosupport, storage, system, backup, operation 
+summary: 'La fonctionnalité AutoSupport permet au serveur SnapManager d"envoyer des messages AutoSupport au système de stockage une fois la sauvegarde terminée.' 
+---
+= Qu'est-ce que AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonctionnalité AutoSupport permet au serveur SnapManager d'envoyer des messages AutoSupport au système de stockage une fois la sauvegarde terminée.
+
+
+NOTE: SnapManager envoie des messages AutoSupport uniquement pour la réussite des opérations de sauvegarde.
+
+Vous pouvez activer ou désactiver AutoSupport en attribuant les valeurs suivantes au paramètre de configuration auto_support.on dans le fichier de configuration smo.config :
+
+* TRUE : active AutoSupport
+* FALSE : désactive AutoSupport
+
+
+
+NOTE: Par défaut, AutoSupport est activé dans SnapManager.
+
+*Informations connexes*
+
+xref:task_adding_storage_systems_to_the_snapmanager_server_host.adoc[Ajout de systèmes de stockage sous clustered Data ONTAP à l'hôte du serveur SnapManager]
+
+xref:task_enabling_autosupport_in_snapmanager.adoc[Activation d'AutoSupport dans SnapManager]
+
+xref:task_disabling_autosupport_in_snapmanager.adoc[Désactivation de AutoSupport dans SnapManager]

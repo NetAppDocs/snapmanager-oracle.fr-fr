@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/task_deleting_profiles.html 
+sidebar: sidebar 
+keywords: delete, profile, anytime, contain, succesful, incomplete, backup, deleting, smo 
+summary: 'Vous pouvez supprimer un profil à tout moment, tant qu"il ne contient pas de sauvegardes réussies ou incomplètes. Vous pouvez supprimer des profils qui contiennent des sauvegardes libérées ou supprimées.' 
+---
+= Suppression de profils
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un profil à tout moment, tant qu'il ne contient pas de sauvegardes réussies ou incomplètes. Vous pouvez supprimer des profils qui contiennent des sauvegardes libérées ou supprimées.
+
+. Pour supprimer un profil, entrez la commande suivante :
+`smo profile delete -profile profile_name`
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapprofile_delete_command.adoc[Commande SMO profile delete]

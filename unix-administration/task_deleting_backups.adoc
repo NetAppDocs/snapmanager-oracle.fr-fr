@@ -1,0 +1,102 @@
+---
+permalink: unix-administration/task_deleting_backups.html 
+sidebar: sidebar 
+keywords: delete, backup, free, space, occupy, remove, reduce, deleting, clone 
+summary: 'Vous devez supprimer les sauvegardes lorsque vous n"en avez plus besoin, ce qui libère l"espace occupé par ces sauvegardes. Si vous supprimez des sauvegardes, vous réduisez la probabilité d"atteindre la limite de 255 copies Snapshot par volume.' 
+---
+= Suppression de sauvegardes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez supprimer les sauvegardes lorsque vous n'en avez plus besoin, ce qui libère l'espace occupé par ces sauvegardes. Si vous supprimez des sauvegardes, vous réduisez la probabilité d'atteindre la limite de 255 copies Snapshot par volume.
+
+* Vous devez vous assurer que la sauvegarde n'a pas été utilisée pour créer un clone.
+
+
+Lorsque vous supprimez une sauvegarde protégée, SnapManager supprime la sauvegarde du stockage secondaire et du référentiel SnapManager. Le tableau suivant indique les actions entreprises sur le stockage principal et secondaire lorsque vous supprimez une sauvegarde locale :
+
+|===
+| État de protection | Statut local | Action sur le stockage primaire | Action sur le stockage secondaire | Explication 
+
+
+ a| 
+Non demandé (à protéger)
+ a| 
+Existe
+ a| 
+Supprime les copies Snapshot
+ a| 
+Aucune action requise
+ a| 
+SnapManager supprime la sauvegarde locale.
+
+
+
+ a| 
+Libérée
+ a| 
+Aucune action requise
+ a| 
+Aucune action requise
+ a| 
+La sauvegarde locale est déjà libérée. Si vous supprimez une sauvegarde libérée, les métadonnées de la sauvegarde sont supprimées du référentiel.
+ a| 
+Non protégé
+
+
+
+ a| 
+Existe
+ a| 
+Supprime les copies Snapshot
+ a| 
+Aucune action requise
+ a| 
+SnapManager supprime la sauvegarde locale, qu'elle ait été protégée ou non.
+ a| 
+Libérée
+
+
+
+ a| 
+Aucune action requise
+ a| 
+Aucune action requise
+ a| 
+La sauvegarde locale est déjà libérée. Si vous supprimez une sauvegarde libérée, les métadonnées de la sauvegarde sont supprimées du référentiel.
+ a| 
+Protection
+ a| 
+Existe
+
+
+
+ a| 
+Supprime les copies Snapshot
+ a| 
+SnapManager supprime la sauvegarde sur le système de stockage secondaire
+ a| 
+SnapManager supprime la sauvegarde locale et les copies secondaires.
+ a| 
+Libérée
+ a| 
+Aucune action requise
+
+|===
+Si vous tentez de supprimer une sauvegarde protégée par un stockage secondaire, les copies Snapshot peuvent être marquées pour être supprimées et supprimées par la suite par protection Manager.
+
+Vous pouvez supprimer les sauvegardes conservées sans limite de temps sans modifier la classe de rétention.
+
+Vous pouvez éventuellement collecter les fichiers de vidage après l'opération de suppression de sauvegarde réussie ou ayant échoué.
+
+Si vous souhaitez supprimer les sauvegardes du journal d'archivage, vous devez vérifier la durée de conservation définie pour la sauvegarde du journal d'archivage. Si la sauvegarde du journal d'archivage est dans la durée de conservation et que les fichiers journaux d'archive sont nécessaires pour la récupération d'une base de données restaurée, vous ne pouvez pas supprimer la sauvegarde du journal d'archivage.
+
+. Vérifiez que les opérations sont terminées en entrant la commande suivante : liste des opérations smo -profilprofile_name-quiétude-verbose
+. Pour supprimer une sauvegarde, entrez la commande suivante : smo backup delete -profile nom_profil [-label [data | -archiveils] | -idid | -all] [-force] [ -dump] [-quiet | -verse]
++
+Utilisez l'option -force pour forcer la suppression de la sauvegarde. Le fait de forcer la suppression d'une sauvegarde dont les opérations sont incomplètes peut laisser la sauvegarde dans un état incohérent.
+
+

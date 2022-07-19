@@ -1,0 +1,43 @@
+---
+permalink: windows/reference_the_smosmsapprofile_show_command.html 
+sidebar: sidebar 
+keywords: run, profile, show, command, display, smo 
+summary: Vous pouvez exécuter la commande profil show pour afficher les informations relatives à un profil. 
+---
+= Commande SMO profile show
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande profil show pour afficher les informations relatives à un profil.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo profile show
+-profile profile_name
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie le nom du profil. Ce nom peut comporter jusqu'à 30 caractères et doit être unique au sein de l'hôte.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+

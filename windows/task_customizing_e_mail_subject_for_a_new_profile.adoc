@@ -1,0 +1,89 @@
+---
+permalink: windows/task_customizing_e_mail_subject_for_a_new_profile.html 
+sidebar: sidebar 
+keywords: customize, email, subject, new, profile, create, customizing 
+summary: 'Vous pouvez personnaliser l"objet de l"e-mail pour le nouveau profil lorsque vous le créez.' 
+---
+= Personnalisation de l'objet de l'e-mail pour un nouveau profil
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez personnaliser l'objet de l'e-mail pour le nouveau profil lorsque vous le créez.
+
+Vous pouvez personnaliser l'objet de l'e-mail en utilisant le modèle \{profile}_\{nom-opération}_\{db-sid}_\{db-host}_\{date-début}_\{date-fin}_\{statut} ou en entrant votre propre texte.
+
+|===
+
+
+| Nom de variable | Description | Exemple de valeur 
+
+
+ a| 
+profil
+ a| 
+Nom de profil utilisé pour l'opération de base de données
+ a| 
+PROF1
+
+
+
+ a| 
+nom-opération
+ a| 
+Nom de l'opération de base de données
+ a| 
+Sauvegarde, sauvegarde des données, sauvegarde des journaux de données et d'archives
+
+
+
+ a| 
+db-sid
+ a| 
+SID de la base de données
+ a| 
+DB1
+
+
+
+ a| 
+hôte bdd
+ a| 
+Nom du serveur hôte
+ a| 
+HôtA
+
+
+
+ a| 
+date de début
+ a| 
+Heure de début de l'opération de base de données au format mmjj:hh:ss aaaa
+ a| 
+Avril 27 21:00:45 PST 2012
+
+
+
+ a| 
+date de fin
+ a| 
+Heure de fin de l'opération de base de données au format mmjj:hh:ss aaaa
+ a| 
+Avril 27 21:10:45 PST 2012
+
+
+
+ a| 
+état
+ a| 
+État de fonctionnement de la base de données
+ a| 
+Réussite
+
+|===
+Si vous n'indiquez aucune valeur pour les variables, SnapManager affiche le message d'erreur suivant : valeur(s) manquante(s) -subject.
+
+. Entrez la commande suivante : smo profile create -profileprofile [-profile-passwordprofile_password] -repository-dbnamerepo_service_name-hostrepo-host-portrepo-port-login-usernamerpo-database-dbnamedb_nomdhôte [-adressedbaderdb] [-nomdumb-nomterm-nomterm-nomde[-nomdeport] [] [-nomdeport] [-nomdepassstationmb-nom_stationmb] [-nom_stationnom_stationnom_stamb-nomde[-nom_stamb] [-nom_stamb] [-nom_stamde[-nom_stamde[-nom_nom_nom_nom_nom_nom_nom_de[-nom_de[-nom_de[-nom_stamde[-nom_stamde[] [-nom_stamde[-nom_nom_nom_nom_de[-nom_stamde[-nom_nom_nom_nom_de[-nom_de
+

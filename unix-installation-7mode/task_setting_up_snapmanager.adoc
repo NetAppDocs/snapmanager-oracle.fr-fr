@@ -1,0 +1,14 @@
+---
+permalink: unix-installation-7mode/task_setting_up_snapmanager.html 
+sidebar: sidebar 
+keywords: start, snapmanager, access, user, interface, ui, command-line, interface, cli, operation 
+summary: 'Vous pouvez démarrer SnapManager et y accéder via l"interface utilisateur ou l"interface de ligne de commandes. Après avoir accédé à SnapManager, vous devez créer le référentiel SnapManager avant d"effectuer des opérations SnapManager.' 
+---
+= Configuration de SnapManager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez démarrer SnapManager et y accéder via l'interface utilisateur ou l'interface de ligne de commandes. Après avoir accédé à SnapManager, vous devez créer le référentiel SnapManager avant d'effectuer des opérations SnapManager.

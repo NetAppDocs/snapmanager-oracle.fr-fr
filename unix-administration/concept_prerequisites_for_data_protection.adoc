@@ -1,0 +1,33 @@
+---
+permalink: unix-administration/concept_prerequisites_for_data_protection.html 
+sidebar: sidebar 
+keywords: consideration, peform, data, protection, netapp, snapdrive, post-script, support 
+summary: Pour assurer la protection des données, vous devez tenir compte de certaines considérations. 
+---
+= Points à prendre en compte pour la protection des données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour assurer la protection des données, vous devez tenir compte de certaines considérations.
+
+* Pour effectuer des opérations de clonage ou de restauration à partir de systèmes secondaires, vous devez monter le volume de destination dans l'espace de noms et l'exporter correctement.
+* Vous devez désactiver le paramètre de configuration SnapDrive check-export-permission-nfs-clone en définissant la valeur sur off.
++
+La documentation SnapDrive pour UNIX disponible sur le site de support NetApp contient des informations supplémentaires sur le paramètre Check-export-permission-nfs-clone.
+
+* Vous devez configurer la relation SnapMirror pour les volumes de stockage secondaire requis dans le système de stockage secondaire.
+* Vous devez configurer la relation SnapVault pour les qtrees de stockage secondaire requis dans le système de stockage secondaire pour Data ONTAP 7-mode.
+* Vous devez définir une règle et des règles pour l'étiquette SnapMirror définie par l'utilisateur si vous utilisez un post-script SnapVault pour clustered Data ONTAP.
++
+SnapVault post-script prend en charge les volumes Data ONTAP en cluster et les types de relations SnapMirror DP et XDP. La documentation ONTAP disponible sur le site de support NetApp contient des informations sur la configuration de SnapMirror et de SnapVault.
+
+* Dans les environnements NAS, vous devez configurer le chemin d'accès aux données NAS principal et secondaire à l'aide de la commande SnapDrive config set-mgmtpathmanagement_pathmanagement_pathmanagement_pathmanagement_pathdatapath_path.
++
+Par exemple, SnapDrive config set -mgmtpath f3050-197-91 f3050-197-91 f3050-197-91 f3050-220-91, Where `f3050-197-91` est le chemin de gestion et `f3050-220-91` est le chemin d'accès aux données.
+
+
+
+http://mysupport.netapp.com/["Documentation sur le site de support NetApp : mysupport.netapp.com"]

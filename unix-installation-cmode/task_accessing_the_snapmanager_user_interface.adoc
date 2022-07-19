@@ -1,0 +1,40 @@
+---
+permalink: unix-installation-cmode/task_accessing_the_snapmanager_user_interface.html 
+sidebar: sidebar 
+keywords: acess, snapmanager, user, interface, ui, remote, web, browser, system, operating, system, smogui 
+summary: 'Vous pouvez accéder à distance à l"interface utilisateur SnapManager \(UI\) en utilisant un navigateur Web depuis n"importe quel système exécuté sur un système d"exploitation pris en charge par SnapManager. Vous pouvez également accéder à l"interface utilisateur SnapManager à partir de l"hôte de la base de données cible en exécutant la commande smgui.' 
+---
+= Accès à l'interface utilisateur de SnapManager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez accéder à distance à l'interface utilisateur SnapManager en utilisant un navigateur Web depuis tout système exécuté sur un système d'exploitation pris en charge par SnapManager. Vous pouvez également accéder à l'interface utilisateur SnapManager à partir de l'hôte de la base de données cible en exécutant la commande smgui.
+
+* Vous devez vous assurer que SnapManager est en cours d'exécution.
+* Vous devez vous assurer que le système d'exploitation pris en charge et Java sont installés sur le système sur lequel vous souhaitez accéder à l'interface utilisateur SnapManager.
++
+Pour plus d'informations sur le système d'exploitation pris en charge et Java, reportez-vous à la matrice d'interopérabilité.
+
++
+.. Dans la fenêtre du navigateur Web, saisissez la commande suivante :https://server_name.domain.com:port_number
++
+*** Nom_serveur est le nom de l'hôte de la base de données cible sur lequel SnapManager est installé.
++
+Vous pouvez également saisir l'adresse IP de l'hôte de la base de données cible.
+
+*** Numéro_de_port est le port sur lequel SnapManager s'exécute.
++
+La valeur par défaut est 27214.
+
+
+
+.. Cliquez sur le lien *Launch SnapManager for Oracle*.
++
+L'interface utilisateur de SnapManager pour Oracle s'affiche.
+
+
+
+

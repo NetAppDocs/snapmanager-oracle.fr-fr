@@ -1,0 +1,52 @@
+---
+permalink: unix-administration/task_defining_the_database_home_with_the_oratab_file.html 
+sidebar: sidebar 
+keywords: snapmanager, oratab, file, operation, determine, oracle, database, home, directory, installation 
+summary: 'SnapManager utilise le fichier oratab lors des opérations pour déterminer le répertoire de base de données Oracle. Une entrée pour votre base de données Oracle doit se trouver dans le fichier oratab pour que SnapManager fonctionne correctement. Le fichier oratab est créé lors de l"installation du logiciel Oracle.' 
+---
+= Définition du domicile de la base de données avec le fichier oratab
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager utilise le fichier oratab lors des opérations pour déterminer le répertoire de base de données Oracle. Une entrée pour votre base de données Oracle doit se trouver dans le fichier oratab pour que SnapManager fonctionne correctement. Le fichier oratab est créé lors de l'installation du logiciel Oracle.
+
+Le fichier oratab réside à différents emplacements en fonction du système d'exploitation hôte, comme indiqué dans le tableau suivant :
+
+|===
+| Système d'exploitation hôte | Emplacement du fichier 
+
+
+ a| 
+Linux
+ a| 
+/etc/oratab
+
+
+
+ a| 
+Solaris
+ a| 
+/var/opt/oracle/oratab
+
+
+
+ a| 
+IBM AIX
+ a| 
+/etc/oratab
+
+|===
+L'exemple de fichier oratab contient les informations suivantes :
+
+[listing]
+----
++ASM1:/u01/app/11.2.0/grid:N   # line added by Agent
+oelpro:/u01/app/11.2.0/oracle:N         # line added by Agent
+# SnapManager generated entry          (DO NOT REMOVE THIS LINE)
+smoclone:/u01/app/11.2.0/oracle:N
+----
+
+NOTE: Une fois Oracle installé, vous devez vous assurer que le fichier oratab se trouve à l'emplacement spécifié dans la table précédente. Si le fichier oratab ne se trouve pas à l'emplacement approprié par votre système d'exploitation, vous devez contacter le support technique pour obtenir de l'aide.

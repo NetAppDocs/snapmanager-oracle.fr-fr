@@ -1,0 +1,55 @@
+---
+permalink: unix-administration/task_restoring_backups_using_fast_restore.html 
+sidebar: sidebar 
+keywords: force, snapmanager, oracle, volume-based, snaprestore, restore, process 
+summary: 'Vous pouvez forcer SnapManager pour Oracle à utiliser le processus SnapRestore basé sur les volumes plutôt que d"autres processus de restauration si toutes les conditions d"éligibilité à la restauration rapide sont remplies.' 
+---
+= Restauration des sauvegardes à l'aide de la restauration rapide
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez forcer SnapManager pour Oracle à utiliser le processus SnapRestore basé sur les volumes plutôt que d'autres processus de restauration si toutes les conditions d'éligibilité à la restauration rapide sont remplies.
+
+Vous pouvez utiliser la commande backup restore avec -fast: `backup restore -fast [require | override | fallback | off]`
+
+Vous pouvez utiliser l'option -FAST uniquement si vous souhaitez effectuer une restauration complète d'une sauvegarde complète. L'option -FAST inclut les paramètres suivants :
+
+* Exiger : vous permet d'effectuer une restauration de volume si toutes les conditions d'éligibilité de restauration obligatoires sont remplies et qu'aucune vérification excessive n'est trouvée.
++
+Si vous spécifiez l'option -FAST, mais que vous ne spécifiez aucun paramètre pour -FAST, SnapManager utilise le paramètre-nécessite comme paramètre par défaut.
+
+* Override : vous permet de remplacer les vérifications d'éligibilité non obligatoires et d'effectuer la restauration rapide basée sur le volume.
+* Fallback : permet de restaurer la base de données à l'aide de toute méthode que SnapManager détermine.
++
+Si vous ne spécifiez pas -FAST, SnapManager utilise le paramètre -Fallback comme paramètre par défaut.
+
+* OFF : vous permet d'éviter le temps nécessaire pour effectuer toutes les vérifications d'éligibilité, pour effectuer un processus de restauration basé sur un fichier plutôt que le processus de restauration rapide.
+
+
+Si la sauvegarde ne réussit pas les vérifications d'éligibilité obligatoires, la restauration rapide ne peut pas être effectuée correctement.
+
+SnapManager effectue des restaurations rapides basées sur des volumes dans des environnements UNIX uniquement ; SnapManager n'effectue pas de restaurations rapides dans l'environnement Windows.
+
+Lors de l'exécution de VBSR sur la sauvegarde du fichier de données, si les fichiers de données et les fichiers journaux d'archive sont présents dans le même volume et si les fichiers journaux d'archive ne sont pas présents dans le système de fichiers actif, la restauration et la récupération de la base de données ont réussi. Cependant, les snapshots futurs du journal d'archivage sont supprimés dans le cadre de VBSR, ce qui entraîne une entrée obsolète de la sauvegarde du journal d'archivage dans le référentiel.
+
+. Entrez la commande suivante :SMO backup restore -profileprofile_name-labellabellabel-Complete-FAST nécessite-verbose
++
+[listing]
+----
+smo backup restore -profile targetdb1_prof1
+      -label full_bkup_sales_nov_08  -complete -fast require -verbose
+----
+. Vérifiez les vérifications d'éligibilité de restauration rapide.
+. Si la vérification d'éligibilité détermine qu'aucune vérification obligatoire n'a échoué, si certaines conditions peuvent être remplacées et si vous souhaitez poursuivre le processus de restauration, entrez la commande suivante : backup restore -fast override
+
+
+*Informations connexes*
+
+xref:task_creating_pretask_post_task_and_policy_scripts.adoc[Création de scripts de stratégie, de post-tâche et de prétâche]
+
+xref:concept_variables_available_in_custom_script_for_restore_operation.adoc[Variables disponibles dans les scripts de tâches pour l'opération de restauration]
+
+xref:task_storing_the_task_scripts.adoc[Stockage des scripts de tâche]

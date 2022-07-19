@@ -1,0 +1,34 @@
+---
+permalink: unix-administration/task_protecting_archive_log_backups.html 
+sidebar: sidebar 
+keywords: creating, profile, enable, protection, archive, log, backup, base, policy 
+summary: 'Lors de la création de profils, vous pouvez activer la protection des sauvegardes des journaux d"archives en fonction de la stratégie de protection des journaux d"archives.' 
+---
+= Protection des sauvegardes des journaux d'archivage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lors de la création de profils, vous pouvez activer la protection des sauvegardes des journaux d'archives en fonction de la stratégie de protection des journaux d'archives.
+
+. Saisissez la commande suivante :
+`smo profile create -profileprofile [-profile-passwordprofile_password] -repository-dbnamerepo_dbname-hostrepo_host-portrepo_port-login-usernamerepo_username-database-dbnamedb_dbname-hostdb_host [-siddb_sid] [-login-usernamedb_username-passworddb_password-portdb_port] [-rman {-controlfile | {-login-usernamerman_username-passwordrman_password-tnsnamerman_tnsname} } ] -osaccountosaccount-osgrouposgroup [-retain [-hourly [-countn] [-durationm]] [-daily [-countn] [-durationm]] [-weekly [-countn] [-durationm]] [-monthly [-countn] [-durationm]]] [-commentcomment][-snapname-patternpattern][-protect [-protection-policypolicy_name]] [-summary-notification] [-notification [-success-emailemail_address1, email_address2-subjectsubject_pattern] [-failure-emailemail_address1, email_address2-subjectsubject_pattern]][-separate-archivelog-backups-retain-archivelog-backups-hourshours | -daysdays | -weeksweeks| -monthsmonths [-protect [-protection-policypolicy_name] | -noprotect] [-include-with-online-backups | -no-include-with-online-backups]] [-dump]`
++
+|===
+| Si... | Alors... 
+
+
+ a| 
+*Vous voulez sauvegarder séparément les sauvegardes des journaux d'archive et protéger les fichiers journaux d'archive*
+ a| 
+Spécifiez les options suivantes :
+
+** -séparé-archivelog-backups vous permet de séparer les fichiers journaux d'archive des fichiers de données.
+** -protect attribue une stratégie de protection distincte pour les sauvegardes du journal d'archivage.
+** -protection-policy attribue la stratégie de protection pour les sauvegardes du journal d'archivage.
+
+
+|===
+

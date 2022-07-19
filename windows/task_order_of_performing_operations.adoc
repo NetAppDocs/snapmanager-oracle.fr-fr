@@ -1,0 +1,68 @@
+---
+permalink: windows/task_order_of_performing_operations.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, perform, operation, backup, cloning, clone, operation, order, perform 
+summary: 'SnapManager vous permet d"effectuer diverses opérations, comme la création de profils, la sauvegarde et le clonage de sauvegardes. Ces opérations doivent être effectuées dans un ordre spécifique.' 
+---
+= Ordre d'exécution des opérations
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager vous permet d'effectuer diverses opérations, comme la création de profils, la sauvegarde et le clonage de sauvegardes. Ces opérations doivent être effectuées dans un ordre spécifique.
+
+. Créez un profil sur un référentiel existant à l'aide de la commande smo profile create.
++
+
+NOTE: L'utilisateur Oracle spécifié pour la base de données cible doit disposer de privilèges sysdba.
+
++
+L'exemple suivant montre la commande de création d'un profil :
+
++
+[listing]
+----
+smo profile create -profile prof1 -profile-password prof1cred
+-repository -dbname HR1 -login -username admin -host server1 -port 1521
+-database -dbname dedb -login -username db_oper2
+-password dbpw1 -host server1 -port 1521
+----
+. Créez une sauvegarde sur un profil existant à l'aide de la commande smo backup create.
++
+L'exemple suivant montre la commande pour créer une sauvegarde :
+
++
+[listing]
+----
+smo backup create -profile prof1 -full -offline -label full_backup_prof1 -force
+----
+. Restaurez et récupérez une sauvegarde de base de données sur le stockage primaire à l'aide de la commande smo backup restore.
++
+L'exemple suivant montre la commande pour restaurer une sauvegarde :
+
++
+[listing]
+----
+smo backup restore -profile prof1 -label full_backup_prof1
+-complete -recover -alllogs
+----
+. Créez une spécification de clone à l'aide de la commande smo clone template.
++
+Vous pouvez utiliser l'assistant Cloner dans l'interface utilisateur graphique pour créer une spécification de clone de modèle. Vous pouvez également créer le fichier de spécifications clone à l'aide d'un éditeur de texte.
+
+. Cloner une base de données avec une sauvegarde existante à l'aide de la commande smo clone create.
++
+Vous devez disposer d'une spécification de clone existante ou créer une spécification de clone pour spécifier les spécifications de stockage et de base de données du clone.
+
++
+L'exemple suivant montre la commande pour créer un clone :
+
++
+[listing]
+----
+smo clone create -profile prof1 -backup-label full_backup_prof1
+-newsid clone1 -label prof1_clone -clonespec C:\\clone_spec\\prof1_clonespec.xml
+----
+

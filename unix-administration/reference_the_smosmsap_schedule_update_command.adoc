@@ -1,0 +1,81 @@
+---
+permalink: unix-administration/reference_the_smosmsap_schedule_update_command.html 
+sidebar: sidebar 
+keywords: command, update, schedule, backup, profile 
+summary: 'Cette commande met à jour la planification d"une sauvegarde.' 
+---
+= Commande de mise à jour du planning smo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette commande met à jour la planification d'une sauvegarde.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo schedule update
+-profile profile_name
+-schedule-name schedule_name
+\[-schedule-comment schedule_comment\]
+-interval \{-hourly \| -daily \| -weekly \| -monthly \| -onetimeonly\}
+-cronstring cron_string
+-start-time \{start_time <yyyy-MM-dd HH:mm\>\}
+-runasuser runasuser
+\[-taskspec taskspec\]
+-force
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Indique le nom du profil associé à la base de données que vous souhaitez planifier la sauvegarde. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-nom-programme nom_programme*
++
+Spécifie le nom que vous fournissez pour le planning.
+
+* *-commentaire-planning_commentaire*
++
+Spécifie un commentaire facultatif décrivant la planification de la sauvegarde.
+
+* *-intervalle { -horaire | -quotidien | -hebdomadaire | -mensuel | -onetimeonly}*
++
+Indique l'intervalle de temps par lequel les sauvegardes sont créées. Vous pouvez planifier la sauvegarde toutes les heures, tous les jours, toutes les semaines, tous les mois ou une seule fois.
+
+* *-cronstring cron_string*
++
+Spécifie pour planifier la sauvegarde à l'aide de cronstring. Les expressions cron sont utilisées pour configurer des instances de CronTrigger. Les expressions cron sont des chaînes qui sont en fait composés de sept sous-expressions :
+
++
+** 1 correspond aux secondes
+** 2 correspond aux minutes
+** 3 correspond aux heures
+** 4 correspond à un jour dans un mois
+** 5 correspond au mois
+** 6 correspond à un jour dans une semaine
+** 7 correspond à l'année (facultatif)
+
+
+* *-heure-début aaaa-MM-jj HH:mm*
++
+Spécifie l'heure de début de l'opération de planification. L'heure de début de l'horaire doit être incluse au format aaaa-MM-jj HH:mm.
+
+* *-runasuser runasuser*
++
+Indique de modifier l'utilisateur de l'opération de sauvegarde planifiée pendant la planification de la sauvegarde.
+
+* *-taskspspspspspspspspspspspspsp
++
+Spécifie le fichier XML de spécification de tâche qui peut être utilisé pour l'activité de prétraitement ou de post-traitement de l'opération de sauvegarde. Le chemin complet du fichier XML devrait être fourni avec l'option -taskspspspspspspspspspspspec.
+
+

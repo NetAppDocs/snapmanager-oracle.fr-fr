@@ -1,0 +1,23 @@
+---
+permalink: windows/task_unmounting_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, unmount, backup, unavailable, host, server, remove, access 
+summary: 'SnapManager démonte automatiquement la sauvegarde pour la rendre indisponible au serveur hôte. SnapManager vous permet également de démonter si vous utilisez un outil externe, tel qu"Oracle Recovery Manager (RMAN), pour accéder aux fichiers de la sauvegarde, et pour modifier l"état de la sauvegarde afin de supprimer l"accès.' 
+---
+= Démontage des sauvegardes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager démonte automatiquement la sauvegarde pour la rendre indisponible au serveur hôte. SnapManager vous permet également de démonter si vous utilisez un outil externe, tel qu'Oracle Recovery Manager (RMAN), pour accéder aux fichiers de la sauvegarde, et pour modifier l'état de la sauvegarde afin de supprimer l'accès.
+
+Vous pouvez éventuellement collecter les fichiers de vidage après une opération de sauvegarde réussie ou ayant échoué.
+
+. Entrez la commande suivante : smo backup unmount -profile nom_profil {labellabel [data | -archiveils] | -idid} [-quiet | -verbose] -dump-force-verbose
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_unmount_command.adoc[La commande smo backup uncuncloud]

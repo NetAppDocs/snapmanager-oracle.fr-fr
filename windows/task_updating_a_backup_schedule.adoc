@@ -1,0 +1,17 @@
+---
+permalink: windows/task_updating_a_backup_schedule.html 
+sidebar: sidebar 
+keywords: view, list, schedule, operation, update, scheduling, backup, updating 
+summary: 'Vous pouvez afficher la liste des opérations planifiées et les mettre à jour si nécessaire. Vous pouvez mettre à jour la fréquence de programmation, l"heure de début de la planification, l"expression de chaîne de caractères et l"utilisateur qui a planifié la sauvegarde.' 
+---
+= Mise à jour d'un programme de sauvegarde
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez afficher la liste des opérations planifiées et les mettre à jour si nécessaire. Vous pouvez mettre à jour la fréquence de programmation, l'heure de début de la planification, l'expression de chaîne de caractères et l'utilisateur qui a planifié la sauvegarde.
+
+. Pour mettre à jour le planning d'une sauvegarde, entrez la commande suivante : smo schedule update -profile nom_profil-nom-planning-nomespacede-nomde-de-nom_de-nom_de-nom_de-nom_de-de-nom_de-de-nom_de-resutilisateurs{-heure | -Daily | -hebdomadaire | -mensuel | -onetimedejour | -unetime} -cronescronestimescronestiertime
+

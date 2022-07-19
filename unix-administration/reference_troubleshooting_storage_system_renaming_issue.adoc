@@ -1,0 +1,57 @@
+---
+permalink: unix-administration/reference_troubleshooting_storage_system_renaming_issue.html 
+sidebar: sidebar 
+keywords: face, issue, renaming, storage, system, succesful, rename, storage, system, troubleshoot 
+summary: 'Vous pouvez être confronté à des problèmes lors de la modification du nom d"un système de stockage ou après l"avoir renommé du système de stockage.' 
+---
+= Dépannage du problème de changement de nom du système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez être confronté à des problèmes lors de la modification du nom d'un système de stockage ou après l'avoir renommé du système de stockage.
+
+Lorsque vous tentez de renommer le système de stockage, l'opération peut échouer avec le message d'erreur suivant : SMO-05085 aucun contrôleur de stockage « fas3020-rtp07New » n'est associé au profil
+
+Vous devez saisir l'adresse IP ou le nom du système de stockage qui est indiqué lorsque vous exécutez la commande smo Storage list.
+
+Après avoir renommé le système de stockage, les opérations de SnapManager peuvent échouer si SnapManager ne reconnaît pas le système de stockage. Pour résoudre ce problème, vous devez effectuer quelques étapes supplémentaires sur l'hôte du serveur DataFabric Manager et sur l'hôte du serveur SnapManager.
+
+Effectuez les opérations suivantes sur l'hôte du serveur DataFabric Manager :
+
+. Supprimez l'adresse IP et l'hôte du système de stockage précédent dans le fichier hôte situé sur /etc/hosts de l'hôte du serveur DataFabric Manager.
+. Ajoutez la nouvelle adresse IP et l'hôte du nouveau système de stockage dans le fichier hôte situé sur /etc/hosts de l'hôte du serveur DataFabric Manager.
+. Modifiez le nom d'hôte de stockage en entrant la commande suivante : dfm host rename -a Old_host_namenew_host_name
+. Définissez la nouvelle adresse IP sur l'hôte en saisissant la commande suivante : dfm host set Old_host_name_or_objid hostPrimaryAddress = New_Storage_Controller_ip_Address
++
+
+NOTE: Vous devez effectuer cette étape uniquement si vous avez spécifié l'adresse IP comme nouveau nom de système de stockage.
+
+. Mettre à jour le nouveau nom du système de stockage dans l'hôte du serveur DataFabric Manager en saisissant la commande suivante : dfm host diag Old_Storage_name
++
+Vous pouvez vérifier que l'ancien nom de contrôleur de stockage est remplacé par le nouveau nom de contrôleur de stockage en saisissant la commande suivante : dfm host Discover New_Storage_name
+
+
+
+Procédez comme suit en tant qu'utilisateur root dans l'hôte du serveur SnapManager.
+
+
+NOTE: Lorsque vous saisissez le nom du nouveau contrôleur de stockage, assurez-vous d'utiliser le nom d'alias du système et non le nom de domaine complet (FQDN).
+
+. Supprimez le nom de système de stockage précédent en entrant la commande suivante : SnapDrive config delete Old_Storage_name
++
+
+NOTE: Si vous ne supprimez pas le nom de l'ancien système de stockage, toutes les opérations de SnapManager échouent.
+
+. Supprimez l'adresse IP et l'hôte du système de stockage précédent dans le fichier hôte situé sur les hôtes etc/hosts de l'hôte de base de données cible.
+. Ajoutez la nouvelle adresse IP et l'hôte du nouveau système de stockage dans le fichier hôte situé sur /etc/hosts de l'hôte de la base de données cible.
+. Ajoutez le nouveau nom du système de stockage en entrant la commande suivante : SnapDrive config set root New_Storage_name
+. Mappez les noms de systèmes de stockage précédents et ultérieurs en entrant la commande suivante : SnapDrive config migrate set Old_Storage_namenew_Storage_name
+. Supprimez le chemin de gestion de l'ancien système de stockage en entrant la commande suivante :snapdrive config delete -mgmtpath Old_Storage_name
+. Ajoutez le chemin de gestion du nouveau système de stockage en entrant la commande suivante : SnapDrive config set -mgmtpath New_Storage_name
+. Mettez à jour le jeu de données des fichiers de données et des fichiers journaux d'archives avec le nouveau nom du système de stockage en saisissant la commande suivante : SnapDrive dataset changehostname -dndataset_name-oldnameold_Storage_name-newnamenew_Storage_name
+. Mettez à jour le profil du nouveau système de stockage en entrant la commande suivante : smo Storage rename -profileprofile_name-oldnameold_Storage_name-newnamenew_Storage_name
+. Vérifiez le système de stockage associé au profil en saisissant la commande suivante : smo Storage list -profileprofile_name
+

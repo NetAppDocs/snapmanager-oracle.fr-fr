@@ -1,0 +1,39 @@
+---
+permalink: unix-administration/task_configuring_snapdrive_when_rbac_is_enabled.html 
+sidebar: sidebar 
+keywords: role-based, access, control, rbac, enable, configure, datafabric, manager, capabilities, manager, server, snapdrive 
+summary: 'Lorsque le contrôle d"accès basé sur des rôles \(RBAC\) est activé, vous devez configurer le serveur DataFabric Manager pour inclure les fonctionnalités RBAC. Vous devez également enregistrer l"utilisateur SnapDrive créé sur le serveur DataFabric Manager et l"utilisateur root du système de stockage dans SnapDrive.' 
+---
+= Configuration du serveur et de SnapDrive de DataFabric Manager lorsque le RBAC est activé
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque le contrôle d'accès basé sur des rôles (RBAC) est activé, vous devez configurer le serveur DataFabric Manager pour inclure les fonctionnalités RBAC. Vous devez également enregistrer l'utilisateur SnapDrive créé sur le serveur DataFabric Manager et l'utilisateur root du système de stockage dans SnapDrive.
+
+. Configurez le serveur DataFabric Manager.
++
+.. Pour actualiser le serveur DataFabric Manager afin de mettre à jour les modifications effectuées directement sur le système de stockage par la base de données cible, entrez la commande suivante :dfm host Discover Storage_system
+.. Créez un nouvel utilisateur sur le serveur DataFabric Manager et définissez le mot de passe.
+.. Pour ajouter l'utilisateur du système d'exploitation à la liste d'administration du serveur DataFabric Manager, entrez la commande suivante :dfm user add sd-admin
+.. Pour créer un nouveau rôle sur le serveur DataFabric Manager, entrez la commande suivante :dfm role create sd-admin-role
+.. Pour ajouter la fonctionnalité DFM.Core.AccessCheck Global au rôle, entrez la commande suivante :dfm role add sd-admin-role DFM.Core.AccessCheck Global
+.. Pour ajouter sd-admin-role à l'utilisateur du système d'exploitation, entrez la commande suivante :dfm user role set sd-adminsd-admin-role
+.. Pour créer un autre rôle sur le serveur DataFabric Manager pour l'utilisateur root SnapDrive, entrez la commande suivante :dfm role create SD-Protect
+.. Pour ajouter des fonctionnalités RBAC au rôle créé pour l'utilisateur root ou l'administrateur SnapDrive, entrez les commandes suivantes : dfm role add sd-Protect SD.Config.Read Globaldfm role add sd-Protect SD.Config.Write Globaldfm role add sd-Protect SD.Config.Delete Globaldfm role add sd-Protect SD-Protect.DFM rôle.add-Protect
+.. Pour ajouter l'utilisateur oracle de la base de données cible à la liste des administrateurs du serveur DataFabric Manager et affecter le rôle sd-Protect, entrez la commande suivante :dfm user add -r sd-protecttardb_host1\oracle
+.. Pour ajouter le système de stockage utilisé par la base de données cible dans le serveur DataFabric Manager, entrez la commande suivante :dfm host set Storage_system hostLogin=oracle hostPassword=password
+.. Pour créer un nouveau rôle dans le système de stockage utilisé par la base de données cible sur le serveur DataFabric Manager, entrez la commande suivante : dfm host role create -h Storage_system-c « api-*,login-* » Storage-rbac-role
+.. Pour créer un nouveau groupe dans le système de stockage et attribuer le nouveau rôle créé sur le serveur DataFabric Manager, entrez la commande suivante :dfm host usergroup create -h Storage_system-r Storage-rbac-roleStorage-rbac-group-rbac-group
+.. Pour créer un nouvel utilisateur dans le système de stockage et affecter le nouveau rôle et le groupe créé sur le serveur DataFabric Manager, entrez la commande suivante :dfm host utilisateur create -h Storage_system-r Storage-rbac-role -p password -g Storage-rbac-groupardb_host1
+
+
+. Configurez SnapDrive.
++
+.. Pour enregistrer les identifiants de l'utilisateur sd-admin avec SnapDrive, entrez la commande suivante :snapdrive config set -dfm sd-admindfm_host
+.. Pour enregistrer l'utilisateur root ou l'administrateur du système de stockage avec SnapDrive, entrez la commande suivante :snapdrive config set tardb_host_modifier_System
+
+
+

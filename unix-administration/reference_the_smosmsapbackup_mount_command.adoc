@@ -1,0 +1,110 @@
+---
+permalink: unix-administration/reference_the_smosmsapbackup_mount_command.html 
+sidebar: sidebar 
+keywords: run, backup, mount, command, perform, recover, operation, external, tool, smo 
+summary: 'Vous pouvez exécuter la commande backup mount pour monter une sauvegarde afin d"effectuer une opération de restauration à l"aide d"un outil externe.' 
+---
+= Commande smo backup mount
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande backup mount pour monter une sauvegarde afin d'effectuer une opération de restauration à l'aide d'un outil externe.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo backup mount
+-profile profile_name
+[-label label \[-data \| -archivelogs\] \| \[-id id\]
+[-host  host]
+\[-from-secondary \{-copy-id id\}\]
+\[-dump\]
+[-quiet | -verbose]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie le profil associé à la sauvegarde que vous souhaitez monter. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-id guid*
++
+Monte la sauvegarde à l'aide du GUID spécifié. Le GUID est généré par SnapManager lors de la création d'une sauvegarde. Vous pouvez utiliser la commande SMO backup list pour afficher le GUID pour chaque sauvegarde.
+
+* *-étiquette*
++
+Permet de monter la sauvegarde avec l'étiquette spécifiée.
+
+* *-données*
++
+Spécifie les fichiers de données.
+
+* *-archiveils*
++
+Spécifie les fichiers journaux d'archive.
+
+* *-depuis-secondaire -id-copie*
++
+Monte la sauvegarde à partir du système de stockage secondaire. Si cette option n'est pas spécifiée, SnapManager monte la sauvegarde à partir du stockage principal. Vous pouvez utiliser cette option si la sauvegarde est libérée.
+
++
+Vous devez spécifier l'option -copy-ID lorsque vous spécifiez l'option -from-Secondary. Si plusieurs sauvegardes sont possibles sur le système de stockage secondaire, l'option -copy-ID permet de spécifier la copie de sauvegarde sur le stockage secondaire à utiliser pour monter la sauvegarde.
+
++
+
+NOTE: Si vous utilisez Data ONTAP sous 7-mode, vous devez indiquer une valeur valide pour l'option -copy-ID. Cependant, si vous utilisez clustered Data ONTAP, l'option -copy-ID n'est pas requise.
+
+* hôte **
++
+Spécifie l'hôte sur lequel vous souhaitez monter la sauvegarde.
+
+* *-dump*
++
+Collecte les fichiers de vidage après l'opération de montage réussie ou ayant échoué.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. Le paramètre par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+NOTE: Vous devez utiliser cette commande uniquement si vous utilisez un outil externe tel qu'Oracle Recovery Manager (RMAN). SnapManager gère automatiquement le montage des sauvegardes si vous utilisez la commande smo backup restore pour la restaurer. Cette commande affiche une liste, qui affiche les chemins d'accès vers lesquels les copies Snapshot ont été montées. Cette liste s'affiche uniquement lorsque l'option -verbose est spécifiée.
+
+
+
+== Exemple
+
+L'exemple suivant monte la sauvegarde :
+
+[listing]
+----
+smo backup mount -profile SALES1 -label full_backup_sales_May -verbose
+SMO-13046 [INFO ]: Operation GUID 8abc013111b9088e0111b908a7560001 starting on Profile SALES1
+SMO-08052 [INFO ]: Beginning to connect mount(s) [/mnt/ssys1/logs, /mnt/ssys1/data] from logical snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001.
+SMO-08025 [INFO ]: Beginning to connect mount /mnt/ssys1/logs from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_logs.
+SMO-08027 [INFO ]: Finished connecting mount /mnt/ssys1/logs from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_logs.
+SMO-08025 [INFO ]: Beginning to connect mount /mnt/ssys1/data from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_data.
+SMO-08027 [INFO ]: Finished connecting mount /mnt/ssys1/data from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_data.
+SMO-08053 [INFO ]: Finished connecting mount(s) [/mnt/ssys1/logs, /mnt/ssys1/data] from logical snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001.
+SMO-13037 [INFO ]: Successfully completed operation: Backup Mount
+SMO-13048 [INFO ]: Operation Status: SUCCESS
+SMO-13049 [INFO ]: Elapsed Time: 0:01:00.981
+Operation Id [8abc013111b9088e0111b908a7560001] succeeded.
+----
+*Informations connexes*
+
+xref:task_mounting_backups.adoc[Montage des supports]

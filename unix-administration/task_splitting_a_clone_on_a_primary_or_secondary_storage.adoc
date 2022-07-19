@@ -1,0 +1,41 @@
+---
+permalink: unix-administration/task_splitting_a_clone_on_a_primary_or_secondary_storage.html 
+sidebar: sidebar 
+keywords: clone, split, command, complete, metadata, repository, primary, secondary 
+summary: Vous pouvez utiliser la commande clone Split pour séparer le clone. Une fois le partage de clone terminé, les métadonnées de clone sont supprimées de la base de données du référentiel et la sauvegarde associée au clone peut être supprimée ou libérée. 
+---
+= Fractionnement d'un clone sur le stockage primaire ou secondaire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la commande clone Split pour séparer le clone. Une fois le partage de clone terminé, les métadonnées de clone sont supprimées de la base de données du référentiel et la sauvegarde associée au clone peut être supprimée ou libérée.
+
+Le nouveau profil créé après l'opération de fractionnement réussie est utilisé pour gérer le clone fractionné. Le nouveau profil sera similaire à tout autre profil existant dans SnapManager. Vous pouvez utiliser ce profil pour effectuer des opérations de sauvegarde, de restauration et de clonage.
+
+En outre, vous pouvez également configurer les notifications par e-mail pour le nouveau profil. Cela permet à l'administrateur de base de données d'être averti de l'état de l'opération de base de données effectuée à l'aide du profil.
+
+
+NOTE: SnapManager prend en charge l'opération de fractionnement lorsqu'elle est effectuée sur un FlexClone uniquement.
+
+Si l'opération de fractionnement échoue, un message d'erreur approprié avec la raison de l'échec s'affiche. L'état de plusieurs opérations est également affiché dans le journal des opérations. Par exemple :
+
+[listing]
+----
+--[ INFO] The following operations were completed:
+Clone Split : Success
+Profile Create : Failed
+Clone Detach : Success
+----
+Vous pouvez éventuellement collecter les fichiers de dump après une opération de fractionnement de clone réussie ou ayant échoué.
+
+
+NOTE: Une fois que vous avez saisi la commande clone split, vous ne devez pas arrêter le serveur SnapManager tant que l'opération de fractionnement de clone n'a pas démarré.
+
+
+NOTE: SnapManager génère le profil même si vous ne fournissez aucune valeur pour le compte Oracle (osaccount et osgroup).
+
+. Entrez la commande suivante : smo clone split-profileclone-profile-hostname [-labelclone-label | -idclone-ID]-split-labelsplit-operation-label-commentairefilenew-profile [-profile-nomdednom_nom_nom_nom_nom_hôte] [-nom_nom_nom_nom_nom_nom_nom_nom_hôte-nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_hôte [-nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_hôte] [-nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_hôte [] [-nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom
+

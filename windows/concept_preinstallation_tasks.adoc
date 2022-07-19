@@ -1,0 +1,37 @@
+---
+permalink: windows/concept_preinstallation_tasks.html 
+sidebar: sidebar 
+keywords: install, snapmanager, oracle, environment, preinstallation, task 
+summary: 'Avant d"installer SnapManager pour Oracle, vous devez effectuer quelques tâches supplémentaires pour configurer votre environnement. Les tâches que vous devez effectuer dépendent du système d"exploitation, des composants Oracle et de la version de base de données que vous souhaitez utiliser.' 
+---
+= Tâches de préinstallation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'installer SnapManager pour Oracle, vous devez effectuer quelques tâches supplémentaires pour configurer votre environnement. Les tâches que vous devez effectuer dépendent du système d'exploitation, des composants Oracle et de la version de base de données que vous souhaitez utiliser.
+
+* Installez le système d'exploitation sous licence avec les correctifs appropriés.
+* Définissez les langues du système d'exploitation et de la base de données Oracle sur Anglais.
++
+Par exemple, pour définir la langue de la base de données Oracle sur Anglais, attribuez NLS_LANG = AMERICAN_AMERICA.WE8MSWIN1252. Pour plus d'informations sur la définition de la langue, reportez-vous à la section _Troubleshooting SnapManager for Oracle_.
+
+* Installez Oracle Recovery Manager (RMAN) si vous souhaitez utiliser RMAN avec SnapManager pour Oracle.
+* Installez Data ONTAP avec les licences activées pour SnapRestore et les protocoles pris en charge tels que Fibre Channel (FC) et Internet Small Computer System interface (iSCSI) sur tous les systèmes de stockage.
+* Installez les correctifs Oracle suivants si vous utilisez des bases de données Oracle 11.2.0.2 et 11.2.0.3 :
++
+** 13413167 pour Windows 32 bits
+** 13555974 pour Windows 64 bits
+
+
+
+
+*Informations connexes*
+
+xref:reference_troubleshooting_snapmanager.adoc[Dépannage de SnapManager]
+
+http://support.netapp.com/NOW/products/interoperability/["Matrice d'interopérabilité NetApp : support.netapp.com/NOW/products/interoperability"]
+
+http://media.netapp.com/documents/tr-3761.pdf["Meilleures pratiques SnapManager pour Oracle : media.netapp.com/documents/tr-3761.pdf"]

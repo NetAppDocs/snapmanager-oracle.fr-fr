@@ -1,0 +1,153 @@
+---
+permalink: unix-administration/task_updating_profiles.html 
+sidebar: sidebar 
+keywords: update, profile, modify, password, number, backup, retain, access, database, operating, system, os, smo 
+summary: 'Vous pouvez mettre à jour les profils pour modifier le mot de passe du profil, le nombre de sauvegardes à conserver, l"accès à la base de données, l"authentification du système d"exploitation \(OS\) à l"authentification de la base de données et vice versa, ainsi que les informations sur l"hôte. Si les informations relatives au mot de passe de la base de données Oracle changent, vous devez également modifier ces informations dans le profil.' 
+---
+= Mise à jour des profils
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez mettre à jour les profils pour modifier le mot de passe du profil, le nombre de sauvegardes à conserver, l'accès à la base de données, l'authentification du système d'exploitation à l'authentification de la base de données et vice versa, ainsi que les informations sur l'hôte. Si les informations relatives au mot de passe de la base de données Oracle changent, vous devez également modifier ces informations dans le profil.
+
+Si la stratégie de protection est activée sur le profil, vous ne pouvez pas la modifier en utilisant SnapManager. L'administrateur du stockage doit modifier la règle à l'aide de la console protection Manager.
+
+SnapManager (3.2 ou version ultérieure) vous permet de mettre à jour le profil afin de séparer les sauvegardes du journal d'archives des sauvegardes du fichier de données à l'aide de l'option -distinct-archiveelog-backups. Vous pouvez spécifier des règles de rétention et de protection distinctes pour la sauvegarde du journal d'archivage. SnapManager vous permet d'inclure la sauvegarde des journaux d'archivage et la sauvegarde des bases de données en ligne. Vous pouvez également créer une sauvegarde en ligne des fichiers de données et archiver les journaux à des fins de clonage. Lorsque vous créez une sauvegarde de fichiers de données en ligne, les sauvegardes des journaux d'archive sont immédiatement créées avec les fichiers de données.
+
+. Saisissez la commande suivante :
+`smo profile update -profileprofile [-new-profilenew_profile_name] [-profile-passwordprofile_password][-database-dbnamedb_dbname-host db_host [-siddb_sid] [-login -usernamedb_username-password db_password-port db_port][-asminstance-asmusernameasminstance_username-asmpasswordasminstance_password]] [{-rman{-controlfile | {-login  -usernamerman_username-password  rman_password-tnsname  rman_tnsname}}} | -remove-rman]-osaccountosaccount-osgrouposgroup [-retain [-hourly [-countn] [-durationm]] [-daily [-countn] [-durationm]] [-weekly [-countn] [-durationm]] [-monthly [-countn] [-durationm]]] [-commentcomment][-snapname-patternpattern][[-protect [-protection-policypolicy_name]]| [[-noprotect]] [-summary-notification] [-notification [-success-emailemail_address1, email_address2-subjectsubject_pattern] [-failure-emailemail_address1, email_address2-subjectsubject_pattern]] [-separate-archivelog-backups-retain-archivelog-backups-hourshours | -daysdays | -weeksweeks| -monthsmonths [-protect [-protection-policypolicy_name] | -noprotect] [-include-with-online-backups | -no-include-with-online-backups]] [-dump]`
++
+Les autres options de cette commande sont les suivantes :
+
++
+[-force] [-noprompt]
+
++
+|===
+| Les fonctions que vous recherchez... | Alors... 
+
+
+ a| 
+*Modifiez le profil pour utiliser l'authentification du système d'exploitation*
+ a| 
+Au lieu d'ajouter le nom d'utilisateur, le mot de passe et le port, spécifiez ce qui suit :
+
+** -osaccountaccount_name comme nom du compte du système d'exploitation
+** -Osgrouposgroup comme groupe associé au compte du système d'exploitation, généralement le compte utilisé pour installer Oracle
+
+
+
+
+ a| 
+*Utilisez l'authentification d'instance ASM (Automatic Storage Management) pour créer le profil*
+ a| 
+Spécifiez les informations d'identification pour l'authentification de l'instance ASM.
+
+** -Asmusernamasminposition_username est le nom d'utilisateur utilisé pour se connecter à l'instance ASM.
+** -Asmpasswordasminposition_password est le mot de passe utilisé pour se connecter à l'instance ASM.
+
+
+
+
+ a| 
+*Utilisez un catalogue comme référentiel Oracle Recovery Manager (RMAN) ou supprimez RMAN*
+ a| 
+Spécifiez les options et variables suivantes :
+
+** -tnsname nominsname comme nom de liste de noms définis dans le fichier tnsnames.ora.
+** -Login -username nom d'utilisateur comme nom d'utilisateur requis pour se connecter au catalogue RMAN.
++
+S'il n'est pas spécifié, SnapManager utilise les informations d'authentification du système d'exploitation. Vous ne pouvez pas utiliser l'authentification du système d'exploitation avec les bases de données RAC (Real application clusters).
+
+** -Passwordpassword comme mot de passe RMAN requis pour se connecter au catalogue RMAN.
+** -Controlfile si vous utilisez le fichier de contrôle comme référentiel RMAN.
+** -Remove-rman pour supprimer RMAN.
+
+
+
+
+ a| 
+*Modification de la stratégie de conservation des sauvegardes de la base de données dans le profil*
+ a| 
+Spécifiez soit le nombre de rétention, soit la durée de rétention pour une classe de rétention, soit les deux pour modifier la stratégie de rétention. La durée est exprimée en unités de la classe (par exemple, heures pour l'heure, jours pour la journée).
+
+** -horaire est la classe de rétention horaire, pour laquelle [-countn] [-dulationm]] sont respectivement le nombre de rétention et la durée de conservation.
+** -daily est la classe de rétention quotidienne, pour laquelle [-countn] [-dulationm]] sont respectivement le nombre de rétention et la durée de conservation.
+** -hebdomadaire est la classe de rétention hebdomadaire, pour laquelle [-countn] [-dulationm]] sont respectivement le nombre de rétention et la durée de conservation.
+** -mensuel est la classe de rétention mensuelle, pour laquelle [-countn] [-dulationm]] sont respectivement le nombre de rétention et la durée de conservation.
+
+
+
+
+ a| 
+*Désactiver la protection de sauvegarde pour le profil*
+ a| 
+Spécifiez -noProtect pour ne pas protéger les sauvegardes de base de données créées à l'aide du profil. Pour un profil dont -Protect est activé, si vous souhaitez désactiver Protect, un message d'avertissement s'affiche indiquant que cette action supprimera le jeu de données et que vous ne pourrez pas restaurer ou cloner les sauvegardes pour ce profil.
+
+
+
+ a| 
+*Activer les notifications par e-mail pour l'état d'achèvement des opérations de la base de données*
+ a| 
+Spécifiez les options et variables suivantes :
+
+** -summary-notification vous permet de configurer une notification par e-mail sommaire pour plusieurs profils dans une base de données de référentiel.
+** -notification vous permet de recevoir une notification par e-mail sur l'état d'achèvement de l'opération de base de données pour un profil.
+** -success-emailemail_address2 vous permet de recevoir une notification par e-mail après l'achèvement d'une opération de base de données réussie effectuée à l'aide d'un profil nouveau ou existant.
+** -failed-emailemail_address2 vous permet de recevoir une notification par e-mail sur une opération de base de données échouée effectuée à l'aide d'un nouveau profil ou d'un profil existant.
+** -subjectsubject_text indique le texte de l'objet de la notification par e-mail lors de la création d'un nouveau profil ou d'un profil existant. Si les paramètres de notification ne sont pas configurés pour le référentiel et que vous tentez de configurer les notifications de profil ou de résumé à l'aide de l'interface de ligne de commande (CLI), le message suivant est consigné dans le journal de la console : SMO-14577 : Paramètres de notification non configurés.
++
+Si vous avez configuré les paramètres de notification et que vous tentez de configurer la notification de synthèse à l'aide de l'interface de ligne de commande sans activer la notification de synthèse pour le référentiel, le message suivant est consigné dans le journal de la console : SMO-14575 : Configuration de notification de synthèse non disponible pour ce référentiel__**____
+
+
+
+
+
+ a| 
+*Mettre à jour le profil pour créer une sauvegarde des fichiers journaux d'archive séparément*
+ a| 
+Spécifiez les options et variables suivantes :
+
+** -séparé-archivelog-backups vous permet de créer une sauvegarde des fichiers journaux d'archive séparément des fichiers de base de données.
++
+Après avoir spécifié cette option, vous pouvez créer une sauvegarde de fichiers de données uniquement ou une sauvegarde archiveils uniquement. Vous ne pouvez pas créer une sauvegarde complète. Vous ne pouvez pas non plus rétablir les paramètres du profil en séparant la sauvegarde. SnapManager conserve les sauvegardes en fonction de la politique de conservation des sauvegardes créées avant la sauvegarde archiveils uniquement.
+
+** -conserve-archivelog-backups définit la durée de conservation des sauvegardes du journal d'archives.
++
+
+NOTE: Si vous mettez à jour le profil pour la première fois, vous pouvez séparer les sauvegardes du journal d'archives de la sauvegarde des fichiers de données à l'aide de l'option -séparée-archiveelog-backups ; vous devez fournir la durée de conservation des sauvegardes du journal d'archives en utilisant l'option -retain-archiveelog-backups. La définition de la durée de conservation est facultative lorsque vous mettez à jour le profil ultérieurement.
+
+** -Protect crée un jeu de données d'application sur le serveur Data Fabric Manager (DFM) et ajoute des membres liés à la base de données, au fichier de données, aux fichiers de contrôle et aux journaux d'archivage.
++
+Si le jeu de données existe, il est réutilisé lors de la création d'un profil.
+
+** -protection-policy définit la stratégie de protection sur les sauvegardes du journal d'archivage.
+** -include-with-online-backups indique que la sauvegarde du journal d'archives est incluse avec la sauvegarde de la base de données.
+** -no-include-with-online-backups indique que la sauvegarde du fichier journal d'archives n'est pas incluse avec la sauvegarde de la base de données.
+
+
+
+
+ a| 
+*Changer le nom d'hôte de la base de données cible*
+ a| 
+Spécifiez -hostNew_db_host pour modifier le nom d'hôte du profil.
+
+
+
+ a| 
+*Collectez les fichiers de vidage après l'opération de mise à jour du profil*
+ a| 
+Spécifiez l'option -dump.
+
+|===
+. Pour afficher le profil mis à jour, entrez la commande suivante :
+`smo profile show`
+
+
+*Informations connexes*
+
+xref:concept_how_to_collect_dump_files.adoc[Comment recueillir des fichiers de vidage]

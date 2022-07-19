@@ -1,0 +1,21 @@
+---
+permalink: windows/task_viewing_a_list_of_backups.html 
+sidebar: sidebar 
+keywords: check, backup, create, profile, state, smo, list, command, view, display 
+summary: 'Vous pouvez vérifier les sauvegardes créées pour un profil et l"état de sauvegarde à l"aide de la commande smo backup list. Pour chaque profil, la commande affiche d"abord les informations relatives à la sauvegarde la plus récente, puis continue jusqu"à ce que les informations de toutes les sauvegardes soient affichées.' 
+---
+= Affichage d'une liste de sauvegardes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier les sauvegardes créées pour un profil et l'état de sauvegarde à l'aide de la commande smo backup list. Pour chaque profil, la commande affiche d'abord les informations relatives à la sauvegarde la plus récente, puis continue jusqu'à ce que les informations de toutes les sauvegardes soient affichées.
+
+. Entrez la commande suivante : smo backup list -profileprofile_name [-delimitercharacter] [data | -archivelogs] [-quiet | -verbose]
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_list_command.adoc[Commande smo backup list]

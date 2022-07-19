@@ -1,0 +1,39 @@
+---
+permalink: unix-administration/concept_snapmanager_for_oraclefor_sap_command_reference.html 
+sidebar: sidebar 
+keywords: snapmanager, syntax, options, parameters, argument, oracle, command, reference 
+summary: 'La référence de commande SnapManager inclut la syntaxe d"utilisation valide, les options, les paramètres et les arguments que vous devez fournir avec les commandes, ainsi que des exemples.' 
+---
+= Référence des commandes SnapManager pour Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La référence de commande SnapManager inclut la syntaxe d'utilisation valide, les options, les paramètres et les arguments que vous devez fournir avec les commandes, ainsi que des exemples.
+
+Les problèmes suivants s'appliquent à l'utilisation de la commande :
+
+* Les commandes sont sensibles à la casse.
+* SnapManager accepte jusqu'à 200 caractères et étiquettes 80 caractères.
+* Si le shell de votre hôte limite le nombre de caractères pouvant apparaître sur une ligne de commande, vous pouvez utiliser la commande cmdfile.
+* N'utilisez pas d'espace dans les noms de profils ou d'étiquettes.
+* Dans la spécification de clone, n'utilisez pas d'espace à l'emplacement de clone.
+
+
+SnapManager peut afficher trois niveaux de messages sur la console :
+
+* Messages d'erreur
+* Messages d'avertissement
+* Messages d'information
+
+
+Vous pouvez spécifier le mode d'affichage des messages. Si vous ne spécifiez rien, SnapManager affiche uniquement les messages d'erreur et les avertissements à la console. Pour contrôler la quantité de sortie affichée par SnapManager sur la console, utilisez l'une des options de ligne de commande suivantes :
+
+* -Quiet : affiche uniquement les messages d'erreur sur la console.
+* -Verbose : affiche les messages d'erreur, d'avertissement et d'information à la console.
+
+
+
+NOTE: Quel que soit le comportement par défaut ou le niveau de détail que vous spécifiez pour l'affichage, SnapManager écrit toujours tous les types de messages dans les fichiers journaux.

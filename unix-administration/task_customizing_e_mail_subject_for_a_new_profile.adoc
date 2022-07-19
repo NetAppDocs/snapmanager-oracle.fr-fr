@@ -1,0 +1,96 @@
+---
+permalink: unix-administration/task_customizing_e_mail_subject_for_a_new_profile.html 
+sidebar: sidebar 
+keywords: customize, email, subject, new, profile, create 
+summary: 'Vous pouvez personnaliser l"objet de l"e-mail pour le nouveau profil lorsque vous le créez.' 
+---
+= Personnalisation de l'objet de l'e-mail pour un nouveau profil
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez personnaliser l'objet de l'e-mail pour le nouveau profil lorsque vous le créez.
+
+Vous pouvez personnaliser l'objet de l'e-mail en utilisant le modèle \{profile}_\{nom-opération}_\{db-sid}_\{db-host}_\{date-début}_\{date-fin}_\{statut} ou en entrant votre propre texte.
+
+|===
+| Nom de variable | Description | Exemple de valeur 
+
+
+ a| 
+profil
+ a| 
+Nom de profil utilisé pour l'opération de base de données
+ a| 
+PROF1
+
+
+
+ a| 
+nom-opération
+ a| 
+Nom de l'opération de base de données
+ a| 
+Sauvegarde, sauvegarde des données, sauvegarde des journaux de données et d'archives
+
+
+
+ a| 
+db-sid
+ a| 
+SID de la base de données
+ a| 
+DB1
+
+
+
+ a| 
+hôte bdd
+ a| 
+Nom du serveur hôte
+ a| 
+HôtA
+
+
+
+ a| 
+date de début
+ a| 
+Heure de début de l'opération de base de données au format mmjj:hh:ss aaaa
+ a| 
+Avril 27 21:00:45 PST 2012
+
+
+
+ a| 
+date de fin
+ a| 
+Heure de fin de l'opération de base de données au format mmjj:hh:ss aaaa
+ a| 
+Avril 27 21:10:45 PST 2012
+
+
+
+ a| 
+état
+ a| 
+État de fonctionnement de la base de données
+ a| 
+Réussite
+
+|===
+Si vous n'indiquez aucune valeur pour les variables, SnapManager affiche le message d'erreur suivant : valeur(s) manquante(s) -subject.
+
+. Entrez la commande suivante : smo profile create -profileprofile [-profile-passwordprofile_password] -repository-dbnamerepo_service_name-hostrepo-host-portrepo-port-login-usernamerepo-database-dbnomdedb-nomhôte [-groupedaterm-nomdeb] [-nomdumb-nomdeb-nomdeb] [-nom-nomdetadaydaydaydaydayr] [] [-nomdeb-nomdeb-nomdeb-nomdeb-nomdeb-nomdeb-nomdeb] [-nom-nomdetadaydaydaydaydaydaydaydaydaydaydaydaynomdeb] [] [-nomdeb-nomdeb-nomdeb] [-nomdeb-nomdeb-nomdeb-nomdeb] [-nomdeb-nomdeb-nomdeb] [-nomdeb-nomdeb-nomdeb-nomdeb] [-nomdenomdenomdenomde
+
+
+Voici un exemple illustrant le modèle d'objet de l'e-mail :
+
+[listing]
+----
+
+smo profile create -profile sales1 -profile-password admin1 -repository -dbname repo2 -host 10.72.197.133 -port 1521 -login -username admin2 -database -dbname DB1 -host 10.72.197.142 -sid DB1
+-osaccount oracle -osgroup dba -profile-notification -success -email admin@org.com -subject {profile}_{operation-name}_{db-sid}_{db-host}_{start-date}_{end-date}_{status}
+----

@@ -1,0 +1,71 @@
+---
+permalink: windows/task_scheduling_archive_log_file_pruning.html 
+sidebar: sidebar 
+keywords: create, backup, schedule, pruning, prune, archive, log, file, scheduling 
+summary: 'Lorsque vous créez une sauvegarde, vous pouvez planifier l"élagage des fichiers journaux d"archives pour qu"ils se produisent à un moment donné.' 
+---
+= Planification de l'élagage du fichier journal d'archives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous créez une sauvegarde, vous pouvez planifier l'élagage des fichiers journaux d'archives pour qu'ils se produisent à un moment donné.
+
+SnapManager vous permet de nettoyer régulièrement les fichiers journaux des archives à partir du système de fichiers actif.
+
+. Saisissez la commande suivante : smo schedule create -profil nom_profil {[-full {-online | -offline | -auto}[-retain [-hourly | -Daily | -hebdomadaire | -monthly | -Unlimited] [-reify] [-data [-filesfiles [Files]] | [-archivets-tables [-hottes] [-detage1] [-detates_detates] [-bte [-bte] [-bte] [-bte [-bte] [-bte [-bte] [-bte-bte] [-bte [-bte]] [-bte [-bte [-bte]] [-bte [-bte [-bte [-bte [-prunelogs{-all | -untilSCNuntitSCN | -before {-dateyyyy-MM-jj HH:mm:ss | -monthsmois | -hebdomadaires -daysDays | -heushours} -prune-desprune_destat1,,presetesthesetly -time-detasm-time -unestime_detastime_deamonate] [ -time_detastime_deamonate] -time -time_detasmesthm -time -time_detasmesclesthm-unesthm -time -time_thm -time_thesthm -time_thesthestime_thestime_thm -time_thestime_thestime_thestime_
++
+|===
+
+
+| Les fonctions que vous recherchez... | Alors... 
+
+
+ a| 
+*Planification de l'élagage des fichiers journaux d'archives*
+ a| 
+Spécifiez les options suivantes :
+
+** -prunelogs pour planifier l'élagage des fichiers journaux d'archive
+** -prune-dest pour élaguer les fichiers journaux des destinations des journaux d'archive
+
+
+
+
+ a| 
+*Inclure un nom pour l'horaire*
+ a| 
+Spécifiez l'option -schedule-name.
+
+
+
+ a| 
+*Planification de l'élagage des fichiers journaux d'archives à un intervalle de temps spécifique*
+ a| 
+Spécifiez l'option intervalle et indiquez si les fichiers journaux d'archive doivent être élagués en fonction des classes d'intervalle suivantes :
+
+** -horaire
+** -tous les jours
+** -hebdomadaire
+** - mensuel
+** -onetimeuniquement
+
+
+
+
+ a| 
+*Ajouter un commentaire sur l'opération de planification*
+ a| 
+Spécifiez l'option -planning-commentaire suivie de la chaîne de description.
+
+
+
+ a| 
+*Spécifiez l'heure de début de l'opération de planification*
+ a| 
+Spécifiez l'option -start-time au format aaaa-mm-jj hh:mm.
+
+|===
+

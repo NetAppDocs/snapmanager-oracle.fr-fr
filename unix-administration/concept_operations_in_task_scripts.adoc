@@ -1,0 +1,74 @@
+---
+permalink: unix-administration/concept_operations_in_task_scripts.html 
+sidebar: sidebar 
+keywords: pretask, post-task, script, snapmanager, oracle, plug-in, structure, operation, task, script 
+summary: 'Les scripts de prétâche ou d"post-tâche que vous créez doivent suivre une structure standard de plug-in SnapManager pour Oracle.' 
+---
+= Opérations dans les scripts de tâches
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les scripts de prétâche ou d'post-tâche que vous créez doivent suivre une structure standard de plug-in SnapManager pour Oracle.
+
+Les scripts de prétâche et de post-tâche doivent inclure les opérations suivantes :
+
+* fait
+* décrivez
+* l'exécution
+
+
+Si l'une de ces opérations n'est pas spécifiée dans le script de prétâche ou de post-tâche, le script devient non valide.
+
+Lorsque vous exécutez la commande smo plugin check pour les scripts de pré-tâche ou post-tâche, l'état renvoyé des scripts affiche erreur (car la valeur d'état renvoyée n'est pas zéro).
+
+|===
+| Fonctionnement | Description 
+
+
+ a| 
+fait
+ a| 
+Le serveur SnapManager exécute la commande plugin.sh -check pour s'assurer que le système dispose d'une autorisation d'exécution sur les scripts du plug-in. Vous pouvez également inclure une vérification des autorisations sur les fichiers sur le système distant.
+
+
+
+ a| 
+décrivez
+ a| 
+Le serveur SnapManager exécute la commande plugin.sh -description pour obtenir des informations sur votre script et faire correspondre les éléments fournis par le fichier de spécifications. Votre script de plug-in doit contenir les informations de description suivantes :
+
+* SM_PI_NAME : nom du script. Vous devez fournir une valeur pour ce paramètre.
+* SM_PI_DESCRIPTION : description du but du script. Vous devez fournir une valeur pour ce paramètre.
+* SM_PI_CONTEXT : contexte dans lequel le script doit s'exécuter, par exemple root ou oracle. Vous devez fournir une valeur pour ce paramètre.
+* SM_PI_TIMEOUT : durée maximale (en millisecondes) pendant laquelle SnapManager doit attendre que le script termine le traitement et mette fin à l'exécution. Vous devez fournir une valeur pour ce paramètre.
+* SM_PI_PARAMETER : un ou plusieurs paramètres personnalisés nécessaires à votre script de plug-in pour effectuer le traitement. Chaque paramètre doit être répertorié dans une nouvelle ligne de sortie et inclure le nom du paramètre et une description. Une fois le script terminé, la valeur du paramètre est fournie à votre script par une variable d'environnement.
+
+
+Voici l'exemple de résultat du script Followup_Activities.
+
+[listing]
+----
+plugin.sh - describe
+
+SM_PI_NAME:Followup_activities
+SM_PI_DESCRIPTION:this script contains follow-up activities to be executed after the clone create
+operation.
+SM_PI_CONTEXT:root
+SM_PI_TIMEOUT:60000
+SM_PI_PARAMETER:SCHEMAOWNER:Name of the database schema owner.
+Command complete.
+----
+
+
+ a| 
+l'exécution
+ a| 
+Le serveur SnapManager exécute la commande plugin.sh -execute pour démarrer votre script afin d’exécuter le script.
+
+|===
+*Informations connexes*
+
+xref:reference_the_smosmsap_plugin_check_command.adoc[La commande de vérification du plug-in smo]

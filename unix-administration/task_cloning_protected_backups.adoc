@@ -1,0 +1,38 @@
+---
+permalink: unix-administration/task_cloning_protected_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, clone, copy, backup, protect, cloning, san, nas, ontap, 7-mode 
+summary: Vous pouvez utiliser SnapManager pour cloner une copie de sauvegarde qui a été protégée. 
+---
+= Clonage des sauvegardes protégées
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser SnapManager pour cloner une copie de sauvegarde qui a été protégée.
+
+L'hôte (sélectionné pour le clone) doit avoir accès au stockage secondaire à l'aide du même protocole de stockage (par exemple, SAN ou NAS).
+
+Vous pouvez utiliser l'option -from-secondaire pour spécifier si vous souhaitez cloner à partir du stockage secondaire.
+
+Vous devez spécifier l'option -copy-ID lorsque vous spécifiez l'option -from-Secondary. Si plusieurs sauvegardes sont possibles sur le système de stockage secondaire, l'option -copy-ID permet de spécifier la copie de sauvegarde du stockage secondaire à utiliser pour le clonage.
+
+
+NOTE: Si vous utilisez Data ONTAP sous 7-mode, vous devez indiquer une valeur valide pour l'option -copy-ID. Toutefois, si vous utilisez clustered Data ONTAP, l'option -copy-idest non requise.
+
+La suppression des clones des sauvegardes protégées sur les systèmes de stockage secondaires risque d'échouer. Ce problème survient lorsque l'heure du système des systèmes de stockage principal et secondaire n'est pas synchronisée.
+
+. Créez un clone d'une copie de sauvegarde protégée : smo clone create -backup-labelbackup_name-newsidNew_sid-labelclone_label-profileprofile_name-clonespecFull_path_to_clonespecfile-from-Secondary -copy-idid
+
+
+
+
+== Exemple
+
+[listing]
+----
+smo clone create -label testdb_clone_clstest
+-profile sys_db_finance -from-secondary -copy-id 3042 sys_db_finance_sept_08
+----

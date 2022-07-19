@@ -1,0 +1,104 @@
+---
+permalink: unix-administration/task_protecting_database_backups_on_secondary_storage.html 
+sidebar: sidebar 
+keywords: snapmanager, protect, backup, copies, secondary, tertiary, storage, system, smo 
+summary: SnapManager permet de protéger les copies de sauvegarde sur les systèmes de stockage secondaires ou tertiaires. 
+---
+= La protection des sauvegardes de bases de données sur un système de stockage secondaire ou tertiaire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager permet de protéger les copies de sauvegarde sur les systèmes de stockage secondaires ou tertiaires.
+
+. Saisissez la commande suivante :
+`smo backup create -profile profile_name {[-full {-online | -offline | -auto} [-retain {-hourly | -daily | -weekly | -monthly | -unlimited}] [-verify] | [-data [[-filesfiles [files]] | [-tablespaces-tablespaces [-tablespaces]] [-datalabellabel] {-online | -offline | -auto} [-retain {-hourly | [-daily | -weekly | -monthly | -unlimited]} [-verify] | [-archivelogs [-labellabel] [-commentcomment] [-snapvaultlabelSnapVault_label][-protect | -noprotect | -protectnow] [-backup-destpath1 [,[path2]]] [-exclude-destpath1 [,path2]]] [-prunelogs {-all | -untilSCNuntilSCN | -until-date yyyy-MM-dd:HH:mm:ss | -before {-months | -days | -weeks | -hours}} -prune-destprune_dest1,[prune_dest2]] [-taskspectaskspec]} [-dump] [-force] [-quiet | -verbose]`
++
+|===
+| Les fonctions que vous recherchez... | Alors, procédez comme ça... 
+
+
+ a| 
+*Créez une sauvegarde d'une base de données en ligne ou hors ligne, plutôt que de permettre à SnapManager de gérer s'il est en ligne ou hors ligne*
+ a| 
+Spécifiez l'option -Offline ou -online pour créer une sauvegarde de la base de données hors ligne ou de la base de données en ligne. Si vous utilisez l'option -Offline ou -online, vous ne pouvez pas utiliser l'option -auto.
+
+
+
+ a| 
+*Permettre à SnapManager de gérer la sauvegarde d'une base de données, qu'elle soit en ligne ou hors ligne*
+ a| 
+Spécifiez l'option -auto. Si vous utilisez l'option -auto, vous ne pouvez pas utiliser l'option -Offline ou -online.
+
+
+
+ a| 
+*Ajouter un commentaire sur la sauvegarde*
+ a| 
+Spécifiez l'option -comment, suivie de la chaîne de description.
+
+
+
+ a| 
+*Forcer la base de données à l'état dans lequel vous avez spécifié pour la sauvegarder, quel que soit l'état en cours*
+ a| 
+Spécifiez l'option -force.
+
+
+
+ a| 
+*Vérifier la sauvegarde au moment de la création*
+ a| 
+Spécifiez l'option -verify.
+
+
+
+ a| 
+*Créez une sauvegarde sur stockage secondaire*
+ a| 
+Spécifiez l'option -Protect.
+
+** Si vous utilisez ONTAP et que vous souhaitez protéger immédiatement la sauvegarde sur le stockage secondaire, spécifiez l'option -Protect.
++
+
+NOTE: L'option -protectnow n'est pas applicable dans clustered Data ONTAP.
+
+** Si vous utilisez Data ONTAP sous 7-mode et que vous souhaitez protéger immédiatement la sauvegarde sur un stockage secondaire, en ignorant la planification de protection de protection Manager, spécifiez l'option -protectnow.
+** Pour empêcher la sauvegarde sur le stockage secondaire, spécifiez l'option -noProtect. Si vous utilisez ONTAP et que vous avez sélectionné la stratégie de protection _SnapManager_cdot_Vault_ lors de la création du profil, vous devez spécifier l'option -snapvaultlabel. Vous devez fournir l'étiquette SnapMirror que vous avez spécifiée dans les règles de la règle SnapMirror lors de la configuration de la relation SnapVault comme valeur.
+
+
+
+
+ a| 
+*Spécifiez les valeurs de classe de rétention*
+ a| 
+Spécifiez l'option -retain et indiquez si la sauvegarde doit être conservée selon l'une des classes de rétention suivantes :
+
+** -horaire
+** -tous les jours
+** -hebdomadaire
+** - mensuel
+** -Unlimited si vous ne spécifiez pas la classe de rétention, SnapManager utilise -horaire par défaut.
+
+
+|===
+
+
+
+
+== Exemples
+
+La commande suivante protège une sauvegarde de base de données :
+
+[listing]
+----
+smo backup create -profile PAYDB -protect -retain -daily -full auto -label full_bkup_sales
+----
+La commande suivante protège immédiatement la sauvegarde de la base de données :
+
+[listing]
+----
+smo backup create -profile PAYDB -protectnow -retain -daily -full auto -label full_bkup_sales
+----

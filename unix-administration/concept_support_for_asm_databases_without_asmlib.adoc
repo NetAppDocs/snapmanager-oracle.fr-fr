@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/concept_support_for_asm_databases_without_asmlib.html 
+sidebar: sidebar 
+keywords: snapmanager, asm, asmlib, requirement, asm, disk, group, primary, storage, vbsr, secondary 
+summary: SnapManager prend en charge ASM sans ASMLib, par défaut. La condition fondamentale est que les périphériques utilisés pour les groupes de disques ASM doivent être partitionnés. 
+---
+= Prise en charge des bases de données ASM sans ASMLib
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager prend en charge ASM sans ASMLib, par défaut. La condition fondamentale est que les périphériques utilisés pour les groupes de disques ASM doivent être partitionnés.
+
+Lorsque ASMLib n'est pas installé, les autorisations de périphérique liées aux groupes de disques ASM sont remplacées par root:disk lorsque vous effectuez les opérations suivantes :
+
+* Redémarrez l'hôte
+* Restaurer une base de données à partir du stockage primaire à l'aide d'une technologie SnapRestore basée sur les volumes (VBSR)
+* Restaurer une base de données à partir du stockage secondaire
+
+
+Vous pouvez définir les autorisations de périphérique appropriées en attribuant true à la variable de configuration oracleasm.support.un.asmlib dans smo.conf. Les périphériques associés aux groupes de disques ASM sont ajoutés ou supprimés du fichier initasdisks à chaque ajout ou suppression de nouveaux périphériques de l'hôte. Le fichier initasdisks se trouve dans /etc/initasdisks.
+
+Par exemple, si vous définissez oracleasm.support.unth.asmlib=true et que vous effectuez un montage de sauvegarde, de nouveaux périphériques sont ajoutés à initasdisks. Lors du redémarrage de l'hôte, les autorisations et la propriété du périphérique sont gérées par les scripts de démarrage.
+
+
+NOTE: La valeur par défaut pour oracleasm.support.un.asmlib est FALSE.
+
+*Informations connexes*
+
+xref:reference_supported_partition_devices.adoc[Périphériques de partition pris en charge]

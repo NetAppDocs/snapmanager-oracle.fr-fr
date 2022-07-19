@@ -1,0 +1,96 @@
+---
+permalink: unix-administration/reference_the_smosmsap_history_set_command.html 
+sidebar: sidebar 
+keywords: run, history, set, command, configure, operation, history, smo, profile 
+summary: 'Vous pouvez exécuter la commande jeu d"historiques pour configurer les opérations pour lesquelles vous souhaitez afficher l"historique.' 
+---
+= Commande smo history set
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande jeu d'historiques pour configurer les opérations pour lesquelles vous souhaitez afficher l'historique.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo history set
+-profile \{-name profile_name \[profile_name1, profile_name2\] \| -all
+-repository
+-login \[password repo_password\]
+-username repo_username
+-host repo_host
+-dbname repo_dbname
+-port repo_port}
+-operation \{-operations operation_name \[operation_name1, operation_name2\] \| -all\}
+-retain
+{-count retain_count \| -daily daily_count \| -monthly monthly_count \| -weekly weekly_count}
+[-quiet | -verbose]
+----
+
+
+== Paramètres
+
+* profil **
++
+Spécifie le nom du profil. Le nom peut comporter jusqu'à 30 caractères et doit être unique au sein de l'hôte.
+
+* *-référentiel*
++
+Spécifie les détails de la base de données qui stocke le profil.
+
+* *-dbname repo_dbname*
++
+Indique le nom de la base de données qui stocke le profil. Vous pouvez utiliser le nom global ou l'identifiant système.
+
+* *-hôte repo_host*
++
+Indique le nom ou l'adresse IP de l'hôte sur lequel réside la base de données du référentiel.
+
+* *-connexion*
++
+Spécifie les détails de connexion au référentiel.
+
+* *-username repo_username*
++
+Indique le nom d'utilisateur requis pour accéder à la base de données du référentiel.
+
+* *-port repo_port*
++
+Spécifie le numéro de port TCP (transmission Control Protocol) utilisé pour accéder à la base de données du référentiel.
+
+* *-operationsnom_opération [nom_opération, nom_opération] | -tout*
++
+Spécifie les opérations SnapManager pour lesquelles vous souhaitez configurer l'historique.
+
+* *-conserver {-countretain_count | -dailydaily_count | -mensuel-count | -weeklyhebdomadaire_count}*
++
+Spécifie la classe de conservation des opérations de création de sauvegarde, de vérification des sauvegardes, de restauration et de récupération, et de création et division des clones. La classe de rétention est définie en fonction du nombre d'opérations, du nombre de jours, de semaines ou de mois.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+
+== Exemple de commande
+
+L'exemple suivant affiche des informations sur l'opération de sauvegarde :
+
+[listing]
+----
+smo history set -profile -name PROFILE1 -operation -operations backup -retain -daily 6
+ -verbose
+----

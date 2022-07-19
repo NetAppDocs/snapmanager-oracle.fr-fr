@@ -1,0 +1,24 @@
+---
+permalink: windows/task_authorizing_user_access_to_the_repository.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, credential, database, access, repository, restrict, prevent 
+summary: 'SnapManager vous permet de définir les informations d"identification des utilisateurs de base de données pour accéder au référentiel. À l"aide des informations d"identification, vous pouvez restreindre ou empêcher l"accès aux hôtes, référentiels, profils et bases de données SnapManager.' 
+---
+= Autorisation de l'accès au référentiel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager vous permet de définir les informations d'identification des utilisateurs de base de données pour accéder au référentiel. À l'aide des informations d'identification, vous pouvez restreindre ou empêcher l'accès aux hôtes, référentiels, profils et bases de données SnapManager.
+
+Si vous définissez les informations d'identification à l'aide de la commande dataset, SnapManager ne vous invite pas à entrer un mot de passe.
+
+Vous pouvez définir les informations d'identification de l'utilisateur lors de l'installation de SnapManager ou d'une version ultérieure.
+
+. Saisissez la commande suivante :
++
+informations d'identification smo set -repository -dbname repo_service_name -host repo_host -login -username repo_username [-password repo_password] -port repo_port
+
+

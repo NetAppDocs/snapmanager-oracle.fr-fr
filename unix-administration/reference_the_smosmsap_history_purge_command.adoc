@@ -1,0 +1,89 @@
+---
+permalink: unix-administration/reference_the_smosmsap_history_purge_command.html 
+sidebar: sidebar 
+keywords: command, enable, delete, history, snapmanager, operation, smo, purge 
+summary: 'Cette commande vous permet de supprimer l"historique de l"opération SnapManager.' 
+---
+= Commande de purge de l'historique smo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette commande vous permet de supprimer l'historique de l'opération SnapManager.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo history purge
+-profile \{-name profile_name \[profile_name1, profile_name2\] \| -all
+-repository
+-login \[-password repo_password\]
+-username repo_username
+-host repo_host
+-dbname repo_dbname
+-port repo_port}
+-operation \{-operations operation_name \[operation_name1, operation_name2\] \| -all\}
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* profil **
++
+Spécifie le nom du profil. Ce nom peut comporter jusqu'à 30 caractères et doit être unique au sein de l'hôte.
+
+* *-référentiel*
++
+Les options suivantes -repository spécifient les détails de la base de données qui stocke le profil.
+
+* *-dbname repo_dbname*
++
+Indique le nom de la base de données qui stocke le profil. Utilisez le nom global ou le SID.
+
+* *-hôte repo_host*
++
+Indique le nom ou l'adresse IP de l'ordinateur hôte sur lequel s'exécute la base de données de référentiel.
+
+* *-connexion*
++
+Démarre les détails de connexion au référentiel.
+
+* *-username repo_username*
++
+Indique le nom d'utilisateur nécessaire pour accéder à la base de données qui stocke le référentiel.
+
+* *-port repo_port*
++
+Spécifie le numéro de port TCP utilisé pour accéder à la base de données qui stocke le référentiel.
+
+* *-operationsnom_opération [nom_opération, nom_opération] | -tout*
++
+Spécifie l'opération SnapManager pour laquelle vous configurez l'historique.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur sur la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche des messages d'erreur, d'avertissement et d'information sur la console.
+
+
+
+
+
+== Exemple de commande
+
+[listing]
+----
+
+          smo  history purge -profile -name PROFILE1 -operation -operations backup
+ -verbose
+----

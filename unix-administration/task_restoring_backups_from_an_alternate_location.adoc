@@ -1,0 +1,26 @@
+---
+permalink: unix-administration/task_restoring_backups_from_an_alternate_location.html 
+sidebar: sidebar 
+keywords: restore, backup, alternate, location, data, file, intermediate, system, active, smo, xml 
+summary: 'Vous pouvez restaurer des sauvegardes à partir d"un autre emplacement pour restaurer les fichiers de données d"un système de fichiers intermédiaire vers un système de fichiers actif, ou restaurer les blocs de données d"un périphérique brut intermédiaire vers un périphérique brut actif.' 
+---
+= Restauration des sauvegardes à partir d'un autre emplacement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez restaurer des sauvegardes à partir d'un autre emplacement pour restaurer les fichiers de données d'un système de fichiers intermédiaire vers un système de fichiers actif, ou restaurer les blocs de données d'un périphérique brut intermédiaire vers un périphérique brut actif.
+
+* Créez un fichier XML de spécification de restauration et spécifiez le type de méthode de restauration que vous souhaitez utiliser.
+
+
+Vous pouvez utiliser la commande smo backup restore et spécifier le fichier XML de spécification de restauration que vous avez créé pour restaurer la sauvegarde à partir d'un autre emplacement.
+
+. Entrez la commande suivante : smo backup restore -profileprofile-labellabel-alllogs-restorespecpec
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_restore_command.adoc[Commande smo backup restore]

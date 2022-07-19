@@ -1,0 +1,38 @@
+---
+permalink: unix-administration/task_mounting_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, handle, mount, backup, available, host, scenario, rman, 7-mode 
+summary: 'SnapManager gère automatiquement le montage d"une sauvegarde pour la rendre disponible à l"hôte. Vous pouvez également monter des sauvegardes dans les situations où vous utilisez un outil externe, comme Oracle Recovery Manager \(RMAN\), pour accéder aux fichiers de la sauvegarde.' 
+---
+= Montage des supports
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager gère automatiquement le montage d'une sauvegarde pour la rendre disponible à l'hôte. Vous pouvez également monter des sauvegardes dans les situations où vous utilisez un outil externe, comme Oracle Recovery Manager (RMAN), pour accéder aux fichiers de la sauvegarde.
+
+Si vous utilisez RMAN, vous devez utiliser l'opération de montage pour modifier l'état d'une sauvegarde (qui autorise l'accès) et l'opération de démontage pour modifier l'état d'une sauvegarde (qui supprime l'accès).
+
+La commande smo backup mount affiche une liste de chemins d'accès vers lesquels les copies Snapshot composées de la sauvegarde ont été montées.
+
+Vous pouvez utiliser l'option -from-secondaire pour monter la sauvegarde à partir du stockage secondaire. Si vous n'utilisez pas cette option, SnapManager monte la sauvegarde à partir du stockage principal.
+
+Vous devez spécifier l'option -copy-ID lorsque vous spécifiez l'option -from-Secondary. Si plusieurs sauvegardes sont possibles sur le système de stockage secondaire, l'option -copy-ID permet de spécifier la copie de sauvegarde sur le stockage secondaire à utiliser pour monter la sauvegarde.6
+
+
+NOTE: Si vous utilisez Data ONTAP sous 7-mode, vous devez indiquer une valeur valide pour l'option -copy-ID. Cependant, si vous utilisez clustered Data ONTAP, l'option -copy-ID n'est pas requise.
+
+Si vous montez une sauvegarde de base de données sur un hôte distant, vous devez vous assurer que les informations d'identification ASM (Automatic Storage Management) sont les mêmes sur les deux hôtes.
+
+
+NOTE: Vous pouvez éventuellement collecter les fichiers de vidage après une opération de montage de sauvegarde réussie ou ayant échoué.
+
+. Pour monter une sauvegarde, entrez la commande suivante :
+`smo backup mount -profile profile_name {labellabel [data | -archivelogs] | -idid} [-host-host] [-from-secondary [-copy-id id]] [-dump] [-quiet | -verbose]`
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_mount_command.adoc[Commande smo backup mount]

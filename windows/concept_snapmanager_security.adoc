@@ -1,0 +1,66 @@
+---
+permalink: windows/concept_snapmanager_security.html 
+sidebar: sidebar 
+keywords: perform, operation, appropriate, credential, security, authentication 
+summary: 'Vous ne pouvez effectuer des opérations SnapManager que si vous disposez des informations d"identification appropriées. La sécurité dans SnapManager est régie par l"authentification utilisateur.' 
+---
+= Comment SnapManager assure la sécurité
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous ne pouvez effectuer des opérations SnapManager que si vous disposez des informations d'identification appropriées. La sécurité dans SnapManager est régie par l'authentification utilisateur.
+
+SnapManager assure la sécurité en demandant l'authentification utilisateur par le biais d'invites de mot de passe ou en paramétrant des identifiants utilisateur. Un utilisateur efficace est authentifié et autorisé avec le serveur SnapManager.
+
+Les informations d'identification SnapManager et l'authentification utilisateur diffèrent considérablement de SnapManager 3.0 :
+
+* Dans les versions SnapManager antérieures à 3.0, vous devez définir un mot de passe de serveur arbitraire lors de l'installation de SnapManager. Toute personne souhaitant utiliser le serveur SnapManager aurait besoin du mot de passe du serveur SnapManager. Le mot de passe du serveur SnapManager devra être ajouté aux identifiants de l'utilisateur à l'aide de la commande smo login set -host.
+* Dans SnapManager (3.0 et versions ultérieures), le mot de passe du serveur SnapManager a été remplacé par l'authentification du système d'exploitation utilisateur individuel (OS). Si vous n'exécutez pas le client à partir du même serveur que l'hôte, le serveur SnapManager effectue l'authentification en utilisant vos noms d'utilisateur et mots de passe OS. Si vous ne souhaitez pas être invité à saisir les mots de passe de votre système d'exploitation, vous pouvez les enregistrer dans le cache des informations d'identification des utilisateurs SnapManager à l'aide de la commande smo login set -host.
++
+
+NOTE: La commande smo Credential set -host mémorise vos informations d'identification lorsque la propriété host.credentials.persistent dans le fichier smo.config est définie sur true.
+
+
+
+*Exemple*
+
+User1 et User2 partagent un profil appelé Profes2. User2 ne peut pas effectuer de sauvegarde de Databas1 dans Host1 sans autorisation d'accès à Host1. User1 ne peut pas cloner une base de données sur Host3 sans l'autorisation d'accéder à Host3.
+
+Le tableau suivant décrit les différentes autorisations attribuées aux utilisateurs :
+
+|===
+
+
+| Type d'autorisation | Utilisateur1 | Utilisateur2 
+
+
+ a| 
+Mot de passe de l'hôte
+ a| 
+Host1, Host2
+ a| 
+Host2, Host3
+
+
+
+ a| 
+Mot de passe du référentiel
+ a| 
+Référentiel 1
+ a| 
+Référentiel 1
+
+
+
+ a| 
+Mot de passe du profil
+ a| 
+Profes1, Profi
+ a| 
+Profil 2
+
+|===
+Dans le cas où User1 et User2 ne disposent d'aucun profil partagé, supposez User1 dispose des autorisations pour les hôtes nommés Host1 et Host2, et User2 dispose des autorisations pour l'hôte nommé Host2. User2 ne peut pas exécuter même les commandes non profile telles que dump et system reverify sur Host1.

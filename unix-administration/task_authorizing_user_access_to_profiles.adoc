@@ -1,0 +1,21 @@
+---
+permalink: unix-administration/task_authorizing_user_access_to_profiles.html 
+sidebar: sidebar 
+keywords: addition, role-based, access, control, rbac, snapmanager, enable, password, profile, prevent, unauthorized, access 
+summary: 'En plus du contrôle d"accès basé sur des rôles \(RBAC\), SnapManager vous permet de définir un mot de passe pour un profil afin d"empêcher tout accès non autorisé.' 
+---
+= Autoriser l'accès aux profils
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Outre le contrôle d'accès basé sur des rôles (RBAC), SnapManager vous permet de définir un mot de passe pour un profil afin de prévenir les accès non autorisés.
+
+. Entrez la commande suivante : 'mo Credential set -profile -name nom_profil [-mot_de_passe]'
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapcredential_set_command.adoc[La commande SMO Credential set]

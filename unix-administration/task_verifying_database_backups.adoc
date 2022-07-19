@@ -1,0 +1,27 @@
+---
+permalink: unix-administration/task_verifying_database_backups.html 
+sidebar: sidebar 
+keywords: backup, verify, command, block, database, corrupt, operation, invoke, oracle, smo 
+summary: 'Vous pouvez utiliser la commande backup verify pour vérifier que les blocs de la sauvegarde de base de données ne sont pas corrompus. L"opération de vérification appelle l"utilitaire Oracle Database Verify pour chaque fichier de données de la sauvegarde.' 
+---
+= Vérification des sauvegardes de la base de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la commande backup verify pour vérifier que les blocs de la sauvegarde de base de données ne sont pas corrompus. L'opération de vérification appelle l'utilitaire Oracle Database Verify pour chaque fichier de données de la sauvegarde.
+
+SnapManager vous permet d'effectuer la vérification à tout moment qui vous convient et aux utilisateurs de votre système. Vous pouvez effectuer la vérification immédiatement après avoir créé la sauvegarde. Vous devez spécifier le profil contenant la sauvegarde et le libellé ou l'ID de la sauvegarde que vous avez créée.
+
+
+NOTE: Vous pouvez spécifier -dump pour collecter les fichiers de vidage après l'opération de vérification de sauvegarde.
+
+. Saisissez la commande suivante :
+`smo backup verify -profile profile_name [-label label | -idid] [-force] [ -dump] [-quiet | -verbose]`
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_verify_command.adoc[Commande smo backup verify]

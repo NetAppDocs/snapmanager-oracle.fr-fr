@@ -1,0 +1,21 @@
+---
+permalink: unix-administration/task_checking_the_snapmanager_software_version.html 
+sidebar: sidebar 
+keywords: determine, version, product, run, local, host, command, snapmanager, software, smo, check 
+summary: Vous pouvez déterminer la version du produit que vous exécutez sur votre hôte local en exécutant la commande version. 
+---
+= Vérification de la version du logiciel SnapManager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez déterminer la version du produit que vous exécutez sur votre hôte local en exécutant la commande version.
+
+. Pour vérifier la version du SnapManager, entrez cette commande : version de smo
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapversion_command.adoc[Commande SMO version]

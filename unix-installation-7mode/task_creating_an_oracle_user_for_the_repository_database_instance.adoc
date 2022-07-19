@@ -1,0 +1,25 @@
+---
+permalink: unix-installation-7mode/task_creating_an_oracle_user_for_the_repository_database_instance.html 
+sidebar: sidebar 
+keywords: oracle, user, require, log, in, access, repository, database, instance, create, connect 
+summary: 'Un utilisateur Oracle est requis pour se connecter à l"instance de base de données du référentiel et y accéder. Vous devez créer cet utilisateur avec les privilèges de connexion et de ressource.' 
+---
+= Création d'un utilisateur Oracle pour l'instance de base de données du référentiel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un utilisateur Oracle est requis pour se connecter à l'instance de base de données du référentiel et y accéder. Vous devez créer cet utilisateur avec les privilèges _Connect_ et _Resource_.
+
+. Connectez-vous à SQL *plus : 'qlplus / AS sysdba'
+. Créez un nouvel utilisateur et attribuez un mot de passe d'administrateur à cet utilisateur : « Create useruser_name identied by admin_password Default tablespace_name quota Unlimited on tablespace_name ; »
++
+** nom_utilisateur est le nom de l'utilisateur que vous créez pour la base de données du référentiel.
+** admin_password est le mot de passe que vous souhaitez attribuer à l'utilisateur.
+** nom_espace_table est le nom de l'espace de table créé pour la base de données du référentiel.
+
+
+. Attribuez des privilèges _Connect_ et _Resource_ au nouvel utilisateur Oracle : 'Grant Connect, ressource à user_name;'
+

@@ -1,0 +1,379 @@
+---
+permalink: unix-administration/reference_sample_database_volume_layouts.html 
+sidebar: sidebar 
+keywords: refer, sample, database, volume, layout, configuring, database 
+summary: 'Vous pouvez vous reporter à des exemples de disposition de volume de base de données pour obtenir de l"aide sur la configuration de votre base de données.' 
+---
+= Exemples de disposition de volumes de base de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vous reporter à des exemples de disposition de volume de base de données pour obtenir de l'aide sur la configuration de votre base de données.
+
+
+
+== Bases de données à instance unique
+
+|===
+| Types de fichiers | Noms des volumes | Volume dédié pour les types de fichiers | Copies Snapshot automatiques 
+
+
+ a| 
+Binaires Oracle
+ a| 
+nom_hôte_orabin
+ a| 
+Oui.
+ a| 
+Marche
+
+
+
+ a| 
+Fichiers de données
+ a| 
+oradata_sid
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de données temporaires
+ a| 
+oratemp_sid
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de contrôle
+ a| 
+Oracntrl01_sid (multiplexée)
+
+Oracntrl02_sid (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux de reprise
+ a| 
+Oralog01_sid (multiplexée)
+
+Oralog02_sid (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux d'archivage
+ a| 
+oraarch_sid
+ a| 
+Oui.
+ a| 
+Éteint
+
+|===
+
+
+== Bases de données RAC (Real application clusters)
+
+|===
+| Types de fichiers | Noms des volumes | Volume dédié pour les types de fichiers | Copies Snapshot automatiques 
+
+
+ a| 
+Binaires Oracle
+ a| 
+nom_hôte_orabin
+ a| 
+Oui.
+ a| 
+Marche
+
+
+
+ a| 
+Fichiers de données
+ a| 
+oradata_dbname
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de données temporaires
+ a| 
+oratemp_dbname
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de contrôle
+ a| 
+Oracntrl01_dbname (multiplexée)
+
+Oracntrl02_dbname (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux de reprise
+ a| 
+Oralog01_dbname (multiplexée)
+
+Oralog02_dbname (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux d'archivage
+ a| 
+oraarch_dbname
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de cluster
+ a| 
+oracrs_clustername
+ a| 
+Oui.
+ a| 
+Marche
+
+|===
+
+
+== Instance unique d'une base de données ASM (Automatic Storage Management)
+
+|===
+| Types de fichiers | Noms des volumes | Noms de LUN | Volume dédié pour les types de fichiers | Copies Snapshot automatiques 
+
+
+ a| 
+Binaires Oracle
+ a| 
+nom_hôte_orabin
+ a| 
+nom_hôte_orabin
+ a| 
+Oui.
+ a| 
+Marche
+
+
+
+ a| 
+Fichiers de données
+ a| 
+oradata_sid
+ a| 
+oradata_sidlun
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de données temporaires
+ a| 
+oratemp_sid
+ a| 
+Oratemp_sidlun
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de contrôle
+ a| 
+Oracntrl01_sid (multiplexée)
+
+Oracntrl02_sid (multiplexée)
+ a| 
+Oracntrl01_sidlun (multiplexée)
+
+Oracntrl02_sidlun (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux de reprise
+ a| 
+Oralog01_dbname (multiplexée)
+
+Oralog02_dbname (multiplexée)
+ a| 
+Oralog01_dbnamelun (multiplexée)
+
+Oralog02_dbnamelun (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux d'archivage
+ a| 
+oraarch_sid
+ a| 
+Oraarch_sidlun
+ a| 
+Oui.
+ a| 
+Éteint
+
+|===
+
+
+== Bases de données RAC ASM
+
+|===
+| Types de fichiers | Noms des volumes | Noms de LUN | Volume dédié pour les types de fichiers | Copies Snapshot automatiques 
+
+
+ a| 
+Binaires Oracle
+ a| 
+nom_hôte_orabin
+ a| 
+nom_hôte_orabin
+ a| 
+Oui.
+ a| 
+Marche
+
+
+
+ a| 
+Fichiers de données
+ a| 
+oradata_sid
+ a| 
+oradata_sidlun
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de données temporaires
+ a| 
+oratemp_sid
+ a| 
+Oratemp_sidlun
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de contrôle
+ a| 
+Oracntrl01_sid (multiplexée)
+
+Oracntrl02_sid (multiplexée)
+ a| 
+Oracntrl01_sidlun (multiplexée)
+
+Oracntrl02_sidlun (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux de reprise
+ a| 
+Oralog01_dbname (multiplexée)
+
+Oralog02_dbname (multiplexée)
+ a| 
+Oralog01_dbnamelun (multiplexée)
+
+Oralog02_dbnamelun (multiplexée)
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Journaux d'archivage
+ a| 
+oraarch_sid
+ a| 
+Oraarch_sidlun
+ a| 
+Oui.
+ a| 
+Éteint
+
+
+
+ a| 
+Fichiers de cluster
+ a| 
+oracrs_clustername
+ a| 
+oracrs_clusternamelun
+ a| 
+Oui.
+ a| 
+Marche
+
+|===

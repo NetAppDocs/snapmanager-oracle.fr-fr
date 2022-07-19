@@ -1,0 +1,27 @@
+---
+permalink: windows/task_freeing_or_deleting_retention_policy_exempt_backups.html 
+sidebar: sidebar 
+keywords: backup, retention, class, unlimited, delete, freed, directly, assign, eligible, deletion, free, deleting, exempy 
+summary: 'Les sauvegardes dotées d"une classe de rétention « illimitée » ne peuvent pas être supprimées ni libérées directement. Pour supprimer ou libérer ces sauvegardes, vous devez d"abord attribuer une autre classe de rétention, par exemple toutes les heures, tous les jours, toutes les semaines ou tous les mois. Pour supprimer ou libérer une sauvegarde qui est exempte de la politique de rétention, vous devez d"abord mettre à jour la sauvegarde pour la rendre éligible à la suppression ou la libérer.' 
+---
+= La libération ou la suppression de sauvegardes exonérées de règles de conservation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les sauvegardes dotées d'une classe de rétention « illimitée » ne peuvent pas être supprimées ni libérées directement. Pour supprimer ou libérer ces sauvegardes, vous devez d'abord attribuer une autre classe de rétention, par exemple toutes les heures, tous les jours, toutes les semaines ou tous les mois. Pour supprimer ou libérer une sauvegarde qui est exempte de la politique de rétention, vous devez d'abord mettre à jour la sauvegarde pour la rendre éligible à la suppression ou la libérer.
+
+. Pour mettre à jour la sauvegarde afin qu'elle puisse être supprimée par la stratégie de conservation, entrez cette commande : smo backup update -profileprofile_name {-labellabel [data | -archiveils] | -idid} -retain [-hre | -Daily | -hebdomadaire | -monthly]
+. Après avoir mis à jour la sauvegarde afin qu'elle puisse être supprimée, vous pouvez supprimer la sauvegarde ou les ressources de sauvegarde gratuites.
++
+** Pour supprimer la sauvegarde, entrez cette commande : smo backup delete -profileprofile_name {-labellabel [data | -archiveils] | -idid | -all}
+** Pour libérer les ressources de sauvegarde, au lieu de supprimer la sauvegarde, entrez cette commande :smo backup free -profileprofile_name {-labellabel [data | -archiveils] | -idid | -all} [-force] [ -dump] [-quiet | -verbose]
+
+
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_update_command.adoc[Commande smo backup update]

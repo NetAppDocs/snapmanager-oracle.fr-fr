@@ -1,0 +1,50 @@
+---
+permalink: windows/reference_the_smosmsapsystem_dump_command.html 
+sidebar: sidebar 
+keywords: run, system, dump, command, create, jar, file, contain, diagnostic, information, smo 
+summary: 'Vous pouvez exécuter la commande system dump pour créer un fichier JAR qui contient des informations de diagnostic sur l"environnement du serveur.' 
+---
+= Commande smo system dump
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande system dump pour créer un fichier JAR qui contient des informations de diagnostic sur l'environnement du serveur.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo system dump
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+
+== Exemple de la commande system dump
+
+L'exemple suivant utilise la commande smo system dump pour créer un fichier JAR :
+
+[listing]
+----
+smo system dump
+Path: C:\\userhomedirectory\\netapp\\smo\\3.3.0\\smo_dump_hostname.jar
+----

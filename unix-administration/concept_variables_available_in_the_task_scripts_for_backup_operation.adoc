@@ -1,0 +1,236 @@
+---
+permalink: unix-administration/concept_variables_available_in_the_task_scripts_for_backup_operation.html 
+sidebar: sidebar 
+keywords: snapmanager, context, information, environment, variable, backup, operation 
+summary: 'SnapManager fournit des informations contextuelles sous forme de variables d"environnement associées à l"opération de sauvegarde en cours. Par exemple, votre script peut récupérer le nom de l"hôte d"origine, le nom de la stratégie de conservation et l"étiquette de la sauvegarde.' 
+---
+= Variables disponibles dans les scripts de tâches pour l'opération de sauvegarde
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager fournit des informations contextuelles sous forme de variables d'environnement associées à l'opération de sauvegarde en cours. Par exemple, votre script peut récupérer le nom de l'hôte d'origine, le nom de la stratégie de conservation et l'étiquette de la sauvegarde.
+
+Le tableau suivant répertorie les variables d'environnement que vous pouvez utiliser dans vos scripts :
+
+|===
+| Variables | Description | Format 
+
+
+ a| 
+ID_OPÉRATION_SM
+ a| 
+Spécifie l'ID de l'opération en cours
+ a| 
+chaîne
+
+
+
+ a| 
+NOM_PROFIL_SM
+ a| 
+Spécifie le nom du profil utilisé
+ a| 
+chaîne
+
+
+
+ a| 
+SM_SID
+ a| 
+Spécifie l'identifiant système de la base de données
+ a| 
+chaîne
+
+
+
+ a| 
+HÔTE_SM
+ a| 
+Spécifie le nom d'hôte de la base de données
+ a| 
+chaîne
+
+
+
+ a| 
+SM_OS_USER
+ a| 
+Indique le propriétaire du système d'exploitation de la base de données
+ a| 
+chaîne
+
+
+
+ a| 
+SM_OS_GROUP
+ a| 
+Spécifie le groupe OS de la base de données
+ a| 
+chaîne
+
+
+
+ a| 
+SM_BACKUP_TYPE
+ a| 
+Spécifie le type de sauvegarde (en ligne, hors ligne ou auto)
+ a| 
+chaîne
+
+
+
+ a| 
+SM_BACKUP_LABEL
+ a| 
+Spécifie le libellé de la sauvegarde
+ a| 
+chaîne
+
+
+
+ a| 
+ID_SAUVEGARDE_SM
+ a| 
+Spécifie l'ID de la sauvegarde
+ a| 
+chaîne
+
+
+
+ a| 
+SM_SAUVEGARDE_CONSERVATION
+ a| 
+Spécifie la période de conservation
+ a| 
+chaîne
+
+
+
+ a| 
+SM_BACKUP_PROFILE
+ a| 
+Spécifie le profil utilisé pour cette sauvegarde
+ a| 
+chaîne
+
+
+
+ a| 
+SM_ALLOW_DATABASE_SHUTDOWN
+ a| 
+Spécifie si vous souhaitez démarrer ou arrêter la base de données si nécessaire, vous pouvez utiliser l'option -force à partir de l'interface de ligne de commande.
+ a| 
+booléen
+
+
+
+ a| 
+SM_BACKUP_SCOPE
+ a| 
+Spécifie l'étendue de la sauvegarde (complète ou partielle)
+ a| 
+chaîne
+
+
+
+ a| 
+SM_SAUVEGARDE_PROTECTION
+ a| 
+Indique si la protection de sauvegarde est activée
+ a| 
+booléen
+
+
+
+ a| 
+NOM_FILER_CIBLE_SM
+ a| 
+Spécifie le nom du système de stockage cible *Remarque :* si plusieurs systèmes de stockage sont utilisés, les noms du système de stockage doivent être séparés par des virgules.
+ a| 
+chaîne
+
+
+
+ a| 
+SM_TARGET_VOLUME_NAME
+ a| 
+Spécifie le nom du volume cible *Remarque :* le nom du volume cible doit être préfixé avec le nom du périphérique de stockage, par exemple SM_TARGET_FILER_NAME/SM_TARGET_VOLUME_NAME.
+ a| 
+chaîne
+
+
+
+ a| 
+SM_HOST_FILE_SYSTEM
+ a| 
+Spécifie le système de fichiers hôte
+ a| 
+chaîne
+
+
+
+ a| 
+SM_SNAPSHOT_NAMES
+ a| 
+Spécifie la liste de snapshots *Remarque :* le nom des copies Snapshot doit être préfixé avec le nom du système de stockage et le nom du volume. Les noms des copies Snapshot sont séparés par une virgule.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+SM_ASM_DISK_GROUPS
+ a| 
+Spécifie la liste Groupe de disques ASM
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+SM_ARCHIVE_LOGS_RÉPERTOIRE
+ a| 
+Spécifie le répertoire des journaux d'archives *Remarque :* si les journaux d'archives sont situés dans plusieurs répertoires, les noms de ces répertoires sont séparés par des virgules.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+SM_REDO_LOGS_DIRECTORY
+ a| 
+Spécifie le répertoire des journaux de reprise *Remarque :* si les journaux de reprise se trouvent dans plusieurs répertoires, les noms de ces répertoires sont séparés par des virgules.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+SM_CONTROL_FILES_DIRECTORY
+ a| 
+Spécifie le répertoire des fichiers de contrôle *Remarque :* si les fichiers de contrôle se trouvent dans plusieurs répertoires, les noms de ces répertoires sont séparés par des virgules.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+SM_DATA_FILES_DIRECTORY
+ a| 
+Spécifie le répertoire des fichiers de données *Remarque :* si les fichiers de données se trouvent dans plusieurs répertoires, les noms de ces répertoires sont séparés par des virgules.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+défini par l'utilisateur
+ a| 
+Spécifie des paramètres supplémentaires définis par l'utilisateur. Les paramètres définis par l'utilisateur ne sont pas disponibles pour les plug-ins utilisés comme stratégies.
+ a| 
+défini par l'utilisateur
+
+|===

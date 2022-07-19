@@ -1,0 +1,16 @@
+---
+permalink: unix-installation-7mode/reference_deployment_workflow.html 
+sidebar: sidebar 
+keywords: create, backup, snapmanager, install, snapdrive, unix, oracle, deployment, workflow 
+summary: 'Avant de pouvoir créer des sauvegardes avec SnapManager, vous devez d"abord installer SnapDrive pour UNIX, puis installer SnapManager pour Oracle.' 
+---
+= Flux de travail de déploiement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de pouvoir créer des sauvegardes avec SnapManager, vous devez d'abord installer SnapDrive pour UNIX, puis installer SnapManager pour Oracle.
+
+image::../media/deployment_workflow_smo_7mode_c1.gif[Ce diagramme présente le flux de travail de déploiement de SnapManager pour Oracle dans un environnement 7-mode.]

@@ -1,0 +1,35 @@
+---
+permalink: windows/concept_general_layout_and_configuration.html 
+sidebar: sidebar 
+keywords: general, layout, configuration, information, storage, disk, group 
+summary: Pour éviter tout problème lié aux groupes de disques, aux types de fichiers et aux espaces de stockage, des informations sont disponibles sur les dispositions générales recommandées des bases de données et les configurations de stockage. 
+---
+= Disposition générale et configuration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour éviter tout problème lié aux groupes de disques, aux types de fichiers et aux espaces de stockage, des informations sont disponibles sur les dispositions générales recommandées des bases de données et les configurations de stockage.
+
+* N'incluez pas de fichiers provenant de plusieurs types de système de fichiers SAN dans votre base de données.
++
+Tous les fichiers qui font partie d'une base de données doivent résider sur le même type de système de fichiers.
+
+* La baie SnapManager requiert un grand nombre de blocs de 4 Ko.
+* Si vous souhaitez enregistrer des sauvegardes SnapManager avec Oracle Recovery Manager (RMAN), vous devez créer des profils compatibles avec RMAN.
+
+
+Voici quelques consignes pour la séparation des volumes :
+
+* Les fichiers de données d'une seule base de données doivent se trouver dans le volume.
+* Vous devez utiliser des volumes distincts pour chacune des classifications de fichiers suivantes : fichiers binaires de base de données, fichiers de données, fichiers journaux de reprise en ligne, fichiers journaux de reprise archivés et fichiers de contrôle.
+* Il n'est pas nécessaire de créer un volume distinct pour les fichiers de base de données temporaires, car SnapManager ne sauvegarde pas les fichiers de base de données temporaires.
+
+
+Pour plus d'informations, consultez le document _SnapManager for Oracle Best Practices_.
+
+*Informations connexes*
+
+http://media.netapp.com/documents/tr-3761.pdf["Meilleures pratiques SnapManager pour Oracle : media.netapp.com/documents/tr-3761.pdf"]

@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/task_retaining_backups_forever.html 
+sidebar: sidebar 
+keywords: specify, backup, ineligible, deletion, retention, policy, indefinite, unlimited, basis, smo 
+summary: 'Vous pouvez indiquer qu"une sauvegarde ne peut pas être supprimée par la stratégie de rétention pour conserver indéfiniment la sauvegarde.' 
+---
+= Conservation des sauvegardes indéfiniment
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez indiquer qu'une sauvegarde ne peut pas être supprimée par la stratégie de rétention pour conserver indéfiniment la sauvegarde.
+
+. Pour spécifier qu'une sauvegarde est conservée sans limite, entrez la commande suivante :
+`smo backup update -profileprofile_name {-labellabel [data | -archivelogs] | -idid} -retain -unlimited`
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_update_command.adoc[Commande smo backup update]

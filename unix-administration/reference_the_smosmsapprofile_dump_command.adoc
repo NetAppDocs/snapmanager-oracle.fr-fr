@@ -1,0 +1,56 @@
+---
+permalink: unix-administration/reference_the_smosmsapprofile_dump_command.html 
+sidebar: sidebar 
+keywords: run, profile, dump, command, create, jar, file, contain, diagnostic, information, smo 
+summary: Vous pouvez exécuter la commande de vidage de profil pour créer le fichier .jar qui contient des informations de diagnostic sur un profil. 
+---
+= Commande smo profile dump
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande de vidage de profil pour créer le fichier .jar qui contient des informations de diagnostic sur un profil.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo profile dump
+-profile profile_name
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* *-profil nom_profil*
++
+Spécifie le profil pour lequel vous souhaitez créer les fichiers de vidage. Le profil contient l'identifiant de la base de données et d'autres informations sur la base de données.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+
+== Exemple
+
+L'exemple suivant crée un vidage pour le profil SALES1 :
+
+[listing]
+----
+smo profile dump -profile SALES1
+Dump file created
+Path:/userhomedirectory/.netapp/smo/3.3.0/smo_dump_SALES1_hostname.jar
+----

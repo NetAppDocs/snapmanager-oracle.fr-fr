@@ -1,0 +1,23 @@
+---
+permalink: unix-administration/task_viewing_the_result_of_the_clone_split_process.html 
+sidebar: sidebar 
+keywords: view, result, clone, split, process, start, smo 
+summary: Vous pouvez afficher le résultat du processus de fractionnement du clone que vous avez démarré. 
+---
+= Affichage des résultats du processus de fractionnement du clone
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez afficher le résultat du processus de fractionnement du clone que vous avez démarré.
+
+. Pour afficher le résultat du processus de fractionnement de clone, entrez la commande suivante :
+`smo clone split-result -profileprofile [-hosthostname] [-labelsplit-label | -idsplit-id] [-quiet | -verbose]`
+
+
+[listing]
+----
+smo clone split-result -profile p1 -id 8abc01ec0e78f3e2010e78f3fdd00001
+----

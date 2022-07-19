@@ -1,0 +1,24 @@
+---
+permalink: unix-administration/concept_volume_management_restrictions.html 
+sidebar: sidebar 
+keywords: snapmanager, volume, management, restriction, environment, asm, disk, group, linux 
+summary: SnapManager impose des restrictions sur la gestion des volumes qui peuvent affecter votre environnement. 
+---
+= Restrictions de gestion des volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager impose des restrictions sur la gestion des volumes qui peuvent affecter votre environnement.
+
+Vous pouvez avoir plusieurs groupes de disques pour une base de données, mais les restrictions suivantes s'appliquent à tous les groupes de disques d'une base de données donnée :
+
+* Les groupes de disques de la base de données peuvent être gérés par un seul gestionnaire de volumes.
+* Les périphériques bruts sauvegardés par un gestionnaire de volumes logiques ne sont pas pris en charge pour la protection des données Oracle.
++
+Le stockage brut des périphériques et les groupes de disques ASM (Automatic Storage Management) doivent être provisionnés directement sur des périphériques physiques. Dans certains cas, un partitionnement est nécessaire.
+
+* Un environnement Linux sans gestion de volume logique nécessite une partition.
+

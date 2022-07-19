@@ -1,0 +1,74 @@
+---
+permalink: unix-administration/task_ensuring_that_asm_discovers_imported_disks.html 
+sidebar: sidebar 
+keywords: automatic, storage, management, asm, nfs, environment, install, snapmanager, discover, import, disk, snapmanager 
+summary: 'Si vous utilisez la gestion automatique du stockage \(ASM\) dans un environnement NFS, après avoir installé SnapManager, vous devez vous assurer qu"ASM peut détecter les disques importés par SnapManager. Pour ce faire, vous pouvez ajouter le chemin du répertoire ASM au paramètre ASM_DISKSTRING.' 
+---
+= S'assurer que ASM détecte les disques importés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous utilisez ASM (Automatic Storage Management) dans un environnement NFS, après avoir installé SnapManager, vous devez vous assurer qu'ASM peut détecter les disques importés par SnapManager. Pour ce faire, vous pouvez ajouter le chemin du répertoire ASM au paramètre ASM_DISKSTRING.
+
+Vous pouvez utiliser les outils Oracle pour modifier le paramètre ASM_DISKSTRING. Pour plus d'informations sur la modification de ASM_DISKSTRING, consultez la documentation Oracle.
+
+Le chemin d'accès au disque ASM /opt/NetApp/smo/mnt/*/*/disk*' doit être ajouté au chemin d'accès existant défini dans le paramètre ASM_DISKSTRING. Par exemple, si le chemin défini dans ASM_DISKSTRING était /mnt/my-asm-disks/dir1/disque*, après avoir ajouté le chemin de disque ASM, le chemin mis à jour sera '/mnt/my-asm-disks/dir1/disque*,/opt/NetApp/smo/mnt/*/disk*'.
+
+
+NOTE: Le paramètre ASM_DISKSTRING doit uniquement correspondre aux fichiers de disque ASM et non aux autres fichiers.
+
+* Le premier astérisque (*) indique le nom généré par SnapManager pour le point de montage racine.
+* La seconde * indique le répertoire dans le point de montage.
+* La troisième * indique le nom du fichier NFS.
+
+
+Vous devez vous assurer que le * correspond à la topologie de votre système de fichiers NFS, si le disque est monté dans les répertoires sous /opt/NetApp/smo/mnt/<nom-généré-smo>/.
+
+. Si vous utilisez des disques ASM avec NFS dans l'environnement Network Attached Storage (NAS), modifiez le paramètre ASM_DISKSTRING afin qu'il pointe vers le chemin d'accès du répertoire ASM actuel.
++
+Si le point de montage des disques ASM est /mnt/my-asm-disks/*/disk*, après avoir modifié ASM_DISKSTRING, le chemin mis à jour est /opt/NetApp/smo/mnt/my-asm-disks-20081012/disk1.nfs. Le paramètre ASM_DISKSTRING se présente sous la forme /opt/NetApp/smo/mnt/*/disk*.
+
++
+** Le premier * correspond à My-asm-disks-20081012.
+** Le disque* correspond à disk1.nfs. Après avoir modifié le paramètre ASM_DISKSTRING, les résultats de la découverte des disques importés par SnapManager sont les suivants :
+** Le clone d'ASM sur disque NFS 1 est /opt/NetApp/smo/mnt/-mnt-my-asm-disks-20081012/dir1/disk1.nfs.
+** Le clone d'ASM sur disque NFS 2 est /opt/NetApp/smo/mnt/-mnt-my-asm-disks-20081012/dir1/disk2.nfs. Le paramètre ASM_DISKSTRING se présente sous la forme /opt/NetApp/smo/mnt/*/*/disk*.
+** Le premier * correspond à -mnt-my-asm-disks-20081012.
+** Le second * correspond à dir1.
+** Le troisième * correspond à disk1.nfs et disk2.nfs.
+
+
+. Si vous utilisez des disques ASM dans l'environnement Storage Area Network (SAN), effectuez l'une des opérations suivantes selon l'environnement :
++
+|===
+| Si vous utilisez des disques ASM avec... | Alors... 
+
+
+ a| 
+ASMLib sur FCP et iSCSI sur Linux
+ a| 
+Modifiez l'autorisation du propriétaire du logiciel Oracle et du groupe principal de l'utilisateur en utilisant uniquement le périphérique de caractères. Le chemin ASM_DISKSTRING doit être ASM DISKSTRING = ORCL:*.
+
+
+
+ a| 
+FCP et iSCSI sous AIX
+ a| 
+Ajoutez le chemin d'accès du paramètre ASM_DISKSTRING jusqu'au chemin d'accès du répertoire ASM. Le chemin ASM_DISKSTRING doit être ASM DISKSTRING = /dev/hdsk/*, où * indique le nom du disque ASM.
+
+
+
+ a| 
+FCP et iSCSI sur Solaris
+ a| 
+Ajoutez le chemin d'accès du paramètre ASM_DISKSTRING jusqu'au chemin d'accès du répertoire ASM. Le chemin ASM_DISKSTRING doit être ASM DISKSTRING = /dev/rdsk/*, où * indique le nom du disque ASM.
+
++
+
+|===
+
+
+http://www.oracle.com/technetwork/indexes/documentation/index.html["Documentation Oracle : www.oracle.com/technetwork/indexes/documentation/index.html"]

@@ -1,0 +1,28 @@
+---
+permalink: windows/reference_running_multiple_parallel_operations_fail_in_snapmanager.html 
+sidebar: sidebar 
+keywords: run, multiple, parallel, operation, fail, database, storage, system, igroup, lun 
+summary: 'Lorsque vous exécutez plusieurs opérations parallèles sur des bases de données distinctes résidant sur le même système de stockage, le groupe initiateur pour les LUN associées aux deux bases de données peut être supprimé en raison de l"une de ces opérations. Plus tard, si l"autre opération tente d"utiliser le groupe initiateur supprimé, SnapManager affiche un message d"erreur.' 
+---
+= L'exécution de plusieurs opérations parallèles échoue dans SnapManager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous exécutez plusieurs opérations parallèles sur des bases de données distinctes résidant sur le même système de stockage, le groupe initiateur pour les LUN associées aux deux bases de données peut être supprimé en raison de l'une de ces opérations. Plus tard, si l'autre opération tente d'utiliser le groupe initiateur supprimé, SnapManager affiche un message d'erreur.
+
+Par exemple, si vous exécutez les opérations de suppression et de création de sauvegarde sur différentes bases de données presque en même temps, l'opération de création de sauvegarde échoue. Les étapes séquentielles suivantes montrent ce qui se produit lorsque vous exécutez des sauvegardes, supprimer et créer des opérations sur différentes bases de données presque en même temps.
+
+. Exécutez la commande backup delete.
+. Exécutez la commande backup create.
+. La commande backup create identifie le groupe initiateur déjà existant et utilise le même groupe initiateur pour mapper la LUN.
+. La commande backup delete supprime le LUN de sauvegarde, qui a été mappée sur le même groupe initiateur.
+. La commande de suppression de sauvegarde supprime alors le groupe initiateur, car aucune LUN n'est associée à ce groupe initiateur.
+. La commande backup create crée la sauvegarde, tente de la mapper sur le groupe initiateur qui n'existe pas, et par conséquent l'opération échoue.
+
+
+*Que faire*
+
+Vous devez créer un groupe initiateur pour chaque système de stockage utilisé par la base de données à l'aide de la commande suivante : sdcli igroup

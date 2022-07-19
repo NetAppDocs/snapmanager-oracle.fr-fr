@@ -1,0 +1,44 @@
+---
+permalink: unix-administration/task_using_protection_manager_to_provision_the_new_dataset.html 
+sidebar: sidebar 
+keywords: smo_paydb, dataset, create, storage, administrator, protection, manager, assign, provision, node, netapp 
+summary: 'Une fois le jeu de données smo_paydb créé, l"administrateur du stockage utilise protection Manager pour affecter des ressources du système de stockage pour provisionner le nœud de sauvegarde du jeu de données.' 
+---
+= Utilisation de protection Manager pour provisionner le nouveau jeu de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois le jeu de données smo_paydb créé, l'administrateur du stockage utilise protection Manager pour affecter des ressources du système de stockage pour provisionner le nœud de sauvegarde du dataset.
+
+Avant de provisionner le jeu de données nouvellement créé, l'administrateur de stockage confère au partenaire DBA le nom du jeu de données spécifié dans le profil.
+
+Dans ce cas, le nom du jeu de données est smo_payroll.tech.com_PAYDB.
+
+. Accédez à la console de gestion NetApp de protection Manager.
+. Dans la barre de menus, cliquez sur *Data* > *Dataensembles* > *Overview*.
++
+L'onglet Datasets de la fenêtre Datasets affiche la liste des ensembles de données qui incluent le jeu de données qui vient d'être créé via SnapManager.
+
+. Localisez et sélectionnez le jeu de données *smo_payroll.tech.com_PAYDB*.
++
+Lorsque vous sélectionnez ce jeu de données, la zone graphique affiche le jeu de données smo_paydb avec son nœud de sauvegarde non provisionné. Son statut de conformité est signalé comme non-conforme.
+
+. Avec le jeu de données smo_paydb toujours en surbrillance, cliquez sur *Edit*.
++
+La console de gestion NetApp de protection Manager affiche la fenêtre Modifier le dataset pour le jeu de données *smo_payroll.tech.com_PAYDB*. Le volet de navigation de la fenêtre affiche les options de configuration pour le nœud principal du dataset, la connexion de sauvegarde et le nœud de sauvegarde.
+
+. Dans le volet de navigation, recherchez les options du nœud de sauvegarde du jeu de données et sélectionnez *provisioning/pools de ressources*.
++
+La fenêtre Modifier l'ensemble de données affiche un paramètre pour la stratégie d'approvisionnement par défaut et une liste de pools de ressources disponibles.
+
+. Pour cet exemple, sélectionnez le pool de ressources *paydb_backup_Resource* et cliquez sur *>*.
++
+Le pool de ressources sélectionné est répertorié dans le champ « pools de ressources pour ce nœud ».
+
+. Cliquez sur *Terminer* pour enregistrer vos modifications.
+
+
+Protection Manager provisionne automatiquement le nœud de sauvegarde secondaire avec les ressources du pool de ressources paydb_backup_Resource.

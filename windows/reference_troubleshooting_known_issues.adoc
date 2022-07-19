@@ -1,0 +1,191 @@
+---
+permalink: windows/reference_troubleshooting_known_issues.html 
+sidebar: sidebar 
+keywords: known, issues, snapmanager, troubleshooting 
+summary: Vous devez connaître certains problèmes connus qui peuvent survenir lorsque vous utilisez SnapManager et savoir comment les contourner. 
+---
+= Dépannage des problèmes connus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez connaître certains problèmes connus qui peuvent survenir lorsque vous utilisez SnapManager et savoir comment les contourner.
+
+
+
+== SnapManager for Oracle n'identifie pas les profils Cluster-mode
+
+Si le nom de profil Cluster-mode n'est pas présent dans le fichier cmode_profiles.config du répertoire d'installation de SnapManager pour Oracle, le message d'erreur suivant peut se déclencher :
+
+Veuillez configurer DFM Server à l'aide de l'ensemble de configuration SnapDrive -dfm nom_utilisateur nom_appliance.
+
+De même, lors de la mise à niveau de SnapManager pour Oracle, si vous supprimez le dossier /opt/NetApp/smo/*, le fichier cmode_profiles.config sur lequel les noms de profils Cluster-mode sont également supprimés. Ce problème déclenche également le même message d'erreur.
+
+*Solution de contournement*
+
+Mettre à jour le profil : mettre à jour le profil smo <nom_profil>
+
+
+NOTE: Si SnapManager pour Oracle est installé dans le chemin /opt/NetApp/smo/, l'emplacement du fichier est /opt/NetApp/smo/cmode_profile/cmode_profiles.config.
+
+
+
+== Le serveur ne démarre pas
+
+Lors du démarrage du serveur, un message d'erreur semblable à ce qui suit peut s'afficher :
+
+SMO-01104 : erreur lors de l'appel de la commande : SMO-17107 : le serveur SnapManager n'a pas pu démarrer sur le port 8074 en raison des erreurs suivantes : java.net.BindException: adresse déjà utilisée
+
+Cela peut être dû au fait que les ports d'écoute SnapManager (27214 et 27215 par défaut) sont actuellement utilisés par une autre application.
+
+Cette erreur peut également se produire si la commande smo_Server est déjà en cours d'exécution, mais SnapManager ne détecte pas le processus existant.
+
+*Solution de contournement*
+
+Vous pouvez reconfigurer le SnapManager ou l'autre application pour utiliser différents ports.
+
+Pour reconfigurer SnapManager, modifiez le fichier suivant : C:\Program Files\NetApp\SnapManager pour Oracle\Properties\smo.config
+
+Vous affectez les valeurs suivantes :
+
+* SMO Server.port=27214
+* SMO Server.rmiregistry.port=27215
+* remote.registry.ocijdbc.port= 27215
++
+Le port remote.registry.ocijdbc.port doit être identique à Server.rmiregistry.port.
+
+
+
+Pour démarrer le serveur SnapManager, effectuez les opérations suivantes :
+
+. Cliquez sur *Démarrer* > *panneau de configuration* > *Outils d'administration* > *Services*.
+. Vous pouvez démarrer le serveur de l'une des trois façons suivantes :
++
+** Dans le panneau de gauche, cliquez sur *Démarrer*.
+** Cliquez avec le bouton droit de la souris sur NetApp SnapManager 3.3 pour Oracle et sélectionnez *Démarrer* dans le menu déroulant.
+** Double-cliquez sur NetApp SnapManager 3.3 pour Oracle et dans la fenêtre Propriétés qui s'affiche, cliquez sur *Démarrer*.
+
+
+
+
+
+
+== Impossible de gérer les noms de destination du fichier journal d'archives si les noms de destination font partie d'autres noms de destination
+
+Lors de la création d'une sauvegarde du journal d'archivage, si l'utilisateur exclut une destination faisant partie d'autres noms de destination, les autres noms de destination sont également exclus.
+
+Par exemple, supposons que trois destinations sont disponibles pour être exclues : E:\\arch, G:\\arch et H:\\arch. Lors de la création de la sauvegarde du fichier journal d'archives, si vous excluez E:\\arch à l'aide de la commande
+
+[listing]
+----
+smo backup create -profile almsamp1 -data -online -archivelogs  -exclude-dest E:\\arch
+----
+, SnapManager pour Oracle exclut toutes les destinations commençant par E:\\arch.
+
+*Solution de contournement*
+
+* Ajoutez un séparateur de chemin après la configuration des destinations dans v$archive_dest. Par exemple, remplacez le modèle E:\\arch par E:\\arch\.
+* Lors de la création d'une sauvegarde, incluez les destinations au lieu d'exclure toute destination.
+
+
+
+
+== La taille des bases de données de référentiel augmente avec le temps et non avec le nombre de sauvegardes
+
+La taille de la base de données de référentiel augmente avec le temps car les opérations SnapManager insèrent ou suppriment des données dans le schéma dans les tables de bases de données de référentiel, ce qui entraîne une utilisation élevée de l'espace d'indexation.
+
+*Solution de contournement*
+
+Vous devez surveiller et reconstruire les index conformément aux directives Oracle pour contrôler l'espace utilisé par le schéma du référentiel.
+
+
+
+== L'interface graphique de SnapManager est inaccessible et les opérations de SnapManager échouent lorsque la base de données du référentiel est en panne
+
+Les opérations SnapManager échouent et vous ne pouvez pas accéder à l'interface graphique lorsque la base de données du référentiel est en panne.
+
+Le tableau suivant répertorie les différentes actions que vous pouvez effectuer et leurs exceptions :
+
+|===
+
+
+| Exploitation | Exceptions 
+
+
+ a| 
+Ouverture d'un référentiel fermé
+ a| 
+Le message d'erreur suivant est consigné dans sm_gui.log : [AVERTIR ] : SMO-01106 : erreur survenue lors de l'interrogation du référentiel : connexion fermée Java.sql.SQLException : connexion fermée.
+
+
+
+ a| 
+Actualisation d'un référentiel ouvert en appuyant sur F5
+ a| 
+Une exception de référentiel s'affiche dans l'interface utilisateur graphique et consigne également une exception NullPointerException dans le fichier sm_gui.log.
+
+
+
+ a| 
+Actualisation du serveur hôte
+ a| 
+Une NullPointerException est consignée dans le fichier sumo_gui.log.
+
+
+
+ a| 
+Création d'un nouveau profil
+ a| 
+Une exception NullPointerException s'affiche dans la fenêtre Configuration du profil.
+
+
+
+ a| 
+Actualisation d'un profil
+ a| 
+L'exception SQL suivante est consignée dans sm_gui.log : [AVERTIR ] : SMO-01106 : erreur lors de l'interrogation du référentiel : connexion fermée.
+
+
+
+ a| 
+Accès à une sauvegarde
+ a| 
+Le message d'erreur suivant est consigné dans sm_gui.log : échec de l'initialisation d'une collection.
+
+
+
+ a| 
+Affichage des propriétés de clone
+ a| 
+Le message d'erreur suivant est connecté à sm_gui.log et sumo_gui.log : échec de l'initialisation d'une collection.
+
+|===
+*Solution de contournement*
+
+Vous devez vous assurer que la base de données du référentiel est en cours d'exécution lorsque vous souhaitez accéder à l'interface graphique ou exécuter des opérations SnapManager.
+
+
+
+== Impossible de créer des fichiers temporaires pour la base de données clonée
+
+Lorsque des fichiers d'espaces de table temporaires de la base de données cible sont placés dans des points de montage différents du point de montage des fichiers de données, l'opération de création de clone a réussi mais SnapManager ne parvient pas à créer de fichiers temporaires pour la base de données clonée.
+
+*Solution de contournement*
+
+Vous devez effectuer l'une des opérations suivantes :
+
+* Assurez-vous que la base de données cible est définie de manière à ce que les fichiers temporaires soient placés au même point de montage que les fichiers de données.
+* Créez ou ajoutez manuellement des fichiers temporaires dans la base de données clonée.
+
+
+
+
+== Échec de la sauvegarde de la base de données de secours Data Guard
+
+Si un emplacement de journal d'archivage est configuré avec le nom de service de la base de données primaire, la sauvegarde de la base de données de secours Data Guard échoue.
+
+*Solution de contournement*
+
+Dans l'interface utilisateur graphique, vous devez effacer *spécifier l'emplacement du journal d'archives externes* correspondant au nom de service de la base de données principale.

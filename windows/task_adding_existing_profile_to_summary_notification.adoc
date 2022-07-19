@@ -1,0 +1,17 @@
+---
+permalink: windows/task_adding_existing_profile_to_summary_notification.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, exist, profile, summary, email, notification, updating 
+summary: 'SnapManager vous permet d"ajouter un profil existant à une notification de synthèse par e-mail lors de la mise à jour de ce profil.' 
+---
+= Ajout d'un profil existant aux notifications par e-mail récapitulatives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager vous permet d'ajouter un profil existant à une notification de synthèse par e-mail lors de la mise à jour de ce profil.
+
+. Entrez la commande suivante : smo profile update -profileprofile_name [-profile-passwordprofile_password] -repository-dbnamerepo_service-hostrepo_host-portrepo-port-login-usernamerpo-database-dbnamedb_nomddb_nomhôte [-nomdehôte] [-nomdumb-nomdeb-nomdeport] [-nomdedb] [-nomdeport] [-nomdedlnomdepassdationmb-nomdeb-nomdeb-nom_stationmb] [-nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_stationmb] [] [] [-nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_station[] [] [] [] [-nom_nom_nom_nom_nom_nom_nom_nom
+

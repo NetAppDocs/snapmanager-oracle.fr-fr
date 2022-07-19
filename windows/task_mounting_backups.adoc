@@ -1,0 +1,28 @@
+---
+permalink: windows/task_mounting_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, handle, mount, backup, available, host, scenario, oracle, recovery, manager, rman 
+summary: 'SnapManager gère automatiquement le montage d"une sauvegarde pour la rendre disponible à l"hôte. Vous pouvez également monter des sauvegardes dans les situations où vous utilisez un outil externe, comme Oracle Recovery Manager (RMAN), pour accéder aux fichiers de la sauvegarde.' 
+---
+= Montage des supports
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager gère automatiquement le montage d'une sauvegarde pour la rendre disponible à l'hôte. Vous pouvez également monter des sauvegardes dans les situations où vous utilisez un outil externe, comme Oracle Recovery Manager (RMAN), pour accéder aux fichiers de la sauvegarde.
+
+Si vous utilisez RMAN, vous devez utiliser l'opération de montage pour modifier l'état d'une sauvegarde (qui autorise l'accès) et l'opération de démontage pour modifier l'état d'une sauvegarde (qui supprime l'accès).
+
+La commande smo backup mount affiche une liste de chemins d'accès vers lesquels les copies Snapshot composées de la sauvegarde ont été montées.
+
+
+NOTE: Vous pouvez éventuellement collecter les fichiers de vidage après une opération de montage de sauvegarde réussie ou ayant échoué.
+
+. Pour monter une sauvegarde, entrez la commande suivante : smo backup mount -profile nom_profil {labellabel [data | -archiveils] | -idid} [-hôte-hôte] [-dump] [-quiet | -verbose]
+
+
+*Informations connexes*
+
+xref:reference_the_smosmsapbackup_mount_command.adoc[Commande smo backup mount]

@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/task_post_rollback_tasks.html 
+sidebar: sidebar 
+keywords: perform, additional, step, rollback, repository, database, downgrade, snapmanager, host, post, task, smo 
+summary: 'Vous devez effectuer quelques étapes supplémentaires après la restauration d"une base de données de référentiel et la mise à niveau de l"hôte SnapManager de SnapManager 3.2 vers SnapManager 3.0, afin d"afficher les planifications créées dans la version antérieure de la base de données de référentiel.' 
+---
+= Tâches post-restauration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez effectuer quelques étapes supplémentaires après la restauration d'une base de données de référentiel et la mise à niveau de l'hôte SnapManager de SnapManager 3.2 vers SnapManager 3.0, afin d'afficher les planifications créées dans la version antérieure de la base de données de référentiel.
+
+. Accédez à cd /opt/NetApp/smo/repositories.
++
+Le répertoire des référentiels peut contenir deux fichiers pour chaque référentiel. Le nom de fichier avec le signe de numéro (#) est créé à l'aide de SnapManager 3.1 ou version ultérieure et le nom de fichier avec le tiret (-) est créé à l'aide de SnapManager 3.0.
+
++
+Les noms de fichiers peuvent être les suivants :
+
++
+** Référentiel#SMO300a#SMOREPO1#10.72.197.141#1521
+** référentiel-fumée 300a-samore1-10.72.197.141-1521
+
+
+. Remplacez le signe numérique (#) dans le nom de fichier par le tiret (-).
++
+Le nom du fichier qui a le numéro de signe (#), contient maintenant le tiret (-): Repository-SMO300a-SMOREPO1-10.72.197.141-1521.
+
+

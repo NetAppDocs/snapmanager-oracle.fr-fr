@@ -1,0 +1,51 @@
+---
+permalink: windows/task_performing_backup_restore_and_clone_operations_using_prescript_and_post_scripts.html 
+sidebar: sidebar 
+keywords: script, initiating, initiate, backup, restore, clone, operation, snapmanager, task-enabling, perform, post-script 
+summary: 'Vous pouvez utiliser votre propre script tout en lançant une opération de sauvegarde, de restauration ou de clonage. SnapManager affiche une page d"activation des tâches dans l"assistant de création de sauvegarde, de restauration ou de restauration, ou dans l"assistant de création de clone, où vous pouvez sélectionner le script et fournir des valeurs pour tous les paramètres requis par le script.' 
+---
+= Effectuez les opérations de sauvegarde, de restauration et de clonage à l'aide des scripts prescripteurs et post-scripts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser votre propre script tout en lançant une opération de sauvegarde, de restauration ou de clonage. SnapManager affiche une page d'activation des tâches dans l'assistant de création de sauvegarde, de restauration ou de restauration, ou dans l'assistant de création de clone, où vous pouvez sélectionner le script et fournir des valeurs pour tous les paramètres requis par le script.
+
+* Installez les scripts du plug-in dans le bon emplacement d'installation de SnapManager.
+* Vérifiez que les plug-ins sont correctement installés à l'aide de la commande smsap plugin check.
+* Vérifiez que vous utilisez le shell BASH.
+
+
+Dans l'interface de ligne de commande (CLI), indiquez le nom du script, sélectionnez les paramètres et définissez les valeurs.
+
+. Pour vérifier que vous utilisez le shell BASH, entrez la commande suivante à l'invite de commande:bash
++
+Vous pouvez également saisir la commande qui-bash à l'invite et utiliser la sortie de la commande comme paramètre de démarrage du script.
+
++
+Le shell BASH fonctionne correctement si vous ne voyez pas d'erreur.
+
+. Pour l'opération de sauvegarde, entrez l'option -taskspspspspspspspspspspspspspspspec et indiquez le chemin absolu du fichier XML de spécification de tâche pour effectuer une activité de prétraitement ou de post-traitement avant ou après l'opération de sauvegarde : smo backup create -profile profil nom_profil {[-full {-online | -offline | -auto} [-retain {-hourly | [-daily | -hebdomadaire | -monthly | -illimité}] [-data [-fichiers [fichiers]] | [-archiveels-tablespaces [-tables-tables-tables-tables-auto] [-databellabelly] [-reate | -databelly] [-reate | -databelly] [-reate] [-retain | -databelly [-belabelly] [-reate] [-reate] [-reate | [-einate | -databelly] [-reate | -ein [-backup-destapath1 [,[path2]]] [-exclude-destapath1 [,path2]]] [-prunelogs {-all | -untilSCNuntitSCN | -before {-dayyyy-MM-DD HH:mm:mm | -mois | -jours | -semaines | -detaskunss-detaskunss-detaskunss] -detaskunss-detaskunss-detassunss-detassunss-detassunss-detassunss] [-detasstassunss] -detasstasstasstasstassunss] -detassetunss-ta
++
+Si l'opération de sauvegarde du plug-in a échoué, seul le nom du plug-in et le code retour sont affichés. Votre script de plug-in doit inclure des messages de journal et rediriger les messages vers les fichiers journaux définis par l'utilisateur.
+
+. Pour l'opération de restauration de sauvegarde, entrez l'option -taskspspspspspspspspspec et indiquez le chemin absolu du fichier XML de spécification de tâche pour effectuer une activité de prétraitement ou de post-traitement avant ou après l'opération de restauration : smo backup restore -profileprofile_name {-label<label> | -id<id>} {-files<files>|-tablespaces<tablespaces> | -complete | -controlfiles} [-recover {-alllogs | -nologs | -jusque <jusque>}][-restauratorsspect<spect>] [-reastitforer] [-reindead-reate | detaskover-reate-reover] [-reate-reover] [-reate-reover] [-reover-reate] [-reate] [-reover] [-reate |
++
+Si l'opération de restauration du plug-in a échoué, seul le nom du plug-in et le code retour sont affichés. Votre script de plug-in doit inclure des messages de journal et rediriger les messages vers les fichiers journaux définis par l'utilisateur.
+
+. Pour l'opération de création de clone, entrez l'option -taskspspspspspspspspspspec et indiquez le chemin absolu du fichier XML de spécification de tâche pour effectuer une activité de prétraitement ou de post-traitement avant ou après l'opération de clonage : smo clone create -profileprofile_name {-backup-labelbackup_name | -backup-id<backup-id>| -current} -newsidnew_sid-clonespecfull_path_to_clonespecfile [-reserve<yes, no, hériter>] [-host<label<label>] [-verbose][tasked_comment] [-spéc][task]
++
+En cas d'échec de l'opération de clonage, seul le nom du plug-in et le code de retour sont affichés. Votre script de plug-in doit inclure des messages de journal et rediriger les messages vers les fichiers journaux définis par l'utilisateur.
+
+
+
+
+
+== Exemple de création d'une sauvegarde à l'aide du fichier XML de spécification de tâche
+
+[listing]
+----
+smo backup create -profile SALES1 -full -online -taskspec sales1_taskspec.xml -force -verify
+----

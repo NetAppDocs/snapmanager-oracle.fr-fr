@@ -1,0 +1,58 @@
+---
+permalink: windows/reference_the_smosmsapprofile_delete_command.html 
+sidebar: sidebar 
+keywords: run, profile, delete, command, database, smo 
+summary: Vous pouvez exécuter la commande de suppression de profil pour supprimer un profil de la base de données. 
+---
+= Commande SMO profile delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter la commande de suppression de profil pour supprimer un profil de la base de données.
+
+
+
+== Syntaxe
+
+[listing]
+----
+
+        smo profile delete
+-profile profile
+\[-quiet \| -verbose\]
+----
+
+
+== Paramètres
+
+* profil **
++
+Spécifie le profil à supprimer.
+
+* *-calme*
++
+Affiche uniquement les messages d'erreur dans la console. La valeur par défaut est d'afficher les messages d'erreur et d'avertissement.
+
+* *-verbose*
++
+Affiche les messages d'erreur, d'avertissement et d'information dans la console.
+
+
+
+
+
+== Exemple
+
+L'exemple suivant supprime le profil :
+
+[listing]
+----
+smo profile delete -profile SALES1
+Operation Id [Ncaf00af0242b3e8dba5c68a57a5ae932] succeeded.
+----
+*Informations connexes*
+
+xref:task_deleting_profiles.adoc[Suppression de profils]

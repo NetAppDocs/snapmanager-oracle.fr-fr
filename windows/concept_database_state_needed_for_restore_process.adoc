@@ -1,0 +1,59 @@
+---
+permalink: windows/concept_database_state_needed_for_restore_process.html 
+sidebar: sidebar 
+keywords: state, database, restore 
+summary: 'L"état de la base de données à restaurer dépend du type de processus de restauration que vous souhaitez exécuter et du type de fichiers à inclure.' 
+---
+= État de la base de données nécessaire au processus de restauration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'état de la base de données à restaurer dépend du type de processus de restauration que vous souhaitez exécuter et du type de fichiers à inclure.
+
+Le tableau suivant répertorie l'état de la base de données en fonction de l'option de restauration sélectionnée et du type de fichiers à inclure dans la restauration :
+
+|===
+
+
+| Type de restauration | Fichiers inclus | État de la base de données pour cette instance 
+
+
+ a| 
+Restauration uniquement
+ a| 
+Fichiers de contrôle
+ a| 
+Arrêt
+
+
+
+ a| 
+Fichiers système
+ a| 
+Montage ou arrêt
+ a| 
+Aucun fichier système
+
+
+
+ a| 
+Quel que soit l'état
+ a| 
+Restauration et reprise
+ a| 
+Fichiers de contrôle
+
+
+
+ a| 
+Arrêt
+ a| 
+Fichiers système
+ a| 
+Montage
+
+|===
+L'état de la base de données requis par SnapManager pour une opération de restauration dépend du type de restauration en cours (fichiers complets, partiels ou de contrôle). SnapManager ne fait pas passer la base de données à un état inférieur (par exemple, de Ouvrir à montage), sauf si l'option forcer est spécifiée.

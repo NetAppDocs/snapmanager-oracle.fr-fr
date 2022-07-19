@@ -1,0 +1,14 @@
+---
+permalink: windows/index.html 
+sidebar: sidebar 
+keywords: install, installation, administer, administration, guide, document 
+summary: 'Guide d"installation et d"administration de SnapManager pour Oracle 3.4.2' 
+---
+= Guide d'installation et d'administration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ce guide décrit l'installation et l'administration de SnapManager 3.4.2 pour Oracle dans un environnement Windows, notamment l'installation, la mise à niveau, la désinstallation et la configuration du produit, la sauvegarde, la restauration et le clonage des bases de données.

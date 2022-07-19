@@ -1,0 +1,23 @@
+---
+permalink: windows/task_adding_new_profile_to_summary_notification.html 
+sidebar: sidebar 
+keywords: configure, summary, email, notification, database, profile 
+summary: 'Après avoir configuré une notification de synthèse par e-mail pour la base de données du référentiel, vous pouvez ajouter un nouveau profil à la notification de synthèse à l"aide de la commande de notification de synthèse.' 
+---
+= Ajout d'un nouveau profil aux notifications par e-mail récapitulatives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après avoir configuré une notification de synthèse par e-mail pour la base de données du référentiel, vous pouvez ajouter un nouveau profil à la notification de synthèse à l'aide de la commande de notification de synthèse.
+
+. Entrez la commande suivante : smo profile create -profileprofile_name [-profile-passwordprofile_password] -repository-dbnamerepo_service-hostrepo_host-portrepo-port-login-usernamerpo-database-dbnamedb_nomddb_nomhôte [-nomdehôte] [-nomdumb-nomdedb] [-nomdeport] [-nomdumb-nomdumb] [-nomdedlport] [] [-nomdednomdednomdeamerdaydnterm-nomdeamerb-nomdeb-nomdeb-nom_nomdeb-nom_stationmb] [] [] [-nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_nom_station[]]
++
+Les autres options de cette commande sont les suivantes :
+
++
+[-force]
+
+

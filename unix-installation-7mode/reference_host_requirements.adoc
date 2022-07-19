@@ -1,0 +1,23 @@
+---
+permalink: unix-installation-7mode/reference_host_requirements.html 
+sidebar: sidebar 
+keywords: install, snapmanager, oracle, host, database, minimum, requirement, configuration, unix 
+summary: Vous devez installer SnapManager pour Oracle sur chaque hôte sur lequel est hébergée une base de données Oracle à sauvegarder. Vous devez vous assurer que vos hôtes répondent aux exigences minimales pour la configuration SnapManager. 
+---
+= Configuration requise pour l'hôte UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez installer SnapManager pour Oracle sur chaque hôte sur lequel est hébergée une base de données Oracle à sauvegarder. Vous devez vous assurer que vos hôtes répondent aux exigences minimales pour la configuration SnapManager.
+
+* Vous devez installer SnapDrive sur l'hôte de base de données avant d'installer SnapManager.
+* Vous pouvez installer SnapManager sur des machines physiques ou virtuelles.
+* Vous devez installer la même version de SnapManager sur tous les hôtes partageant le même référentiel.
+* Vous devez installer le correctif 13366202 Oracle si vous utilisez des bases de données Oracle 11.2.0.2 ou 11.2.0.3.
++
+Si vous utilisez dNFS, vous devez également installer les correctifs répertoriés dans le rapport My Oracle support (MOS) 1495104.1 pour des performances et une stabilité maximales.
+
+
