@@ -30,7 +30,7 @@ Vous devez installer SnapManager pour Oracle sur chaque hôte de base de donnée
 Vous pouvez utiliser l'interface de ligne de commande ou l'interface utilisateur à partir de l'hôte de base de données sur lequel SnapManager for Oracle est installé. Vous pouvez également utiliser l'interface utilisateur SnapManager à distance en utilisant un navigateur Web depuis n'importe quel système exécuté sur un système d'exploitation pris en charge par SnapManager.
 
 
-NOTE: Les versions JRE prises en charge sont 1.5, 1.6 et 1.7.
+NOTE: Les versions JRE prises en charge sont 1.5, 1.6, 1.7 et 1.8.
 
 
 

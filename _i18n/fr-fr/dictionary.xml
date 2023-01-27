@@ -1994,7 +1994,6 @@
   <block id="ebf3e630ab67f632b2b371abef2dea6a" category="list-text">Entrez la commande suivante : smo backup unmount -profile nom_profil {labellabel [data | -archiveils] | -idid} [-quiet | -verbose] -dump-force-verbose</block>
   <block id="80e3ec797d23ec0454f26bb0ae54eaa4" category="inline-xref-macro">La commande smo backup uncuncloud</block>
   <block id="298ec9eed02af69f6cd08854c1575ccd" category="paragraph"><block ref="298ec9eed02af69f6cd08854c1575ccd" category="inline-xref-macro-rx"></block></block>
-  <block id="fdf138e8e32b475cac4e95dfa4a6845c" category="summary">Vous pouvez utiliser Java Web Start si SnapManager n'est pas installé sur l'hôte. Java Web Start télécharge les composants SnapManager et démarre l'interface utilisateur graphique (GUI). Les versions JRE prises en charge sont 1.5, 1.6 et 1.7.</block>
   <block id="a3ce501ae6a1c70515cb2af72f8a5263" category="doc">Téléchargement et démarrage de l'interface utilisateur graphique à l'aide de Java Web Start</block>
   <block id="65ac70b2787abfaf135067ac5ef6b778" category="paragraph">Vous devez vous assurer que les conditions suivantes sont remplies :</block>
   <block id="e1549d03ea953026442a3230a7859b92" category="list-text">Le serveur SnapManager est en cours d'exécution.</block>
@@ -4569,7 +4568,6 @@
   <block id="919f34a198248929d4f784948b69469d" category="paragraph">SnapManager requiert SnapDrive pour établir la connexion avec le système de stockage. Vous devez installer SnapDrive pour UNIX sur chaque hôte de base de données cible avant d'installer SnapManager.</block>
   <block id="7d5643ff2a416305c8e7f1f9edb27b00" category="paragraph">Vous devez installer SnapManager pour Oracle sur chaque hôte de base de données cible.</block>
   <block id="39428a8d90e5b121522d6129b78aa8f9" category="paragraph">Vous pouvez utiliser l'interface de ligne de commande ou l'interface utilisateur à partir de l'hôte de base de données sur lequel SnapManager for Oracle est installé. Vous pouvez également utiliser l'interface utilisateur SnapManager à distance en utilisant un navigateur Web depuis n'importe quel système exécuté sur un système d'exploitation pris en charge par SnapManager.</block>
-  <block id="7ef022a578be28da1215ccf070dd30ff" category="admonition">Les versions JRE prises en charge sont 1.5, 1.6 et 1.7.</block>
   <block id="651517944489d080458feaf4b18b48e1" category="section-title">Base de données cible</block>
   <block id="fc07b3bc28ff78b02c42678ae411ac43" category="paragraph">La base de données cible est une base de données Oracle que vous souhaitez gérer à l'aide de SnapManager en effectuant des opérations de sauvegarde, de restauration, de restauration et de clonage.</block>
   <block id="01481686276dcdeb8154575ae3331d69" category="paragraph">La base de données cible peut être un RAC (Real application clusters) autonome ou résider sur des volumes ASM (Automatic Storage Management) d'Oracle. Pour plus d'informations sur les versions, les configurations, les systèmes d'exploitation et les protocoles pris en charge de la base de données Oracle, consultez la matrice d'interopérabilité NetApp.</block>
@@ -6854,4 +6852,7 @@
   <block id="d23d52eb082db2b040f7a1483c79d790" category="sidebar">Administration pour UNIX</block>
   <block id="30027cf267532429435367703cf3d996" category="sidebar">Installation et configuration pour Windows</block>
   <block id="d648f2a68a54fd1b3329efc3cf24d29c" category="sidebar">Mentions légales</block>
+  <block id="48f5a9c122057627462e4b416c5fbdf9" category="admonition">Les versions JRE prises en charge sont 1.5, 1.6, 1.7 et 1.8.</block>
+  <block id="1e19ac469670780a4c754ec0afa92293" category="summary">Vous pouvez utiliser Java Web Start si SnapManager n'est pas installé sur l'hôte. Java Web Start télécharge les composants SnapManager et démarre l'interface utilisateur graphique (GUI). Les versions JRE prises en charge sont 1.5, 1.6, 1.7 et 1.8</block>
+  <block id="3c981c21038a256bded47f47d4658951" category="paragraph">Vous pouvez utiliser Java Web Start si SnapManager n'est pas installé sur l'hôte. Java Web Start télécharge les composants SnapManager et démarre l'interface utilisateur graphique (GUI). Les versions JRE prises en charge sont 1.5, 1.6, 1.7 et 1.8.</block>
 </blocks>
